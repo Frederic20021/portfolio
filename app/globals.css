@@ -14,8 +14,87 @@
   }
 }
 
+/*
+custom css
+*/
+@layer utilities {
+  .c-space {
+    @apply sm:px-10 px-5;
+  }
+
+  .contact-container {
+    @apply max-w-xl sm:px-10 px-5 mt-12;
+  }
+
+  .head-text {
+    @apply sm:text-4xl text-3xl font-semibold;
+  }
+
+  .field-label {
+    @apply text-lg text-white;
+  }
+
+  .field-input {
+    @apply w-full bg-black px-5 py-2 min-h-14 rounded-lg placeholder:text-gray-600 text-lg text-white shadow-gray-800 shadow-2xl focus:outline-none;
+  }
+
+  .field-btn {
+    @apply bg-black px-5 py-2 min-h-12 rounded-lg shadow-gray-800 shadow-2xl flex justify-center items-center text-lg text-white gap-3;
+  }
+
+  .field-btn_arrow {
+    @apply w-2.5 h-2.5 object-contain invert brightness-0;
+  }
+
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
 body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
 }
