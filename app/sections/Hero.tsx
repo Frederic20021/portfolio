@@ -1,37 +1,83 @@
 import React from 'react';
+import Image from "next/image";
+import { FaGlobeAsia } from "react-icons/fa";
 
 const Hero = () => {
     return (
-        <section className="relative bg-gradient-to-r from-blue-500 via-purple-600 to-red-500 flex items-center justify-center text-white overflow-hidden">
-            {/* Background Animation */}
-            <div className="absolute inset-0 z-0">
-                <div className="w-40 h-40 bg-pink-400 rounded-full blur-[150px] opacity-50 absolute top-10 left-10 animate-pulse"></div>
-                <div className="w-60 h-60 bg-blue-300 rounded-full blur-[150px] opacity-50 absolute bottom-20 right-20 animate-pulse"></div>
-            </div>
+        <section className="relative text-white overflow-hidden">
+            <div
+                className="relative aspect-video flex flex-col"
+                style={{
+                    backgroundImage: `url(/assets/worldMap.jpg)`,
+                    backgroundPosition: "center center",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "contain",
+                    boxShadow: "0px 10px 30px black"
+                }}
+            >
+                <div className="text-center p-8 max-w-[1000px] mx-auto rounded-full backdrop-blur">
+                    <h1 className="text-5xl font-bold grid gap-4">
+                        <span className={"text-3xl"}>Study Abroad with Full Tuition Exemption</span>
+                        <span>
+                            Your Ticket to Exploring the <span className={"text-green-500 text-6xl"}>W<FaGlobeAsia className={"inline size-7"}/>rld!</span>
+                        </span>
+                    </h1>
+                    <p className="text-lg md:text-xl max-w-2xl mt-4 mx-auto">
+                        Achieve your dream of traveling the world as you pursue your degree.
+                    </p>
 
-            <div className="text-center space-y-8 my-4 px-4">
-                {/* Title */}
-                <h1 className="text-4xl md:text-6xl font-bold grid gap-4">
-                    <span className={"text-4xl"}>Study Abroad with Full Tuition Exemption</span>
-                    <span>Your Ticket to Exploring the World!</span>
-                </h1>
-                <p className="text-lg md:text-xl max-w-2xl mx-auto">
-                    Unlock your academic dreams by studying in <span className="text-pink-300">Japan</span> or through exciting exchange programs in <span className="text-blue-300">Canada</span>.
-                </p>
-
-                {/* Interactive Buttons */}
-                <div className="flex justify-center gap-4">
-                    <button className="bg-yellow-300 text-black px-6 py-3 rounded-full font-bold text-lg hover:scale-105 transition-transform">
-                        Explore Japan
-                    </button>
-                    <button className="bg-blue-300 text-black px-6 py-3 rounded-full font-bold text-lg hover:scale-105 transition-transform">
-                        Explore Canada
-                    </button>
                 </div>
-            </div>
+                {/* TODO: make another component in UI to wrap the labels from a constant file */}
+                {/* Canada Label */}
+                <div className="absolute group flex items-center justify-center w-8 h-8 text-white rounded-full"
+                     style={{
+                         top: "32.5%",
+                         left: "20%",
+                     }}
+                >
+                    <div className="relative justify-center mx-auto animate-bounce">
+                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                            <span className="text-xs z-10">CA</span>
+                        </div>
+                        <div
+                            className="absolute w-4 h-4 bg-blue-500 rotate-45 -bottom-1 left-[50%] translate-x-[-50%]"/>
+                    </div>
+                    <div className={"hidden group-hover:block absolute w-[200px] h-[100px] bg-red-600 mt-40"}>Ontario
+                        Tech
+                        University
+                    </div>
+                </div>
 
+                {/* Japan Label */}
+                <div
+                    className="absolute group flex items-center justify-center w-8 h-8 text-white rounded-full"
+                    style={{
+                        top: "38%",
+                        right: "13%",
+                    }}
+                >
+                    <div className="relative animate-bounce">
+                        <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                            <span className="text-xs z-10">JP</span>
+                        </div>
+                        <div
+                            className="absolute w-4 h-4 bg-red-500 rotate-45 -bottom-1 left-[50%] translate-x-[-50%]"/>
+                    </div>
+                    <div className={"hidden group-hover:block absolute w-[200px] h-[100px] bg-red-600 mt-40"}>Shizuoka
+                        University
+                    </div>
+                </div>
+                <Image
+                    className={"absolute -bottom-7 left-1/2 transform -translate-x-1/2"}
+                    src={"/assets/scholar.png"}
+                    alt={"Scholar"}
+                    width={400}
+                    height={400}/>
+            </div>
         </section>
     );
 };
 
 export default Hero;
+{//top-[45%] left-[35%] translate-x-[-50%] translate-y-[-50]
+}

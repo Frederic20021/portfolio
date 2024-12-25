@@ -24,7 +24,7 @@ const Navlink = () => {
     }, []);
 
     return (
-        <nav ref={navRef} className="relative">
+        <nav ref={navRef} className="relative mx-6">
             <div className="flex gap-6">
                 {navItems.map((item) => (
                     <div key={item.id} className="relative group">

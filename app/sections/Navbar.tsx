@@ -7,9 +7,9 @@ import MenuBar from "@/app/components/ui/MenuBar";
 const Navbar = () => {
 
     return (
-        <div className={"flex justify-between md:justify-center text-xl items-center px-4 gap-3 sticky top-0 z-50 h-[4rem] bg-red-300"}>
+        <div className={"flex justify-between md:justify-center text-2xl items-center px-4 gap-3 sticky top-0 z-50 h-[6rem] bg-[#062415]"}>
             <Link href={"/"}>
-                <span>SI THU LIN</span>
+                <span className={"font-bold text-3xl"}>SI THU LIN</span>
             </Link>
             <div className={"hidden md:flex justify-center items-center gap-2 mx-8"}>
                 <Navlink/>

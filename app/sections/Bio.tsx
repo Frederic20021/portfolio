@@ -5,7 +5,7 @@ const Bio = () => {
         <div
             className={"grid max-sm:flex sm:grid-cols-5 gap-4 justify-between items-center bg-contain mx-10"}
             style={{
-                backgroundImage: `url(./subject.png)`,
+                backgroundImage: `url(./assets/subject.png)`,
                 height: "400px",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "20% 50%",

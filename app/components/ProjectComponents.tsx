@@ -1,4 +1,5 @@
 import Link from "next/link";
+import GlobeAnimation from "@/app/components/GlobeAnimation";
 
 const cusCss = "flex flex-col items-center text-justify"
 
@@ -6,6 +7,7 @@ const Map = () => {
     return (
         <div className={`${cusCss}`}>
             <span>Pan around the globe and find me!</span>
+            <GlobeAnimation />
         </div>
     )
 }
