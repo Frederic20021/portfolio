@@ -19,7 +19,7 @@ const Projects = () => {
                 const Component = componentMap[item];
                 return Component
                     ?
-                    <div className={"bg-white flex flex-col max-w-[300px] items-center"}>
+                    <div className={"rounded-lg shadow-lg hover:shadow-gray-600 flex flex-col max-w-[300px] items-center p-2"}>
                         <Component key={index} />
                         <Link
                             href="/"

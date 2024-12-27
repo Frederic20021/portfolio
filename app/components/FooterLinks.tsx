@@ -3,7 +3,7 @@ import {navItems} from "@/app/constants/NavItems";
 
 const FooterLinks = () => {
     return (
-        <div className={"flex bg-green-800 p-4 justify-center text-center gap-12"}>
+        <div className={"flex bg-green-800 p-4 justify-center gap-12"}>
             {navItems.map((item, index) => (
                 <>
                     {item.id == "Blog" ?
@@ -14,7 +14,7 @@ const FooterLinks = () => {
                                     <a
                                         key={dropdownItem}
                                         href={`/${item.id.toLowerCase()}?tag=${dropdownItem.toLowerCase()}`}
-                                        className="block text-white hover:text-gray-900 hover:bg-gray-100 rounded px-2 py-1"
+                                        className="block text-white text-center hover:text-gray-900 hover:bg-gray-100 rounded px-2 py-1"
                                     >
                                         {dropdownItem}
                                     </a>

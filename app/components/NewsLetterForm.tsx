@@ -44,29 +44,27 @@ const NewsLetterForm = () => {
     };
 
     return (
-        <div className="flex items-center p-4 justify-center">
-            <form onSubmit={handleSubmit} className="flex bg-blue-500 justify-center p-2 w-full max-w-md">
-                <div>
+            <form onSubmit={handleSubmit} className="p-2 w-full">
+                <div className={"flex justify-center gap-4"}>
                     <input
                         type="email"
                         name="email"
                         value={email}
                         onChange={handleEmailChange}
-                        placeholder="Enter your email"
-                        className="p-2 text-black border rounded-md"
+                        placeholder="Enter your email               "
+                        className="p-2 text-white underline underline-offset-2 rounded-lg bg-transparent"
                         required
                     />
                     {error && <p className="text-red-500 text-sm">{error}</p>}
                     <button
                         type="submit"
-                        className="bg-blue-500 text-white p-2 rounded-md"
+                        className="bg-blue-500 text-white p-2 rounded-lg"
                         disabled={loading || !email}
                     >
                         {loading ? 'Submitting...' : 'Subscribe'}
                     </button>
                 </div>
             </form>
-        </div>
     );
 };
 

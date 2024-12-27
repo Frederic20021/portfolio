@@ -13,8 +13,16 @@ const Bio = () => {
         >
             <div className={"max-sm:hidden col-span-2"}></div>
             <div className={" text-center sm:col-span-3 max-sm:mt-[150px]"}>
-                <span className={"text-white bg-black text-2xl"}>Hi, I am LIN.</span>
-                <p className={"px-4 indent-4 bg-black opacity-80 text-left w-full"}>I decided to pursue my studies in Japan post Covid-19 where my life turned around forever. <br /> Having grown up in a third world country, my academic journey in Japan has been a blast!</p>
+                <span className={"text-white bg-black text-4xl"}>Hi there! I am LIN.</span>
+                <p className={"px-4 indent-4 text-left text-xl w-full backdrop-blur"}>
+                    I decided to pursue my studies in Japan post Covid-19 after which my life had turned around forever.
+                    <br/><br/>
+                    Having grown up in a third world country, my academic journey in Japan has been a blast!
+                    Not only am I able to get tuition-free education, I am also able to do an exchange program in
+                    Canada.
+                    <br/><br/>
+                    I am greatful for this unique opportunity and will be sharing my experience through this blog site.
+                </p>
             </div>
         </div>
     )

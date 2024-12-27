@@ -19,7 +19,7 @@ const Hero = () => {
                     <h1 className="text-5xl font-bold grid gap-4">
                         <span className={"text-3xl"}>Study Abroad with Full Tuition Exemption</span>
                         <span>
-                            Your Ticket to Exploring the <span className={"text-green-500 text-6xl"}>W<FaGlobeAsia className={"inline size-7"}/>rld!</span>
+                            Your Ticket to Exploring the <span className={"text-green-800 text-6xl"}>W<FaGlobeAsia className={"inline size-7"}/>rld!</span>
                         </span>
                     </h1>
                     <p className="text-lg md:text-xl max-w-2xl mt-4 mx-auto">

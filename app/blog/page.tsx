@@ -1,6 +1,6 @@
 import { getAllPosts } from '../lib/mdx';
 import BrowseCategory from "@/app/components/BrowseCategory";
-import ReadMoreBTN from "@/app/components/ui/ReadMoreBTN";
+import BlogRender from "@/app/components/BlogRender";
 
 export default async function BlogPage({ searchParams } : { searchParams : { tag?: string }}) {
     const [posts, param] = await Promise.all([getAllPosts(), searchParams]);
@@ -21,21 +21,22 @@ export default async function BlogPage({ searchParams } : { searchParams : { tag
                 <span>{postCount} Articles</span>
             </div>
             <div className="grid md:grid-cols-2 gap-6 ">
-                {filteredPosts.map(({meta}) => (
+                <BlogRender posts={filteredPosts} />
+            </div>
+        </div>
+    );
+}
+
+{/*filteredPosts.map(({meta}) => (
                     <div
                         key={meta.slug}
                         className="border text-white p-4 rounded-lg max-md:w-[500px] max-md:mx-auto"
                     >
                         <h2 className="text-xl font-semibold">{meta.title}</h2>
                         <p className="text-wrap">{meta.excerpt}</p>
-                        <div className="mt-2 text-sm">
+                        <div className="my-2 text-sm">
                             {meta.date} • {meta.tags?.join(', ')}
                         </div>
                         <ReadMoreBTN blog={meta.slug} />
                     </div>
-                    ))}
-                {}
-            </div>
-        </div>
-    );
-}
+                    ))*/}

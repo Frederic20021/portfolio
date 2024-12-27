@@ -18,10 +18,6 @@ const Karate = () => {
         <div className={`bg-red-500 ${cusCss}`}>
             <span>Karate</span>
             <p>I first started practising karate during middle school and got my black belt after 2 years.<br/>I went back to training after finishing high school and went to placed third at a local competition during the first year of studying abroad in Japan.</p>
-            <Link
-                href="/"
-                className={"hover:bg-blue-800 rounded-lg"}
-            >More on this</Link>
         </div>
     )
 }
