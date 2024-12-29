@@ -14,8 +14,7 @@ export default async function BlogPostPage({
     params: { slug : string}
 }) {
     try {
-        const Param = await params;//had to await the params in Next 15
-        const { meta, content } = await getPostBySlug(Param.slug);
+        const { meta, content } = await getPostBySlug(params.slug);
 
         return (
             <article className="prose lg:prose-xl text-center container mx-auto px-4">

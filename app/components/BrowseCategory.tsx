@@ -9,7 +9,7 @@ interface BrowseCategoryProps{
 const BrowseCategory: React.FC<BrowseCategoryProps> = ({ visibility = "hidden" }) => {
     return (
         <div className={`${visibility} sm:flex flex-col text-center justify-center m-2`}>
-            <span className={"py-2"}>Browse By Category</span>
+            <span className={"py-2 text-2xl"}>Browse By Category</span>
             <div className={"flex flex-wrap justify-center gap-2 mx-auto max-w-[280px] border rounded-lg py-2"}>
                 {navItems[0].dropdownItems && navItems[0].dropdownItems.map((cat) => (
                     <div key={cat}>

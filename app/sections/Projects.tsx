@@ -14,7 +14,7 @@ const componentMap: Record<string, React.ComponentType> = {
 
 const Projects = () => {
     return (
-        <div className={"flex flex-wrap gap-8 mx-auto justify-center"}>
+        <div className={"flex md:flex-wrap max-md:flex-col gap-8 mx-auto justify-center"}>
             {projectItems.map((item, index) => {
                 const Component = componentMap[item];
                 return Component

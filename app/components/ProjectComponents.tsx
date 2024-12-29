@@ -5,7 +5,7 @@ const cusCss = "flex flex-col items-center text-justify"
 
 const Map = () => {
     return (
-        <div className={`${cusCss}`}>
+        <div className={`${cusCss} bg-gray-700 bg-opacity-50 rounded-lg`}>
             <span>Pan around the globe and find me!</span>
             <GlobeAnimation />
         </div>

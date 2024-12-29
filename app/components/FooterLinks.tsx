@@ -8,7 +8,7 @@ const FooterLinks = () => {
                 <>
                     {item.id == "Blog" ?
                         <div key={index} className={"hidden md:flex flex-col min-w-[200px]"}>
-                            <span>{item.id}</span>
+                            <span className={"text-2xl"}>{item.id}</span>
                             <div className={"grid grid-cols-2 gap-2 bg-red-300 text-left"}>
                                 {item.dropdownItems && item.dropdownItems.map((dropdownItem) => (
                                     <a
@@ -22,7 +22,7 @@ const FooterLinks = () => {
                             </div>
                         </div> :
                         <div key={index}>
-                            <span>{item.id}</span>
+                            <span className={"text-2xl"}>{item.id}</span>
                             <div className={"grid gap-2 bg-red-300 text-left"}>
                                 {item.dropdownItems && item.dropdownItems.map((dropdownItem) => (
                                     <a

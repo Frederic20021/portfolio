@@ -8,7 +8,7 @@ const ReadMoreBtn = ({ blog } : { blog: string}) => {
             className="border group p-1 m-1 rounded hover:shadow-lg transform transition-all duration-1000"
         >
             Read More
-            <span className={"hidden mx-2 group-hover:inline transition-opacity duration-500"}>&gt;&gt;&gt;</span>
+            <span className={"hidden mx-2 group-hover:inline transform duration-500"}>&gt;&gt;&gt;</span>
         </Link>
     )
 }

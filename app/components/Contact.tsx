@@ -1,7 +1,6 @@
 "use client"
 import React, {useRef, useState} from 'react'
 import emailjs from '@emailjs/browser'
-import Image from "next"
 
 const Contact = () => {
     const formRef = useRef(null);

@@ -18,17 +18,17 @@ export const getStaticProps: GetStaticProps = async () => {
 const Blog =  () => {
 
     return (
-        <div className={"flex gap-4 mx-auto justify-center"}>
+        <div className={"flex gap-4 mx-auto justify-center py-8"}>
             <div className={"flex justify-center max-sm:flex-col items-center"}>
                 <div className={"sm:hidden bg-gray-500 gap-4"}>
                     <BrowseCategory visibility={"visible"}/>
                 </div>
-                <div className={"justify-center sm:basis-6/8 mx-10"}>
-                    <span className={"text-white text-center"}>Articles & Guides</span>
+                <div className={"justify-center sm:basis-6/8 mx-8 my-2"}>
+                    <span className={"text-white text-2xl text-center"}>Articles & Guides</span>
                     <BlogCard/>
                 </div>
             </div>
-            <div className={"flex flex-col items-center sm:basis-2/8"}>
+            <div className={"flex flex-col items-center sm:basis-2/8 gap-4"}>
                 <BrowseCategory/>
                 <PinnedContent/>
             </div>
