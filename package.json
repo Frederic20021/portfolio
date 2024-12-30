@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@next/mdx": "^15.0.3",
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.10",
     "@tailwindcss/typography": "^0.5.15",
