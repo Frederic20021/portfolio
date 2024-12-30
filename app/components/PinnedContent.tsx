@@ -7,13 +7,15 @@ const posts = await getPinnedPosts();
 const PinnedContent = ({ visibility = "hidden" }) => {
     return (
         <div className={`${visibility} sm:flex flex-col px-4 w-full`}>
-            <span className={"text-2xl my-2"}>Useful Content</span>
+            <span className={"text-2xl my-2 text-center"}>Useful Content</span>
             <div>
                 {posts.map((pinnedContent, idx) => (
                     <div key={idx} className={"flex items-center group"}>
-                        <span>-&ensp;{pinnedContent.meta.title}</span>
                         <Link href={`/blog/${pinnedContent.meta.slug}`}>
-                            <span className={"hidden mx-2 group-hover:inline transition-opacity duration-500"}>&gt;&gt;&gt;</span>
+                            <span className={"inline-block"}>
+                                {pinnedContent.meta.title}&ensp;<span className={"group-hover:opacity-0 duration-500"}>&gt;</span>
+                                <span className={"opacity-0 group-hover:opacity-100 transition-opacity duration-500"}>&gt;&gt;&gt;</span>
+                            </span>
                         </Link>
                     </div>
                 ))}

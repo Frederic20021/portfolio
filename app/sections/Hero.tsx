@@ -10,7 +10,7 @@ const Hero = () => {
 
     useEffect(() => {
         const updateSize = () => {
-            setScholarSize(window.innerWidth >= 1024 ? 400 : window.innerWidth >= 768 ? 300 : 150);
+            setScholarSize(window.innerWidth >= 1024 ? 400 : window.innerWidth >= 768 ? 280 : 200);
         };
 
         updateSize(); // Set initial size
@@ -30,18 +30,22 @@ const Hero = () => {
                     boxShadow: "0px 10px 30px black"
                 }}
             >
-                <div className="text-center px-8 py-4 max-w-[1000px] mx-auto rounded-full backdrop-blur">
-                    <h1 className="text-5xl font-bold grid">
-                        <span className={"text-3xl"}>Study Abroad with Full Tuition Exemption</span>
+                <div
+                    className="text-center px-4 sm:px-6 lg:px-8 my-4 py-4 max-w-[1000px] mx-auto rounded-full backdrop-blur-lg">
+                    <h1 className="text-4xl md:text-5xl font-bold grid gap-2">
+                        <span className="text-2xl md:text-3xl">Study Abroad with Full Tuition Exemption</span>
                         <span>
-                            Your Ticket to Exploring the <span className={"text-green-800 text-6xl"}>W<FaGlobeAsia className={"inline size-7"}/>rld!</span>
-                        </span>
+            Your Ticket to Exploring the
+            <span className="text-green-800 text-5xl md:text-6xl">
+                W<FaGlobeAsia className="inline-block w-6 h-6 md:w-8 md:h-8"/>rld!
+            </span>
+        </span>
                     </h1>
-                    <p className="text-lg md:text-xl max-w-2xl mx-auto">
+                    <p className="text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mt-2">
                         Achieve your dream of traveling the world as you pursue your degree.
                     </p>
                 </div>
-                <HeroLocationLabel />
+                <HeroLocationLabel/>
                 <Image
                     className={`absolute -bottom-7 left-1/2 transform -translate-x-1/2`}
                     src={"/assets/scholar.png"}

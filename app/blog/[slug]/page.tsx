@@ -1,5 +1,6 @@
 import { getPostBySlug, getAllPosts } from '@/app/lib/mdx';
 import { notFound } from 'next/navigation';
+import Link from "next/link";
 
 export async function generateStaticParams() {
     const posts = await getAllPosts();
@@ -19,10 +20,10 @@ export default async function BlogPostPage({
         const { meta, content } = await getPostBySlug(slug);
 
         return (
-            <article className="prose lg:prose-xl text-center container mx-auto px-4">
-                <h1>{meta.title}</h1>
-                <div className="!text-left text-gray-600 mb-6">
-                    {meta.date} • {meta.author.name}
+            <article className="prose container mx-auto px-4 max-w-[1000px]">
+                <h1 className={"text-3xl text-center"}>{meta.title}</h1>
+                <div className="!text-left mb-6">
+                    {meta.date} <div className={"float-end inline"}> Author : <Link href={"/about"}>{meta.author.name}</Link></div>
                 </div>
                 {content}
             </article>

@@ -3,13 +3,13 @@ import {navItems} from "@/app/constants/NavItems";
 
 const FooterLinks = () => {
     return (
-        <div className={"flex bg-green-800 p-4 justify-center gap-12"}>
+        <div className={"flex p-4 justify-center gap-12"}>
             {navItems.map((item, index) => (
                 <>
                     {item.id == "Blog" ?
                         <div key={index} className={"hidden md:flex flex-col min-w-[200px]"}>
                             <span className={"text-2xl"}>{item.id}</span>
-                            <div className={"grid grid-cols-2 gap-2 bg-red-300 text-left"}>
+                            <div className={"grid grid-cols-2 gap-2 text-left"}>
                                 {item.dropdownItems && item.dropdownItems.map((dropdownItem) => (
                                     <a
                                         key={dropdownItem}
@@ -23,7 +23,7 @@ const FooterLinks = () => {
                         </div> :
                         <div key={index}>
                             <span className={"text-2xl"}>{item.id}</span>
-                            <div className={"grid gap-2 bg-red-300 text-left"}>
+                            <div className={"grid gap-2 justify-center text-left"}>
                                 {item.dropdownItems && item.dropdownItems.map((dropdownItem) => (
                                     <a
                                         key={dropdownItem}
