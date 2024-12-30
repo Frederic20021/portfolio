@@ -1,6 +1,8 @@
 "use client"
 import React, {useRef, useState} from 'react'
 import emailjs from '@emailjs/browser'
+import Image from 'next/image'
+
 
 const Contact = () => {
     const formRef = useRef(null);
@@ -55,7 +57,7 @@ const Contact = () => {
     return (
         <section className={"c-space my-20 mt-[4rem]"}>
             <div className={"relative min-h-screen flex items-center justify-center flex-col"}>
-                <img
+                <Image
                     src={"/assets/terminal.png"}
                     alt={"terminal background"}
                     className={"absolute inset-0 min-h-screen"}

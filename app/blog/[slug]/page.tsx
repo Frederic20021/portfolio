@@ -11,10 +11,12 @@ export async function generateStaticParams() {
 export default async function BlogPostPage({
                                                params
                                            }: {
-    params: { slug : string}
+    params: Promise<{ slug : string}>,
 }) {
     try {
-        const { meta, content } = await getPostBySlug(params.slug);
+        const resolvedParam = await params
+        const { slug } = resolvedParam;
+        const { meta, content } = await getPostBySlug(slug);
 
         return (
             <article className="prose lg:prose-xl text-center container mx-auto px-4">

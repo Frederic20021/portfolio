@@ -2,7 +2,7 @@ import { getAllPosts } from '../lib/mdx';
 import BrowseCategory from "@/app/components/BrowseCategory";
 import BlogRender from "@/app/components/BlogRender";
 
-export default async function BlogPage({ searchParams } : { searchParams : { tag?: string }}) {
+export default async function BlogPage({ searchParams } : { searchParams : Promise<{ tag?: string }>}) {
     const [posts, param] = await Promise.all([getAllPosts(), searchParams]);
 
 
