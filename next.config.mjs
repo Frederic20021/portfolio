@@ -1,23 +1,17 @@
 // next.config.mjs
-import createMDX from '@next/mdx'
-import remarkGfm from "remark-gfm";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-    experimental: {
-        mdxRs: true
+    pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
+    transpilePackages: ['next-mdx-remote'],
+    webpack: (config) => {
+        // This is needed for working with MDX files
+        config.resolve.fallback = {
+            ...config.resolve.fallback,
+            fs: false,
+        };
+        return config;
     },
-    transpilePackages: ['next-mdx-remote']
 }
 
-const withMDX = createMDX({
-    extension: /\.mdx?$/,
-    options: {
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [],
-        providerImportSource: '@mdx-js/react'
-    }
-})
-
-export default withMDX(nextConfig)
+export default nextConfig
