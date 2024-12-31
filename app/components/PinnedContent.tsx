@@ -8,7 +8,7 @@ const PinnedContent = ({ visibility = "hidden" }) => {
     return (
         <div className={`${visibility} sm:flex flex-col px-4 w-full`}>
             <span className={"text-2xl my-2 text-center"}>Useful Content</span>
-            <div>
+            <div className={"indent-4"}>
                 {posts.map((pinnedContent, idx) => (
                     <div key={idx} className={"flex items-center group"}>
                         <Link href={`/blog/${pinnedContent.meta.slug}`}>

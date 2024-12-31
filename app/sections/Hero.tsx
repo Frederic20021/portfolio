@@ -31,19 +31,20 @@ const Hero = () => {
                 }}
             >
                 <div
-                    className="text-center px-4 sm:px-6 lg:px-8 my-4 py-4 max-w-[1000px] mx-auto rounded-full backdrop-blur-lg">
-                    <h1 className="text-4xl md:text-5xl font-bold grid gap-2">
-                        <span className="text-2xl md:text-3xl">Study Abroad with Full Tuition Exemption</span>
-                        <span>
-            Your Ticket to Exploring the
-            <span className="text-green-800 text-5xl md:text-6xl">
-                W<FaGlobeAsia className="inline-block w-6 h-6 md:w-8 md:h-8"/>rld!
-            </span>
-        </span>
-                    </h1>
-                    <p className="text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mt-2">
+                    className="text-center px-4 max-md:px-6 lg:px-8 md:my-2 lg:my-4 md:py-4 max-w-[1000px] mx-auto rounded-full backdrop-blur-lg">
+                        <span className="max-md:text-lg md:text-2xl lg:text-3xl">Study Abroad with Full Tuition Exemption</span>
+                        <h1 className={"text-xl font-bold md:text-3xl lg:mt-4"}>Your Ticket to Exploring the
+                            <span className="text-green-800 text-2xl md:text-4xl">
+                                &nbsp;W
+                                <FaGlobeAsia className="inline w-4 h-4 md:w-6 md:h-6"/>
+                                rld!
+                            </span>
+                        </h1>
+                    {/*
+                    <p className="max-md:text-sm md:text-xl max-w-2xl mx-auto mt-2">
                         Achieve your dream of traveling the world as you pursue your degree.
                     </p>
+                    */}
                 </div>
                 <HeroLocationLabel/>
                 <Image

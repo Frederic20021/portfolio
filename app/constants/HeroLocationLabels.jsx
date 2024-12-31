@@ -1,10 +1,10 @@
 export const labels = [
     {
         countryCode: 'CA',
-        top: 31,
+        top: 29.5,
         right: null,
         bottom: null,
-        left: 20,
+        left: 19,
         institution: 'Ontario Tech University',
         emoji: "🇨🇦",
         description: "",
