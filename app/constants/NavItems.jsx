@@ -9,7 +9,7 @@ export const navItems = [
     id: "Services",
     title: "Services",
     dropdownItems: ["Test", "Travel", "Others"],
-    link: "",
+    link: "/soon",
   },
   {
     id: "General",
@@ -22,7 +22,7 @@ export const navItems = [
       },
       {
         id: "About this Blog",
-        href: "/blog/something"
+        href: "/soon"
       },
       {
         id: "Contact",

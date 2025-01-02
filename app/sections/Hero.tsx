@@ -7,15 +7,26 @@ import HeroLocationLabel from "@/app/components/ui/HeroLocationLabel";
 
 const Hero = () => {
     const [scholarSize, setScholarSize] = useState(250); // Default size
+    const [labelWH, setLabelWH] = useState(100);
 
     useEffect(() => {
         const updateSize = () => {
-            setScholarSize(window.innerWidth >= 1024 ? 400 : window.innerWidth >= 768 ? 280 : 200);
+            setScholarSize(window.innerWidth >= 1024 ? 400 : window.innerWidth >= 768 ? 280 : 150);
         };
 
         updateSize(); // Set initial size
         window.addEventListener("resize", updateSize); // Listen to resize events
         return () => window.removeEventListener("resize", updateSize);
+    }, []);
+
+    useEffect(() => {
+        const updateWH = () => {
+            setLabelWH(window.innerWidth >= 1024 ? 100 : window.innerWidth >= 768 || window.innerWidth < 1024 ? 50 : 25);
+        };
+
+        updateWH(); // Set initial size
+        window.addEventListener("resize", updateWH); // Listen to resize events
+        return () => window.removeEventListener("resize", updateWH);
     }, []);
 
     return (
@@ -33,12 +44,12 @@ const Hero = () => {
                 <div
                     className="text-center px-4 max-md:px-6 lg:px-8 md:my-2 lg:my-4 md:py-4 max-w-[1000px] mx-auto rounded-full backdrop-blur-lg">
                         <span className="max-md:text-lg md:text-2xl lg:text-3xl">Study Abroad with Full Tuition Exemption</span>
-                        <h1 className={"text-xl font-bold md:text-3xl lg:mt-4"}>Your Ticket to Exploring the
-                            <span className="text-green-800 text-2xl md:text-4xl">
+                        <h1 className={"text-xl font-bold md:text-3xl lg:mt-4 whitespace-nowrap flex items-center"}>Your Ticket to Exploring the
+                            <span className="text-green-800 text-2xl md:text-5xl">
                                 &nbsp;W
-                                <FaGlobeAsia className="inline w-4 h-4 md:w-6 md:h-6"/>
-                                rld!
                             </span>
+                            <FaGlobeAsia className="inline text-green-800 w-4 h-4 md:w-8 md:h-8"/>
+                            <span className={"text-green-800 text-2xl md:text-5xl"}>rld!</span>
                         </h1>
                     {/*
                     <p className="max-md:text-sm md:text-xl max-w-2xl mx-auto mt-2">
@@ -46,7 +57,7 @@ const Hero = () => {
                     </p>
                     */}
                 </div>
-                <HeroLocationLabel/>
+                <HeroLocationLabel WH={labelWH}/>
                 <Image
                     className={`absolute -bottom-7 left-1/2 transform -translate-x-1/2`}
                     src={"/assets/scholar.png"}

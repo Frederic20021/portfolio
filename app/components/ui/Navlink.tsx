@@ -60,7 +60,7 @@ const Navlink = () => {
                                         {item.dropdownItems.map((dropdownItem) => (
                                             <a
                                                 key={dropdownItem}
-                                                href={`/blog?tag=${dropdownItem.toLowerCase()}`}
+                                                href={item.id == "Blog" ? `/blog?tag=${dropdownItem.toLowerCase()}` : "/soon"}
                                                 className="block text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded px-2 py-1"
                                             >
                                                 {dropdownItem}

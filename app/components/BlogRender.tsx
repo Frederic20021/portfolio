@@ -7,7 +7,7 @@ const BlogRender = ({ posts } : { posts: { meta: BlogPost }[]}) => {
         posts.map(({meta}) => (
             <div
                 key={meta.slug}
-                className="border hover:border-2 text-white p-4 rounded-lg max-md:w-[500px] max-md:mx-auto"
+                className="border hover:border-2 text-white p-4 rounded-lg max-md:w-[500px] max-md:mx-auto max-sm:w-full"
             >
                 <h2 className="text-xl font-semibold">{meta.title}</h2>
                 <p className="text-wrap">{meta.excerpt}</p>

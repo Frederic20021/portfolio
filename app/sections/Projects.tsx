@@ -14,17 +14,20 @@ const componentMap: Record<string, React.ComponentType> = {
 
 const Projects = () => {
     return (
-        <div className={"flex md:flex-wrap max-md:flex-col gap-8 mx-auto justify-center"}>
+        <div className={"flex md:flex-wrap max-md:flex-col gap-12 max-sm:max-w-[350px] mx-auto justify-center"}>
             {projectItems.map((item, index) => {
-                const Component = componentMap[item];
+                const Component = componentMap[item.component];
                 return Component
                     ?
-                    <div className={"rounded-lg shadow-lg hover:shadow-gray-600 flex flex-col max-w-[300px] items-center p-2"}>
+                    <div className={"rounded-lg shadow-lg hover:shadow-gray-600 flex flex-col max-sm:w-[330px] items-center p-2"}>
                         <Component key={index} />
                         <Link
-                            href="/"
-                            className={"hover:bg-blue-800 rounded-lg"}
-                        >More on this</Link>
+                            href={"/soon/"}
+                            className={"group my-2 rounded-lg"}
+                        >
+                            More on this<span className={"group-hover:opacity-0 duration-500"}>&ensp;&gt;</span>
+                            <span className={"opacity-0 group-hover:opacity-100 transition-opacity duration-500"}>&gt;&gt;&gt;</span>
+                        </Link>
                     </div>
                     : null;
             })}

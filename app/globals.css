@@ -26,6 +26,10 @@ custom css
     @apply max-w-xl sm:px-10 px-5 mt-12;
   }
 
+  .cusAlign {
+    @apply flex flex-col items-center text-justify max-sm:w-full
+  }
+
   .head-text {
     @apply sm:text-4xl text-3xl font-semibold;
   }

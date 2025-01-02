@@ -67,8 +67,8 @@ const GlobeAnimation = () => {
         <div className={"flex flex-col items-center"}>
             <Globe
                 ref={globeEl as MutableRefObject<GlobeMethods>}
-                height={300}
-                width={300}
+                height={250}
+                width={250}
                 backgroundColor="rgba(170,170,170,0)"
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
                 labelsData={[
@@ -86,14 +86,15 @@ const GlobeAnimation = () => {
                 labelSize={1}
                 labelDotRadius={0.5}
             />
-            <div className={"flex justify-center gap-8"}>
+            <div className={"flex justify-center gap-8 py-2 text-2xl items-center"}>
                 <button
                     onClick={() => handleZoom('out')}
-                    className={"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"}
+                    className={"text-white opacity-50 hover:opacity-100"}
                 >-</button>
+                Zoom
                 <button
                     onClick={() => handleZoom('in')}
-                    className={"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"}
+                    className={"text-white opacity-50 hover:opacity-100"}
                 >+</button>
             </div>
         </div>
