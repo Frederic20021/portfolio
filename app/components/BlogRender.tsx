@@ -7,10 +7,10 @@ const BlogRender = ({ posts } : { posts: { meta: BlogPost }[]}) => {
         posts.map(({meta}) => (
             <div
                 key={meta.slug}
-                className="border hover:border-2 text-white p-4 rounded-lg max-md:w-[500px] max-md:mx-auto max-sm:w-full"
+                className="border hover:border-2 text-white p-4 rounded-lg md:w-[500px] max-md:mx-auto max-md:w-full"
             >
-                <h2 className="text-xl font-semibold">{meta.title}</h2>
-                <p className="text-wrap">{meta.excerpt}</p>
+                <h2 className="text-xl max-sm:text-lg font-semibold">{meta.title}</h2>
+                <p className="text-justify indent-8 text-lg my-2">{meta.excerpt}</p>
                 <div className="my-2 text-sm">
                     {meta.date} • {meta.tags?.join(', ')}
                 </div>

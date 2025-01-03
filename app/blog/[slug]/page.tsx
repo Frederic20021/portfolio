@@ -27,6 +27,9 @@ export default async function BlogPostPage({
                 </div>
                 <div className={"md:w-[700px] mx-auto text-justify blog-style"}>
                     {content}
+                    <p>
+                        Thanks for reading thus far!
+                    </p>
                 </div>
             </article>
         );
