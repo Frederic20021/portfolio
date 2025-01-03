@@ -18,6 +18,14 @@
 custom css
 */
 @layer utilities {
+  .blog-style {
+    @apply md:max-w-[700px] sm:max-md:max-w-[500px] max-sm:max-w-[330px] md:text-lg md:leading-loose;
+  }
+
+  .blog-style p {
+    @apply md:indent-8 max-sm:indent-6;
+  }
+
   .c-space {
     @apply sm:px-10 px-5;
   }
