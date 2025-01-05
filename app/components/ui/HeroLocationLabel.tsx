@@ -1,8 +1,9 @@
 import React from 'react'
 import { labels } from '@/app/constants/HeroLocationLabels'
+import Link from "next/link";
 
 const HeroLocationLabel = ( { WH } : { WH : number }) => {
-    const w = `${WH*2.5}px`
+    const w = `${WH*2}px`
     const h = `${WH}px`
     console.log(w,h)
     return (
@@ -18,20 +19,22 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
                          }}
                     >
                         <div className="relative justify-center mx-auto animate-bounce hover:animate-none">
-                            <div className="md:w-8 md:h-8 max-md:w-4 max-md:h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                            <div className="md:w-8 md:h-8 max-md:w-4 max-md:h-4 bg-yellow-600 rounded-full flex items-center justify-center">
                                 <span className="max-md:text-[6px] text-xs z-10">{item.countryCode}</span>
                             </div>
                             <div
-                                className="absolute md:w-4 md:h-4 max-md:w-2 max-md:h-2 bg-blue-500 rotate-45 -bottom-1 max-md:-bottom-0.5 left-[50%] translate-x-[-50%]"/>
+                                className="absolute md:w-4 md:h-4 max-md:w-2 max-md:h-2 bg-yellow-600 rotate-45 -bottom-1 max-md:-bottom-0.5 left-[50%] translate-x-[-50%]"/>
                         </div>
                         <div
-                            className={`opacity-0 group-hover:opacity-100 duration-500 absolute bg-red-600 mt-40 max-sm:mt-20 lg:text-xl max-sm:text-xs sm:max-md:text-lg`}
+                            className={`opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute bg-red-600 mt-64 p-2 text-justify max-sm:mt-20 lg:text-xl max-sm:text-xs sm:max-md:text-lg`}
                             style={{
                                 width: w,
                                 height: h
                             }}
                         >
-                            {item.institution}.&ensp;📍 {item.emoji}
+                            {item.institution}.&ensp; {item.emoji}
+                            <p className={"indent-8 text-lg"}>{item.description}</p>
+                            <Link href={item.link} className={"hover:bg-green-800 border rounded-lg"}>Learn More</Link>
                         </div>
                     </div>
                 )

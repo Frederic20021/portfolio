@@ -20,7 +20,7 @@ export default async function BlogPage({ searchParams } : { searchParams : Promi
                 <span>{param.tag?.toUpperCase()}</span>
                 <span>{postCount} Articles</span>
             </div>
-            <div className="grid md:grid-cols-2 gap-6 ">
+            <div className="grid md:grid-cols-2 justify-items-center gap-6">
                 <BlogRender posts={filteredPosts} />
             </div>
         </div>

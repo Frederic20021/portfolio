@@ -7,7 +7,7 @@ import HeroLocationLabel from "@/app/components/ui/HeroLocationLabel";
 
 const Hero = () => {
     const [scholarSize, setScholarSize] = useState(250); // Default size
-    const [labelWH, setLabelWH] = useState(100);
+    const [labelWH, setLabelWH] = useState(200);
 
     useEffect(() => {
         const updateSize = () => {
@@ -21,7 +21,7 @@ const Hero = () => {
 
     useEffect(() => {
         const updateWH = () => {
-            setLabelWH(window.innerWidth >= 1024 ? 100 : window.innerWidth >= 768 || window.innerWidth < 1024 ? 50 : 25);
+            setLabelWH(window.innerWidth >= 1024 ? 200 : window.innerWidth >= 768 || window.innerWidth < 1024 ? 150 : 100);
         };
 
         updateWH(); // Set initial size
