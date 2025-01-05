@@ -10,12 +10,12 @@ export const projectItems = [
         img : null
     },
     {
-        component : "Scholarship",
+        component : "Internship",
         link : "some link",
         img : null
     },
     {
-        component : "Internship",
+        component : "Scholarship",
         link : "some link",
         img : null
     },

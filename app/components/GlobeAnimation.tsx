@@ -67,8 +67,8 @@ const GlobeAnimation = () => {
         <div className={"flex flex-col items-center"}>
             <Globe
                 ref={globeEl as MutableRefObject<GlobeMethods>}
-                height={250}
-                width={250}
+                height={300}
+                width={300}
                 backgroundColor="rgba(170,170,170,0)"
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
                 labelsData={[

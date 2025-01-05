@@ -9,7 +9,7 @@ const Title = ({ title } : { title : string }) => {
 }
 const Map = () => {
     return (
-        <div className={`cusAlign justify-center items-center rounded-lg `}>
+        <div className={`cusAlign justify-center items-center rounded-lg w-[400px]`}>
             <Title title={"Pan around the globe and find me!"}></Title>
             <GlobeAnimation />
         </div>
@@ -19,41 +19,64 @@ const Map = () => {
 
 const Karate = () => {
     return (
-        <div className={`cusAlign p-4 w-[500px]`}>
+        <div className={`cusAlign p-4 w-[450px]`}>
             <Title title={"Martial Arts Journey"}></Title>
-            <p className={"p-2 indent-8"}>I first started practising karate during middle school and trained for 2 years.<br/><p className={"indent-8"}>I went back to training after finishing high school and went on to place third at a local competition during the first year of studying abroad in Japan.</p></p>
-            <Image src={"/assets/projects/karate/karateCompetition.png"} alt={"Prefectural Karate Championship"} width={400} height={400} className={"rounded-xl"} />
+            <p>I first started practising karate during middle school and trained for 2 years.</p>
+            <p>I went back to training after finishing high school and went on to place third at a local competition during the first year of studying abroad in Japan.</p>
+            <Image src={"/assets/karate/karateCompetition.png"} alt={"Prefectural Karate Championship"} width={400} height={400} className={"rounded-xl my-2"}/>
         </div>
     )
 }
 
 const Scholarship = () => {
     return (
-        <div className={`bg-blue-800 cusAlign w-[300px]`}>
+        <div className={`cusAlign w-[350px]`}>
             <Title title={"Scholarships"}></Title>
-            <p>I was fortunate to be able to pursue my study in Japan free of educational expenses via the ABP full scholarship program. On top of that, I am delighted to be a member of Mabuchi International Scholarship Foundation that provides financial support for my life in Japan.</p>
+            <p>
+                I was fortunate to not only be able to study in Japan free of tuition cost, but also be a member of Mabuchi
+                International Scholarship Foundation, providing me with additional stipends as financial support.
+            </p>
+            <Image src={"/assets/scholarship/scholarship.jpg"} alt={"Prefectural Karate Championship"} width={400} height={400} className={"rounded-xl my-2"}/>
+            <p>
+                One underrated fact about such private scholarship foundation is that you are able to participate
+                in their events and activities such as the reading reports of self-help books, social gathering and the
+                hosting of museum exhibits, all of which are really beneficial for the students.
+            </p>
         </div>
     )
 }
 
 const Internship = () => {
     return (
-        <div className={`bg-gray-500 cusAlign w-[400px]`}>
+        <div className={`cusAlign w-[300px]`}>
             <Title title={"Internship at Yamaha Cooperate Service"}></Title>
-            <p>After a year in Japan, I applied for an internship at YCS which was a requisite credit at my University.<br/>Yamaha YSC is one of the branches of the main company which has different levels of </p>
+            <Image src={"/assets/internship/internship.jpg"} alt={"Prefectural Karate Championship"} width={400} height={400} className={"rounded-xl my-2"}/>
+            <p>After a year in Japan, I applied for an internship at YCS which was a requisite credit at my University&apos;s program.</p>
+            <p>Yamaha YSC is one of the branches of the main company which has different levels of </p>
         </div>
     )
 }
 
 const Exchange = () => {
     return (
-        <div className={"cusAlign w-[500px]"}>Exchange</div>
+        <div className={"cusAlign w-[350px]"}>
+            <Title title={"Exchange program to Canada 🇨🇦"}></Title>
+            <p>
+                Having studied for 2 years in Japan, I seized the opportunity to get better education and
+                applied to the exchange program between Shizuoka University and Ontario Tech University.
+            </p>
+            <p>
+                One of the main reasons behind this decision was that the program is exempted from study expenses,
+                which was greatly beneficial for me as a student. And also the University ranking in Canada is also
+                higher that that of in Japan.
+            </p>
+        </div>
     )
 }
 
 const TechnicalTrainee = () => {
     return (
-        <div className={`cusAlign w-[200px]`}>
+        <div className={`cusAlign w-[500px]`}>
             <Title title={"Japan's ongoing Problems of Technical Trainee"}></Title>
             <p>After studying in Japan for one year, I had an opportunity to interpret at one of the centres for technical trainees in Hamamatsu, Shizuoka. However, after a few months of interpretation, one of the trainees had gone missing. <br/> So I decided to look into the problem and wrote a report on it.</p>
             <Link

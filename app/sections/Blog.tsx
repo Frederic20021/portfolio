@@ -20,7 +20,7 @@ const Blog =  () => {
     return (
         <div className={"flex gap-4 mx-auto justify-center py-8"}>
             <div className={"flex justify-center max-sm:flex-col items-center"}>
-                <div className={"sm:hidden bg-gray-500 gap-4"}>
+                <div className={"sm:hidden gap-4"}>
                     <BrowseCategory visibility={"visible"}/>
                 </div>
                 <div className={"justify-center sm:basis-6/8 mx-8 my-2"}>

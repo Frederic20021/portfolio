@@ -35,7 +35,11 @@ custom css
   }
 
   .cusAlign {
-    @apply flex flex-col items-center text-justify max-sm:w-full
+    @apply flex flex-col items-center p-4 text-justify max-sm:w-full;
+  }
+
+  .cusAlign p {
+    @apply indent-8;
   }
 
   .head-text {
