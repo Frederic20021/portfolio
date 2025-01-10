@@ -4,7 +4,7 @@ const Bio = () => {
 
     return (
         <div
-            className={"grid max-md:flex sm:grid-cols-5 gap-4 justify-between items-end bg-contain mx-10"}
+            className={"grid max-md:flex sm:grid-cols-5 gap-4 justify-between items-end bg-contain mx-10 mt-8"}
             style={{
                 backgroundImage: `url(./assets/LIN.png)`,
                 height: "400px",
@@ -13,7 +13,7 @@ const Bio = () => {
             }}
         >
             <div className={"max-sm:hidden col-span-2"}></div>
-            <div className="font-mono text-center md:col-span-3 max-sm:mb-14">
+            <div className="font-mono text-center mb-8 md:col-span-3 max-sm:mb-14">
                 <span className="text-white font-bold text-4xl max-sm:text-right max-sm:text-lg max-sm:bg-black max-sm:bg-opacity-80">
                     Hi there! I am LIN.
                 </span>

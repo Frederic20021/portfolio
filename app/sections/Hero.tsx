@@ -21,7 +21,7 @@ const Hero = () => {
 
     useEffect(() => {
         const updateWH = () => {
-            setLabelWH(window.innerWidth >= 1024 ? 220 : window.innerWidth >= 768 || window.innerWidth < 1024 ? 150 : 100);
+            setLabelWH(window.innerWidth >= 1024 ? 220 : window.innerWidth >= 768 ? 130 : 75);
         };
 
         updateWH(); // Set initial size
