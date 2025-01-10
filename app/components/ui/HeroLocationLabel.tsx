@@ -26,7 +26,7 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
                                 className="absolute md:w-4 md:h-4 max-md:w-2 max-md:h-2 bg-yellow-600 rotate-45 -bottom-1 max-md:-bottom-0.5 left-[50%] translate-x-[-50%]"/>
                         </div>
                         <div
-                            className={`opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute bg-red-600 mt-64 p-2 text-justify max-sm:mt-20 lg:text-xl max-sm:text-xs sm:max-md:text-lg`}
+                            className={`opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur rounded-lg shadow-2xl duration-500 absolute mt-64 p-2 text-justify max-sm:mt-20 lg:text-xl max-sm:text-xs sm:max-md:text-lg`}
                             style={{
                                 width: w,
                                 height: h
@@ -34,7 +34,7 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
                         >
                             {item.institution}.&ensp; {item.emoji}
                             <p className={"indent-8 text-lg"}>{item.description}</p>
-                            <Link href={item.link} className={"hover:bg-green-800 border rounded-lg"}>Learn More</Link>
+                            <Link href={item.link} className={"hover:bg-green-800 border px-2 rounded-lg"}>Learn More</Link>
                         </div>
                     </div>
                 )

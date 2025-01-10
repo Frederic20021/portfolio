@@ -65,27 +65,29 @@ const GlobeAnimation = () => {
 
     return (
         <div className={"flex flex-col items-center"}>
-            <Globe
-                ref={globeEl as MutableRefObject<GlobeMethods>}
-                height={300}
-                width={300}
-                backgroundColor="rgba(170,170,170,0)"
-                globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-                labelsData={[
-                    {
-                        lat: 34.71,
-                        lng: 137.743,
-                        text: `Hamamatsu\n(I'm here!)`
-                    },
-                    {
-                        lat: 16.84,
-                        lng: 96.17,
-                        text: `Yangon\n(My hometown)`
-                    }
+            <div className={"bg-gradient-radial from-gray-600 via-gray-700 to-black"}>
+                <Globe
+                    ref={globeEl as MutableRefObject<GlobeMethods>}
+                    height={300}
+                    width={300}
+                    backgroundColor="rgba(170,170,170,0)"
+                    globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+                    labelsData={[
+                        {
+                            lat: 34.71,
+                            lng: 137.743,
+                            text: `Hamamatsu\n(I'm here!)`
+                        },
+                        {
+                            lat: 16.84,
+                            lng: 96.17,
+                            text: `Yangon\n(My hometown)`
+                        }
                     ]}
-                labelSize={1}
-                labelDotRadius={0.5}
-            />
+                    labelSize={1}
+                    labelDotRadius={0.5}
+                />
+            </div>
             <div className={"flex justify-center gap-8 py-2 text-2xl items-center"}>
                 <button
                     onClick={() => handleZoom('out')}

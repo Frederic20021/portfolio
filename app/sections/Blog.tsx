@@ -23,12 +23,12 @@ const Blog =  () => {
                 <div className={"sm:hidden gap-4"}>
                     <BrowseCategory visibility={"visible"}/>
                 </div>
-                <div className={"justify-center sm:basis-6/8 mx-8 my-2"}>
+                <div className={"justify-center sm:basis-7/8 mx-8 my-2"}>
                     <span className={"text-white text-2xl text-center"}>Articles & Guides</span>
                     <BlogCard/>
                 </div>
             </div>
-            <div className={"flex flex-col items-center sm:basis-2/8 gap-4"}>
+            <div className={"flex flex-col items-center sm:basis-1/8 gap-4"}>
                 <BrowseCategory/>
                 <PinnedContent/>
             </div>
