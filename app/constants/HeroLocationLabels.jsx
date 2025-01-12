@@ -11,7 +11,7 @@ export const labels = [
             "between the Japanese university and the one in Canada. Plus, the tuition fee was also exempted.",
         smDescription: "I did a tuition-free exchange program in Canada from Japan.",
         img: "/assets/exchange/OTU.jpg",
-        link: ""
+        link: "blog/exchange-program-in-canada"
     },
     {
         countryCode: 'JP',
