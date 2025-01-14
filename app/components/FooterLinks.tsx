@@ -14,7 +14,7 @@ const FooterLinks = () => {
                                     <a
                                         key={dropdownItem}
                                         href={`/${item.id.toLowerCase()}?tag=${dropdownItem.toLowerCase()}`}
-                                        className="block text-white text-center hover:text-gray-900 hover:bg-gray-100 rounded px-2 py-1"
+                                        className="block text-white text-center hover:bg-green-900 rounded px-2 py-1"
                                     >
                                         {dropdownItem}
                                     </a>
@@ -30,7 +30,7 @@ const FooterLinks = () => {
                                         href={`/${item.id}/${dropdownItem
                                             .toLowerCase()
                                             .replace(' ', '-')}`}
-                                        className="block text-white hover:text-gray-900 hover:bg-gray-100 rounded px-2 py-1"
+                                        className="block text-white hover:bg-green-900 rounded px-2 py-1"
                                     >
                                         {dropdownItem}
                                     </a>
@@ -39,7 +39,7 @@ const FooterLinks = () => {
                                     <a
                                         key={key}
                                         href={linkItem.href}
-                                        className="block text-white hover:text-gray-900 hover:bg-gray-100 rounded px-2 py-1"
+                                        className="block text-white hover:bg-green-900 rounded px-2 py-1"
                                     >
                                         {linkItem.id}
                                     </a>

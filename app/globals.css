@@ -61,6 +61,10 @@ custom css
   .field-btn_arrow {
     @apply w-2.5 h-2.5 object-contain invert brightness-0;
   }
+
+  .Title {
+    @apply font-bold text-yellow-500 text-center;
+  }
 }
 
 /* 1. Use a more-intuitive box-sizing model */

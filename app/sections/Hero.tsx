@@ -6,7 +6,7 @@ import { FaGlobeAsia } from "react-icons/fa";
 import HeroLocationLabel from "@/app/components/ui/HeroLocationLabel";
 
 const Hero = () => {
-    const [scholarSize, setScholarSize] = useState(400); // Default size
+    const [scholarSize, setScholarSize] = useState(150); // Default size
     const [labelWH, setLabelWH] = useState(220);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const Hero = () => {
 
     useEffect(() => {
         const updateWH = () => {
-            setLabelWH(window.innerWidth >= 1024 ? 220 : window.innerWidth >= 768 ? 130 : 75);
+            setLabelWH(window.innerWidth >= 1024 ? 220 : window.innerWidth >= 768 ? 130 : 50);
         };
 
         updateWH(); // Set initial size
@@ -41,15 +41,16 @@ const Hero = () => {
                     boxShadow: "0px 10px 30px black"
                 }}
             >
-                <div
-                    className="text-center px-4 max-md:px-6 lg:px-8 md:my-2 lg:my-4 md:py-4 max-w-[1000px] mx-auto rounded-full backdrop-blur-lg">
+                <div className="text-center px-4 max-md:px-6 lg:px-8 md:my-2 lg:my-4 md:py-4 max-w-[1000px] mx-auto rounded-full backdrop-blur-lg">
                         <span className="max-md:text-lg md:text-2xl lg:text-3xl">Study Abroad with Full Tuition Exemption</span>
-                        <h1 className={"text-xl font-bold md:text-3xl lg:mt-4 whitespace-nowrap flex items-center"}>Your Ticket to Exploring the
-                            <span className="text-green-800 text-2xl md:text-5xl">
-                                &nbsp;W
+                        <h1 className={"text-xl font-bold md:text-3xl lg:mt-4 flex items-center"}>Your Ticket to Exploring the
+                            <span className={"text-yellow-500"}>
+                                <span className="text-xl md:text-5xl">
+                                    &nbsp;W
+                                </span>
+                                <FaGlobeAsia className="inline w-3 h-3 md:w-8 md:h-8 mb-2"/>
+                                <span className={"text-xl md:text-5xl"}>rld!</span>
                             </span>
-                            <FaGlobeAsia className="inline text-green-800 w-4 h-4 md:w-8 md:h-8"/>
-                            <span className={"text-green-800 text-2xl md:text-5xl"}>rld!</span>
                         </h1>
                     {/*
                     <p className="max-md:text-sm md:text-xl max-w-2xl mx-auto mt-2">

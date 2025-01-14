@@ -6,7 +6,7 @@ const BlogCard = async () => {
     const posts = await getAllPosts();
 
     return (
-        <div className="flex flex-col my-4 overflow-y-scroll max-h-[800px] gap-6 sm:max-md:max-w-[400px] md:max-lg:max-w-[500px] lg:max-w-[600px]">
+        <div className="flex flex-col my-4 snap-y hover:snap-mandatory overflow-y-scroll max-h-[800px] gap-6 sm:max-md:max-w-[400px] md:max-lg:max-w-[500px] lg:max-w-[600px]">
             <BlogRender posts={posts} />
         </div>
 )

@@ -24,7 +24,7 @@ const Blog =  () => {
                     <BrowseCategory visibility={"visible"}/>
                 </div>
                 <div className={"justify-center sm:basis-7/8 mx-8 my-2"}>
-                    <span className={"text-white text-2xl text-center"}>Articles & Guides</span>
+                    <span className={"Title text-2xl"}>Articles & Guides</span>
                     <BlogCard/>
                 </div>
             </div>

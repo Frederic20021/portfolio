@@ -61,8 +61,8 @@ const Contact = () => {
                     src={"/assets/terminal.png"}
                     alt={"terminal background"}
                     className={"absolute inset-0 min-h-screen"}
-                    width={0}
-                    height={0}
+                    width={200}
+                    height={200}
                     style={{
                         width: '100%',
                         height: 'auto',

@@ -21,14 +21,13 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
                          }}
                     >
                         <div className="relative justify-center mx-auto animate-bounce hover:animate-none">
-                            <div className="md:w-8 md:h-8 max-md:w-4 max-md:h-4 bg-yellow-600 rounded-full flex items-center justify-center">
+                            <div className="md:w-10 md:h-10 max-md:w-4 max-md:h-4 bg-yellow-600 rounded-full flex items-center justify-center">
                                 <span className="max-md:text-[6px] text-xs z-10">{item.countryCode}</span>
                             </div>
-                            <div
-                                className="absolute md:w-4 md:h-4 max-md:w-2 max-md:h-2 bg-yellow-600 rotate-45 -bottom-1 max-md:-bottom-0.5 left-[50%] translate-x-[-50%]"/>
+                            <div className="absolute md:w-6 md:h-6 max-md:w-2 max-md:h-2 bg-yellow-600 rotate-45 -bottom-1 max-md:-bottom-0.5 left-[50%] translate-x-[-50%]"/>
                         </div>
                         <div
-                            className={`opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur rounded-lg shadow-2xl duration-500 absolute lg:mt-[500px] sm:max-md:mt-60 p-2 text-justify max-sm:mt-20 md:text-lg sm:max-md:text-sm max-sm:text-xs `}
+                            className={`opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur rounded-2xl shadow-2xl duration-500 absolute lg:mt-[500px] sm:max-md:mt-60 p-2 text-justify max-sm:mt-20 md:text-lg sm:max-md:text-sm max-sm:text-[9px] max-sm:text-left`}
                             style={{
                                 width: w,
                                 height: h
@@ -36,7 +35,7 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
                         >
                             <span className={"lg:text-2xl"}>{item.institution}.&ensp; {item.emoji}</span>
                             <Image src={item.img} alt={"image"} className={`${showOrNot} mx-auto`} width={300} height={300} />
-                            <p className={"indent-8"}>{WH <= 130 ? item.smDescription : item.description}</p>
+                            <p className={"indent-8 max-md:indent-4"}>{WH <= 130 ? item.smDescription : item.description}</p>
                             <Link href={item.link} className={"hover:bg-green-800 border px-2 rounded-lg"}>Learn More</Link>
                         </div>
                     </div>

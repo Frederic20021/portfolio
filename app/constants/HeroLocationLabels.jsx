@@ -23,7 +23,7 @@ export const labels = [
         emoji: "🇯🇵",
         description: "I've had first-hand experience with the Japanese martial arts (karate) before high school back in my home country. I later picked " +
             "up an interest in JDM culture too, all of which ultimately lead me to decide to study abroad in Japan.",
-        smDescription: "I am enrolled with full-scholarship program at Japanese University",
+        smDescription: "I am enrolled with full-scholarship program at a Japanese University",
         img: "/assets/exchange/ShizuU.jpg",
         link: ""
     }
