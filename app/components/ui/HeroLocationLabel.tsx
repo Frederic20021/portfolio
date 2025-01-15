@@ -21,10 +21,10 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
                          }}
                     >
                         <div className="relative justify-center mx-auto animate-bounce hover:animate-none">
-                            <div className="md:w-10 md:h-10 max-md:w-4 max-md:h-4 bg-yellow-600 rounded-full flex items-center justify-center">
-                                <span className="max-md:text-[6px] text-xs z-10">{item.countryCode}</span>
+                            <div className="md:w-10 md:h-10 max-md:w-4 max-md:h-4 bg-orange-400 rounded-full flex items-center justify-center">
+                                <span className="max-md:text-[6px] text-lg z-10">{item.countryCode}</span>
                             </div>
-                            <div className="absolute md:w-6 md:h-6 max-md:w-2 max-md:h-2 bg-yellow-600 rotate-45 -bottom-1 max-md:-bottom-0.5 left-[50%] translate-x-[-50%]"/>
+                            <div className="absolute md:w-6 md:h-6 max-md:w-2 max-md:h-2 bg-orange-400 rotate-45 -bottom-1 max-md:-bottom-0.5 left-[50%] translate-x-[-50%]"/>
                         </div>
                         <div
                             className={`opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur rounded-2xl shadow-2xl duration-500 absolute lg:mt-[500px] sm:max-md:mt-60 p-2 text-justify max-sm:mt-20 md:text-lg sm:max-md:text-sm max-sm:text-[9px] max-sm:text-left`}

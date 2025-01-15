@@ -63,7 +63,7 @@ custom css
   }
 
   .Title {
-    @apply font-bold text-yellow-500 text-center;
+    @apply font-bold text-orange-400 text-center;
   }
 }
 

@@ -14,7 +14,7 @@ const Bio = () => {
         >
             <div className={"max-sm:hidden col-span-2"}></div>
             <div className="font-mono text-center mb-8 md:col-span-3 max-sm:mb-14">
-                <span className="text-white font-bold text-4xl max-sm:text-right max-sm:text-lg max-sm:bg-black max-sm:bg-opacity-80">
+                <span className="text-orange-400 font-bold text-4xl max-sm:text-right max-sm:text-lg max-sm:bg-black max-sm:bg-opacity-80">
                     Hi there! I am LIN.
                 </span>
                 <p className="px-2 font-semibold text-xl w-full text-left max-lg:bg-black max-lg:bg-opacity-80 max-lg:text-lg max-sm:text-xs">

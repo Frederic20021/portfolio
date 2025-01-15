@@ -15,7 +15,7 @@ const PinnedContent = ({ visibility = "hidden" }) => {
                             className={"group"}
                             key={idx}
                         >
-                            <span className={"md:max-w-[400px] text-wrap group-hover:text-yellow-500 flex"}>
+                            <span className={"md:max-w-[400px] text-wrap group-hover:text-orange-400 flex"}>
                                 &gt;
                                 <span className={"opacity-0 group-hover:opacity-100 transition-opacity duration-500"}>&gt;&gt;</span>
                                 <span className={"ml-2"}>

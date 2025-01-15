@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Title = ({ title } : { title : string }) => {
     return (
-        <span className={"text-xl font-bold text-center px-4 my-2"}>{title}</span>
+        <span className={"text-2xl Title text-center px-4 my-2"}>{title}</span>
     )
 }
 const Map = () => {
