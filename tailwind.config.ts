@@ -1,6 +1,10 @@
 import type { Config } from "tailwindcss";
 import Typograph from "@tailwindcss/typography";
 
+const noColor = {
+  color: "unset"
+}
+
 export default {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,10 +16,11 @@ export default {
       typography: {
         DEFAULT: {
           css: {
-            color: 'inherit', // Ensure text inherits the color
-            h1: {
-              color: 'inherit',
-            },
+            color: "inherit",
+            strong: { ...noColor },
+            h1: { ...noColor },
+            h2: { ...noColor },
+            h3: { ...noColor },
             a: {
               color: 'inherit',
               textDecoration: 'none',
