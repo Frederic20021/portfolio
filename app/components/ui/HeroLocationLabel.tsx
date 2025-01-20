@@ -39,7 +39,7 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
                             </div>
                             <Image src={item.img} alt={"image"} className={`${showOrNot} my-2 mx-auto`} width={300} height={300} />
                             <p className={"indent-8 max-md:indent-4"}>{WH <= 130 ? item.smDescription : item.description}</p>
-                            <Link href={item.link} className={"hover:bg-green-800 border px-2 rounded-lg"}>Learn More</Link>
+                            <Link href={item.link} className={"hover:bg-orange-400 border px-2 rounded-lg"}>Learn More</Link>
                         </div>
                     </div>
                 )

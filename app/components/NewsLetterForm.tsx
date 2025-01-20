@@ -58,7 +58,7 @@ const NewsLetterForm = () => {
                     {error && <p className="text-red-500 text-sm">{error}</p>}
                     <button
                         type="submit"
-                        className="bg-blue-500 text-white p-2 rounded-lg"
+                        className="hover:cursor-pointer hover:border text-white p-2 rounded-lg"
                         disabled={loading || !email}
                     >
                         {loading ? 'Submitting...' : 'Subscribe'}

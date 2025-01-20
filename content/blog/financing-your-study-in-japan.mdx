@@ -36,6 +36,8 @@ For example, the ABP program from Shizuoka University that I am currently enroll
 - ### Private Scholarships
 
 These are the scholarships offered by the private foundations such as private companies and organizations. The monthly stipend is usually higher than the ones offered by the universities, ranging from 50,000 to 180,000 yen (400-1,500 usd) for undergraduate students. In the case of graduate schools, the amount is usually higher, starting from 100,000 yen (800 usd) monthly. The scholarship amounts may vary depending on the organization and again, detailed information can usually be referred directly from their website or from the university that you are enrolled in. But there are some conditions that you have to follow in order to continue receiving it. For example, the scholarship I am currently receiving requires me to write reviews about a book handed to the scholarship recipients and report to them on my living conditions, how I am doing in school, etc every two months. Some other scholarship foundations have more strict conditions such as the Hirose Foundation, which only allows you to return to your home country for no more than _10_ days per year.
+<img src={"/assets/scholarship/scholarship.jpg"} alt={"Internship at Yamaha YCS"} className={"mx-auto"} width={"400px"} height={"400px"}/>
+<p className={"text-center"}>Fig: Receiving a Private Scholarship</p>
 
 - ### MEXT Scholarship
 
@@ -53,7 +55,7 @@ This part-time job is the most suited for us foreigners (even if our English lev
 - ### Convenience Store Staff
 
 This is one of the most basic and common part-time jobs in Japan and is the one where you work at convenience stores such as FamilyMart, SevenEleven, Lawson, etc and the shifts are mostly flexible (with 2 weeks update). Of Course, this type of job will only pay you minimum wage which is 944 yen (~7 usd) for an hour in the city I live in. However, from my experience working this job position till now, I can say that there are a few benefits from this. The first one is that since you will surely be communicating with the locals with this job, your Japanese language skill is certain to improve. Secondly, you can get a variety of free foods (the ones that were not sold on that day) called [***廃棄***](https://ja.wikipedia.org/wiki/廃棄物)("Hai Ki"), depending on the shift that you work in. This could save you quite a few meals worth of cost each week which, in my opinion, makes up for the minimum pay. The only downside of these ***廃棄*** is that they are close or sometimes over the expiry date. The third benefit is just my personal opinion, but you get to make new friends while working this job, be they another foreigner or a local.
-<img src={"/assets/partTime/freeFood.jpg"} alt={"Sunrise from Fuji"} />
+<img src={"/assets/partTime/freeFood.jpg"} alt={"free food"} />
 <p className={"text-center"}>Fig: A lucky day at part-time job</p>
 
 - ### Restaurant Staff
@@ -95,9 +97,26 @@ The following figures show how I tracked my spending for the year 2024.
 - ### Data Entry Table
 
 As shown in the figure above, I use a table with the relevant headers which follows the basic of accounting. Basically, it contains the **Date**, **Type**, **Description**, **Debit**, **Credit** and **Balance**.
-The **Type** is for specifying what kind of spending that entry was. In summary, there are four main categories that I keep track of which are the [**Type**] (either _usage_ or _food_) and two separate **Tables** (either _Cash_ or _Credit Card_).
+The **Type** is for specifying what kind of spending that entry was. In summary, there are four main categories that I keep track of which are the [**Type**] (either _usage_ or _food_) and two separate [**Tables**] (either _Cash_ or _Credit Card_).
 All these categories get summarized in another table named [**Summary**] which in turn, gets referenced on another sheet to output how much I have spent each month.
 
 - ### Custom Formula
 
-- ### Linked Charts
+The custom formula that I used focuses on dividing the **Credit** value of the each **Table** based on their [**Type**] (either "food" or "usage").
+With this, I was able to get the monthly total value of each type of spending which can be further categorized by the "cash" or "credit card".
+An example of the formula that I used for summarizing the usage is as follows:
+```
+=SUMIF(CreditCardMay[Type],"*usage*",CreditCardMay[Credit])
+```
+<img src={"/assets/finance/formula.jpg"} alt={"Formula"} />
+<p className={"text-center"}>Fig: My Spread Sheet for May 2024 Studying in Japan.</p>
+
+This example is just a basic level of using excel formula to keep your tracking efficient. And there are a lot of more ways that you can use to customized to your own circumstances.
+
+# Key Takeaways
+
+- Scholarships are the most efficient way to finance your study in terms of labor and time. (*Aim for private scholarship foundation as they have a much higher stipend*)
+
+- Look for internships or be an research assistance as they are more likely to align with your studies and you also get paid for it.
+
+- Use any type of spread sheet to keep track of your spending! (_Remember, "What you can measure, You can improve" .... - **Alex Hormozi**_)

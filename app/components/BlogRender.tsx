@@ -9,7 +9,7 @@ const BlogRender = ({ posts } : { posts: { meta: BlogPost }[]}) => {
                 key={meta.slug}
                 className="group hover:border snap-start text-white p-4 rounded-lg md:w-[600px] max-md:mx-auto max-md:w-full"
             >
-                <h2 className="text-2xl max-sm:text-lg font-semibold text-center mx-auto max-w-[450px]">{meta.title}</h2>
+                <h2 className="text-2xl max-sm:text-lg font-semibold text-left">{meta.title}</h2>
                 <p className="text-justify indent-8 text-lg my-2">{meta.excerpt}</p>
                 <div className={"flex justify-between max-sm:grid"}>
                     <Link

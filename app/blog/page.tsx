@@ -17,7 +17,7 @@ export default async function BlogPage({ searchParams } : { searchParams : Promi
             <h1 className="text-3xl font-bold mb-6">Blog Posts</h1>
             <BrowseCategory visibility={"visible"}/>
             <div className={`${param.tag ? "flex justify-between" : " "} justify-center`}>
-                <span>{param.tag?.toUpperCase()}</span>
+                <span>Category: {param.tag?.toUpperCase()}</span>
                 <span>{postCount} Articles</span>
             </div>
             <div className="grid md:grid-cols-2 justify-items-center gap-6">

@@ -44,12 +44,12 @@ const Hero = () => {
                 <div className="text-center px-4 max-md:px-6 lg:px-8 md:my-2 lg:my-4 md:py-4 max-w-[1000px] mx-auto rounded-full backdrop-blur-lg">
                         <span className="max-md:text-lg md:text-2xl lg:text-3xl">Study Abroad with Full Tuition Exemption</span>
                         <h1 className={"text-xl font-bold md:text-3xl lg:mt-4 flex items-center"}>Your Ticket to Exploring the
-                            <span className={"text-orange-400"}>
-                                <span className="text-xl md:text-5xl">
+                            <span className={"flex text-xl md:text-5xl text-orange-400"}>
+                                <span className="">
                                     &nbsp;W
                                 </span>
-                                <FaGlobeAsia className="inline w-3 h-3 md:w-8 md:h-8 mb-2"/>
-                                <span className={"text-xl md:text-5xl"}>rld!</span>
+                                <FaGlobeAsia className="mt-2 w-3 h-3 md:w-8 md:h-8 mb-2"/>
+                                <span className={""}>rld!</span>
                             </span>
                         </h1>
                     {/*
