@@ -1,27 +1,27 @@
 export const projectItems = [
     {
         component : "Map",
-        link : "some link",
+        link : "/soon",
         img : null
     },
     {
         component : "Karate",
-        link : "some link",
+        link : "/soon",
         img : null
     },
     {
         component : "Internship",
-        link : "some link",
+        link : "/blog/internship-at-YCS",
         img : null
     },
     {
         component : "Scholarship",
-        link : "some link",
+        link : "/soon",
         img : null
     },
     {
         component : "TechnicalTrainee",
-        link : "some link",
+        link : "/soon",
         img : null
     },
     {

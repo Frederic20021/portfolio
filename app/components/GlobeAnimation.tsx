@@ -74,6 +74,11 @@ const GlobeAnimation = () => {
                     globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
                     labelsData={[
                         {
+                            lat: 43,
+                            lng: -78,
+                            text: `Oshawa\n(I did an exchange study here)`
+                        },
+                        {
                             lat: 34.71,
                             lng: 137.743,
                             text: `Hamamatsu\n(I'm here!)`

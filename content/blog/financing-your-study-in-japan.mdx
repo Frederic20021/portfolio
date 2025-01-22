@@ -96,8 +96,11 @@ The following figures show how I tracked my spending for the year 2024.
 
 - ### Data Entry Table
 
+<img src={"/assets/finance/entryTable.jpg"} alt={"Data Entry Table"} className={"mx-auto"}/>
+<p className={"text-center"}>Fig: Data Entry Table for recording the expenses (2024 May)</p>
+
 As shown in the figure above, I use a table with the relevant headers which follows the basic of accounting. Basically, it contains the **Date**, **Type**, **Description**, **Debit**, **Credit** and **Balance**.
-The **Type** is for specifying what kind of spending that entry was. In summary, there are four main categories that I keep track of which are the [**Type**] (either _usage_ or _food_) and two separate [**Tables**] (either _Cash_ or _Credit Card_).
+The **Type** is for specifying what kind of spending that entry was. In the summary table shown below (MaySummary), there are four main categories that I keep track of which are the [**Type**] (either _usage_ or _food_) and two separate [**Tables**] (either _Cash_ or _Credit Card_).
 All these categories get summarized in another table named [**Summary**] which in turn, gets referenced on another sheet to output how much I have spent each month.
 
 - ### Custom Formula
@@ -106,12 +109,16 @@ The custom formula that I used focuses on dividing the **Credit** value of the e
 With this, I was able to get the monthly total value of each type of spending which can be further categorized by the "cash" or "credit card".
 An example of the formula that I used for summarizing the usage is as follows:
 ```
-=SUMIF(CreditCardMay[Type],"*usage*",CreditCardMay[Credit])
+=SUMIF(May[Type],"*usage*",May[Credit])
 ```
 <img src={"/assets/finance/formula.jpg"} alt={"Formula"} />
 <p className={"text-center"}>Fig: My Spread Sheet for May 2024 Studying in Japan.</p>
 
-This example is just a basic level of using excel formula to keep your tracking efficient. And there are a lot of more ways that you can use to customized to your own circumstances.
+In the example above, I have the formula function that would sum the **Credit** column of the table **May** if the column of **Type** in the same row has a value of **usage**.
+By setting this function, the cell will calculate the spending on **usage**, from the table **May**.
+
+This is just a basic level of using excel formula to keep your tracking efficient and there are a lot of more ways that you can use to customized to your own circumstances.
+The resources on how to use advance excel spread sheets are available online and it is highly recommended to check them out for more efficient way of keeping track of your expenses.
 
 # Key Takeaways
 
