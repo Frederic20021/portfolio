@@ -2,7 +2,7 @@ export const projectItems = [
     {
         component : "Map",
         link : "/soon",
-        img : null
+        img : null,
     },
     {
         component : "Karate",

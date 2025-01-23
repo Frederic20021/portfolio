@@ -21,13 +21,15 @@ const Projects = () => {
                     ?
                     <div className={"rounded-lg shadow-lg hover:shadow-gray-600 flex flex-col max-sm:w-[330px] items-center p-2"}>
                         <Component key={index} />
-                        <Link
-                            href={item.link}
-                            className={"group my-2 rounded-lg"}
-                        >
-                            More on this<span className={"group-hover:opacity-0 duration-500"}>&ensp;&gt;</span>
-                            <span className={"opacity-0 group-hover:opacity-100 transition-opacity duration-500"}>&gt;&gt;&gt;</span>
-                        </Link>
+                        {item.component != "Map" &&
+                            <Link
+                                href={item.link}
+                                className={"group my-2 rounded-lg"}
+                            >
+                                More on this<span className={"group-hover:opacity-0 duration-500"}>&ensp;&gt;</span>
+                                <span className={"opacity-0 group-hover:opacity-100 transition-opacity duration-500"}>&gt;&gt;&gt;</span>
+                            </Link>
+                        }
                     </div>
                     : null;
             })}
