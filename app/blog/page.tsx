@@ -6,7 +6,7 @@ export default async function BlogPage({ searchParams } : { searchParams : Promi
     const [posts, param] = await Promise.all([getAllPosts(), searchParams]);
 
 
-    const filteredPosts = param.tag && param.tag != "all blogs"
+    const filteredPosts = param.tag
         ? posts.filter(post => post.meta.tags?.includes(param.tag as string))
         : posts;
 
@@ -16,8 +16,8 @@ export default async function BlogPage({ searchParams } : { searchParams : Promi
         <div className="container mx-auto text-center px-4 justify-center">
             <h1 className="text-3xl font-bold mb-6">Blog Posts</h1>
             <BrowseCategory visibility={"visible"}/>
-            <div className={`${param.tag ? "flex justify-between" : " "} justify-center`}>
-                <span>Category: {param.tag?.toUpperCase()}</span>
+            <div className={`flex justify-between`}>
+                <span>Category: {param.tag? param.tag.toUpperCase() : "All Blogs"}</span>
                 <span>{postCount} Articles</span>
             </div>
             <div className="grid md:grid-cols-2 justify-items-center gap-6">

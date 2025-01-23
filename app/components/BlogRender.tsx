@@ -12,7 +12,7 @@ const BlogRender = ({ posts } : { posts: { meta: BlogPost }[]}) => {
                 <h2 className="text-2xl max-sm:text-lg font-semibold text-left">
                     <Link
                         href={`/blog/${meta.slug}`}
-                        className="hover:underline"
+                        className="hover:underline hover:text-orange-400"
                     >
                     {meta.title}
                     </Link>
