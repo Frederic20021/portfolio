@@ -6,7 +6,7 @@ import { FaGlobeAsia } from "react-icons/fa";
 import HeroLocationLabel from "@/app/components/ui/HeroLocationLabel";
 
 const Hero = () => {
-    const [scholarSize, setScholarSize] = useState(150); // Default size
+    const [scholarSize, setScholarSize] = useState(400); // Default size
     const [labelWH, setLabelWH] = useState(220);
 
     useEffect(() => {

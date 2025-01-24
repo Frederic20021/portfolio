@@ -26,7 +26,7 @@ export default async function BlogPostPage({
                     Updated: {meta.date}
                     <div className={"float-end inline"}> Author : <Link href={"/about"}>{meta.author.name}</Link></div>
                 </div>
-                <div className={"md:w-[700px] mx-auto text-justify blog-style"}>
+                <div className={"md:w-[800px] mx-auto text-justify blog-style"}>
                     {content}
                     <p>
                         Thanks for reading thus far!

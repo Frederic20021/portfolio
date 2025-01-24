@@ -26,6 +26,10 @@ custom css
     @apply md:indent-8 max-sm:indent-6;
   }
 
+  .blog-style th {
+    @apply text-inherit text-xl;
+  }
+
   .c-space {
     @apply sm:px-10 px-5;
   }
