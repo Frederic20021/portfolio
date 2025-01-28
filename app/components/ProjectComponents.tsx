@@ -65,6 +65,7 @@ const Exchange = () => {
                 Having studied for 2 years in Japan, I seized the opportunity to get better education and
                 applied to the exchange program between Shizuoka University and Ontario Tech University.
             </p>
+            <Image src={"/assets/exchange/OTU.jpg"} alt={"Ontario Tech University"} width={400} height={400} className={"rounded-xl my-2"}/>
             <p>
                 One of the main reasons behind this decision was that the program is exempted from study expenses,
                 which was greatly beneficial for me as a student. And also the University ranking in Canada is also

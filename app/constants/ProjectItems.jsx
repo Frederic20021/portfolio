@@ -7,7 +7,7 @@ export const projectItems = [
     {
         component : "Karate",
         link : "/soon",
-        img : null
+        img : "/assets/karate/karateCompetition.png"
     },
     {
         component : "Internship",
@@ -21,12 +21,12 @@ export const projectItems = [
     },
     {
         component : "TechnicalTrainee",
-        link : "/soon",
+        link : "/blog/technical-trainee-problem-in-japan",
         img : null
     },
     {
         component : "Exchange",
-        link : "some link",
-        img : null
+        link : "/blog/exchange-program-in-canada",
+        img : "/asset/exchange/OTU.jpg"
     },
 ]

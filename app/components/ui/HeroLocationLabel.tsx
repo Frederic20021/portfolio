@@ -7,7 +7,6 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
     const w = `${WH*2}px`
     const h = `${WH*2}px`
     const showOrNot = `${WH <= 130 ? "hidden" : ""}`
-    console.log(w,h)
     return (
             labels.map((item, idx) => {
                 return (
@@ -27,14 +26,14 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
                             <div className="absolute md:w-6 md:h-6 max-md:w-2 max-md:h-2 bg-orange-400 rotate-45 -bottom-1 max-md:-bottom-0.5 left-[50%] translate-x-[-50%]"/>
                         </div>
                         <div
-                            className={`opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm rounded-2xl shadow-2xl duration-500 absolute lg:mt-[500px] sm:max-md:mt-60 p-2 text-justify max-sm:mt-20 md:text-lg sm:max-md:text-sm max-sm:text-[9px] max-sm:text-left`}
+                            className={`z-10 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm rounded-2xl shadow-2xl duration-500 absolute lg:mt-[500px] sm:max-lg:mt-60 p-2 text-justify max-sm:mt-20 md:text-lg sm:max-md:text-sm max-sm:text-[9px] max-sm:text-left`}
                             style={{
                                 width: w,
                                 height: h
                             }}
                         >
                             <div className={"text-2xl text-center"}>
-                                <span className='Title'>{item.institution}</span>
+                                <div className='text-orange-400 font-bold max-sm:text-xs text-center'>{item.institution}</div>
                                 &ensp; {item.emoji}
                             </div>
                             <Image src={item.img} alt={"image"} className={`${showOrNot} my-2 mx-auto`} width={300} height={300} />

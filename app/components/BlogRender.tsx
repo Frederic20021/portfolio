@@ -21,17 +21,18 @@ const BlogRender = ({ posts } : { posts: { meta: BlogPost }[]}) => {
                 <div className={"flex justify-between max-sm:grid"}>
                     <Link
                         href={`/blog/${meta.slug}`}
-                        className="group p-1 m-1 rounded transform transition-all duration-1000"
+                        className="group p-1 m-1 rounded"
                     >
-                        Read More
+                        <span className={"group-hover:border-2 rounded-lg duration-500 p-1 border-orange-400 hover:bg-orange-400"}>Read More</span>
                         <div className={"inline-block"}>
                             <span className={"group-hover:opacity-0 duration-500"}>&nbsp;&gt;</span>
                             <span
                                 className={"opacity-0 group-hover:opacity-100 transition-opacity duration-300"}>&gt;&gt;&gt;</span>
                         </div>
                     </Link>
-                    <div className="my-2 text-sm">
-                        {meta.date} • {meta.tags?.join(', ')}
+                    <div className="my-2 text-sm grid text-right">
+                        <div>{meta.date}</div>
+                        <div>{meta.tags?.join(', ')}</div>
                     </div>
                 </div>
             </div>
