@@ -55,7 +55,7 @@ const Contact = () => {
 
     }
     return (
-        <section className={"c-space my-20 mt-[4rem]"}>
+        <section className={"c-space my-20 mt-2"}>
             <div className={"relative min-h-screen flex items-center justify-center flex-col"}>
                 <Image
                     src={"/assets/terminal.png"}
@@ -71,7 +71,7 @@ const Contact = () => {
                 <div className={"contact-container z-10"}>
                     <h3 className={"head-text"}>Let&apos;s talk</h3>
                     <p className={"text-lg text-white-600 mt-3"}>
-                        If you are looking to apply to a Japanese Univeristy and need help, I am here to help.
+                        If you are looking to apply to a Japanese University and need assistance, I am here to help.
                     </p>
 
                     <form ref={formRef} onSubmit={handleSubmit} className={"mt-12 flex flex-col space-y-7"}>
@@ -111,7 +111,7 @@ const Contact = () => {
                                 placeholder={"Hi, I'm interested in ..."}
                             />
                         </label>
-                        <button className={"field-btn"} type={"submit"} disabled={loading}>
+                        <button className={"field-btn hover:border duration-500"} type={"submit"} disabled={loading}>
                             {loading ? 'Sending...' : 'Send Message'}
 
                             <Image src={"/assets/arrow-up.png"} alt={"arrow-up"} className={"field-btn_arrow"} width={0} height={0} sizes={"100vh"} />

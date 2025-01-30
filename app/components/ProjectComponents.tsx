@@ -31,7 +31,7 @@ const Karate = () => {
 const Scholarship = () => {
     return (
         <div className={`cusAlign w-[350px]`}>
-            <Title title={"Scholarships"}></Title>
+            <Title title={"Receiving Private Scholarships"}></Title>
             <p>
                 I was fortunate to not only be able to study in Japan free of tuition cost, but also be a member of Mabuchi
                 International Scholarship Foundation, providing me with additional stipends as financial support.
@@ -78,8 +78,10 @@ const Exchange = () => {
 const TechnicalTrainee = () => {
     return (
         <div className={`cusAlign w-[500px]`}>
-            <Title title={"Japan's ongoing Problems of Technical Trainee"}></Title>
-            <p>After studying in Japan for one year, I had an opportunity to interpret at one of the centres for technical trainees in Hamamatsu, Shizuoka. However, after a few months of interpretation, one of the trainees had gone missing. <br/> So I decided to look into the problem and wrote a report on it.</p>
+            <Title title={"Japan's ongoing Issue of Technical Trainee"}></Title>
+            <p>After studying in Japan for one year, I had an opportunity to interpret at one of the centres for technical trainees in Hamamatsu, Shizuoka. However, after a few months of interpretation, one of the trainees who have the same nationality as me had gone missing. And as a scholar from the same country (Myanmar), who has the ability to communicate in both languages, I felt an obligation to confront the issue.</p>
+            <br/>
+            <p>As I was investigating the possible causes to the vanishing of technical trainees, I came across a thesis contest in Japan which is also supported by the Japanese Ministry of Foreign Affairs. Thus, I saw this as an opportunity to bring this issue to light to Japanese society and participated in the contest while doing an exchange study in Canada. Surprisingly, my thesis placed third on the contest.</p>
             <Link
                 href={"/"}
                 >
