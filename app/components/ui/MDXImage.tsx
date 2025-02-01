@@ -14,12 +14,7 @@ export const MDXImage = ({
 }) => {
     return (
         <div>
-            <Image
-                src={imgSrc}
-                width={width}
-                height={height}
-                className={"mx-auto"}
-                alt={`${caption}`}/>
+            <Image src={imgSrc} alt={`${caption}`} width={width} height={height} className={"mx-auto"}/>
             <p className={"text-center"}>Fig: {caption}</p>
         </div>
     )
