@@ -1,4 +1,3 @@
-import Link from "next/link";
 import GlobeAnimation from "@/app/components/GlobeAnimation";
 import Image from "next/image";
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from "next/image";
 
 export const MDXImage = ({
                       imgSrc,
@@ -13,7 +14,12 @@ export const MDXImage = ({
 }) => {
     return (
         <div>
-            <img src={imgSrc} alt={caption} width={width} height={height} className={"mx-auto"}/>
+            <Image
+                src={imgSrc}
+                width={width}
+                height={height}
+                className={"mx-auto"}
+                alt={`${caption}`}/>
             <p className={"text-center"}>Fig: {caption}</p>
         </div>
     )
