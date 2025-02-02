@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/app/sections/Navbar";
 import Footer from "@/app/sections/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,6 +34,7 @@ export default function RootLayout({
       <div className={"bg-gradient-to-b from-[#062415] via-[#0d0f1c] to-[#062415]"}>
           <Navbar />
           {children}
+          <SpeedInsights />
           <Footer />
       </div>
       </body>
