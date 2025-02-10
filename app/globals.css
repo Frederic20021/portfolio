@@ -119,6 +119,29 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+/* === Google Translate Styling === */
+/* Google Translate Dropdown */
+select {
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 8px;
+  background-color: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+select:hover {
+  border-color: #888;
+}
+
+/* Hide the Google Translate branding */
+#google_translate_element {
+  display: none !important;
+}
+
+
 /*
   9. Create a root stacking context
 */
