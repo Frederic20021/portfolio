@@ -24,7 +24,7 @@ const NewsLetterForm = () => {
         try {
             const result = await emailjs.send(
                 "service_mvj6kjl", // Replace with your EmailJS service ID
-                "template_ihn0p5u", // Replace with your EmailJS template ID
+                "template_8l3j228", // Replace with your EmailJS template ID
                 {
                     from_name: email.substring(0, email.indexOf("@")),
                     from_email: email,

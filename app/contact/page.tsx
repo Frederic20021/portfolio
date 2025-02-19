@@ -27,7 +27,7 @@ const Contact = () => {
         try {
             await emailjs.send(
                 'service_mvj6kjl',
-                'template_8l3j228',
+                'template_ihn0p5u',
                 {
                     from_name: form.name,
                     to_name: 'SI THU LIN',
@@ -94,9 +94,8 @@ const Contact = () => {
                                 name="email"
                                 value={form.email}
                                 onChange={handleChange}
-                                required
                                 className={"field-input"}
-                                placeholder={"johndoe@example.com"}
+                                placeholder={"(Optional)"}
                             />
                         </label>
                         <label className={"space-y-3"}>

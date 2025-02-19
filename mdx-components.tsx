@@ -1,10 +1,12 @@
 // mdx-components.tsx
 import type { MDXComponents } from 'mdx/types'
 import 'prismjs/themes/prism-tomorrow.css' // or any other theme
+import MDXImage from "@/app/components/ui/MDXImage";
 
 export function useMDXComponents(components: MDXComponents) {
     return {
         // ... other components
+        MDXImage,
         pre: ({ children } : { children : string }) => (
             <pre className="language-jsx p-4 rounded-lg overflow-x-auto">
         {children}
