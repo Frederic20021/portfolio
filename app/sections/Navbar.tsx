@@ -3,7 +3,6 @@ import Navlink from "@/app/components/ui/Navlink";
 import SocialLinks from "@/app/components/SocialLinks";
 import Link from "next/link";
 import MenuBar from "@/app/components/ui/MenuBar";
-import GoogleTranslate from "@/app/components/ui/GoogleTranslate";
 
 const Navbar = () => {
 
@@ -19,7 +18,6 @@ const Navbar = () => {
                 <MenuBar />
             </div>
             <SocialLinks/>
-            <GoogleTranslate />
         </div>
     )
 }

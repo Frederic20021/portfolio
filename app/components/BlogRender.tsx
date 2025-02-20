@@ -18,13 +18,13 @@ const BlogRender = ({ posts } : { posts: { meta: BlogPost }[]}) => {
                     </Link>
                 </h2>
                 <p className="text-justify indent-8 text-lg my-2">{meta.excerpt}</p>
-                <div className={"flex justify-between max-sm:grid"}>
+                <div className={"flex justify-between"}>
                     <Link
                         href={`/blog/${meta.slug}`}
                         className="group p-1 m-1 rounded"
                     >
                         <span className={"group-hover:border-2 rounded-lg duration-500 p-1 border-orange-400 hover:bg-orange-400"}>Read More</span>
-                        <div className={"inline-block"}>
+                        <div className={"max-sm:hidden inline-block"}>
                             <span className={"group-hover:opacity-0 duration-500"}>&nbsp;&gt;</span>
                             <span
                                 className={"opacity-0 group-hover:opacity-100 transition-opacity duration-300"}>&gt;&gt;&gt;</span>
