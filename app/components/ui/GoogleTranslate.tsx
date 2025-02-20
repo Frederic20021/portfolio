@@ -20,6 +20,7 @@ declare global {
 const GoogleTranslate = () => {
     const [selectedLanguage, setSelectedLanguage] = useState<string>("auto");
     const [loaded, setLoaded] = useState(false);
+    console.log(loaded);
 
     useEffect(() => {
         // Initialize Google Translate
