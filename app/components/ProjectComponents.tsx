@@ -22,7 +22,7 @@ const Karate = () => {
             <Title title={"Martial Arts Journey"}></Title>
             <p>I first started practising karate during middle school and trained for 2 years.</p>
             <p>I went back to training after finishing high school and went on to place third at a local competition during the first year of studying abroad in Japan.</p>
-            <Image src={"/assets/karate/karateCompetition.png"} alt={"Prefectural Karate Championship"} width={400} height={400} className={"rounded-xl my-2"}/>
+            <Image src={"/assets/karate/karateCompetition.jpg"} alt={"Prefectural Karate Championship"} width={400} height={400} className={"rounded-xl my-2"}/>
         </div>
     )
 }

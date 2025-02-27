@@ -6,8 +6,8 @@ export const projectItems = [
     },
     {
         component : "Karate",
-        link : "/soon",
-        img : "/assets/karate/karateCompetition.png"
+        link : "/blog/martial-arts-journey.mdx",
+        img : "/assets/karate/karateCompetition.jpg"
     },
     {
         component : "Internship",
