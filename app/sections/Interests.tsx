@@ -2,7 +2,7 @@ import React from 'react'
 
 const Interests = () => {
     return (
-        <div>test</div>
+        <div></div>
     )
 }
 export default Interests
