@@ -77,14 +77,15 @@ const SpeechTranslator: React.FC = () => {
     };
 
 // Define the proper type for the speech recognition event
-    const recognizeSpeechWithWebAPI = (): Promise<string> => {
+    /*
+const recognizeSpeechWithWebAPI = (): Promise<string> => {
         return new Promise((resolve, reject) => {
             if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
                 reject('Speech recognition is not supported in this browser');
                 return;
             }
 
-            // @ts-ignore - TypeScript doesn't know about the browser's SpeechRecognition API
+            // @ts-expect-error - TypeScript doesn't know about the browser's SpeechRecognition API
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const recognition = new SpeechRecognition();
 
@@ -107,6 +108,7 @@ const SpeechTranslator: React.FC = () => {
             recognition.start();
         });
     };
+*/
 
 // Define the translateText function if it doesn't exist
     const translateText = async (text: string, sourceLang: string, targetLang: string): Promise<string> => {

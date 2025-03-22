@@ -56,7 +56,7 @@ export async function POST(request: Request) {
                         message: 'Failed to upload audio',
                         details: jsonError
                     }, { status: 500 });
-                } catch (parseError) {
+                } catch {
                     // If not JSON, return the text
                     return NextResponse.json({
                         message: 'Failed to upload audio',
@@ -71,7 +71,7 @@ export async function POST(request: Request) {
             const audioUrl = uploadData.upload_url;
 
             // Now create a transcription job
-            const transcriptionOptions: any = {
+            const transcriptionOptions: TranscriptionOptions = {
                 audio_url: audioUrl,
                 language_code: language_code || 'en',  // Default to English if not specified
             };

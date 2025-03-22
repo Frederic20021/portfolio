@@ -1,7 +1,16 @@
+interface TranscriptionOptions {
+    audio_url: string;
+    language_code: string;
+}
+
+interface ResponseData {
+    translatedText: string;
+    audio_url?: string;
+}
+
 interface SpeechRecognitionEvent extends Event {
     results: SpeechRecognitionResultList;
     resultIndex: number;
-    interpretation: any;
 }
 
 interface SpeechRecognitionResultList {
@@ -23,10 +32,4 @@ interface SpeechRecognitionAlternative {
 interface SpeechRecognitionErrorEvent extends Event {
     error: string;
     message: string;
-}
-
-interface SpeechSynthesisUtterance extends EventTarget {
-    lang: string;
-    onend: (event: any) => void;
-    onerror: (event: any) => void;
 }

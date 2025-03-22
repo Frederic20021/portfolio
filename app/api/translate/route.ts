@@ -45,7 +45,7 @@ export async function POST(request: Request) {
             const translatedText = data.responseData.translatedText;
 
             // Create response object
-            const responseData: any = { translatedText };
+            const responseData: ResponseData = { translatedText };
 
             // Handle TTS if requested
             if (tts) {
