@@ -2,7 +2,7 @@ export const navItems = [
   {
     id: "Blog",
     title: "Study in Japan",
-    dropdownItems: ["Academic", "Career", "Life Style", "Student Life", "Travel", "Others"],
+    dropdownItems: ["Academic", "Career", "Life Style", "Student Life", "Travel"],
   },
   {
     id: "Services",
