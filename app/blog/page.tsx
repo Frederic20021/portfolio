@@ -14,7 +14,7 @@ export default async function BlogPage({ searchParams } : { searchParams : Promi
 
     return (
         <div className="container mx-auto text-center px-4 justify-center">
-            <h1 className="text-3xl font-bold mb-6">Blog Posts</h1>
+            <h1 className="text-3xl font-bold mb-6 text-center">Blog Posts</h1>
             <BrowseCategory visibility={"visible"}/>
             <div className={`flex justify-between`}>
                 <span>Category: {param.tag? param.tag.toUpperCase() : "All Blogs"}</span>
