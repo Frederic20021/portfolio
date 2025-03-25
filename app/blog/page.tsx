@@ -7,7 +7,9 @@ export default async function BlogPage({ searchParams } : { searchParams : Promi
 
 
     const filteredPosts = param.tag
-        ? posts.filter(post => post.meta.tags?.includes(param.tag as string))
+        ? param.tag == "All"
+        ? posts
+            : posts.filter(post => post.meta.tags?.includes(param.tag as string))
         : posts;
 
     const postCount = filteredPosts.length;
