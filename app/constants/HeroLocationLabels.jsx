@@ -15,8 +15,8 @@ export const labels = [
     },
     {
         countryCode: 'JP',
-        top: 36,
-        right: 13,
+        top: 37,
+        right: 14,
         bottom: null,
         left: null,
         institution: 'Shizuoka University',

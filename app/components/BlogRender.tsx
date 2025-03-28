@@ -7,7 +7,7 @@ const BlogRender = ({ posts } : { posts: { meta: BlogPost }[]}) => {
         posts.map(({meta}) => (
             <div
                 key={meta.slug}
-                className="group hover:border snap-start text-white p-4 rounded-lg md:w-[600px] max-md:mx-auto max-md:w-full"
+                className="group hover:border snap-start text-white p-4 rounded-lg sm:max-md:w-[600px] max-md:mx-auto max-md:w-full"
             >
                 <h2 className="text-2xl max-sm:text-lg font-semibold text-left">
                     <Link

@@ -33,8 +33,8 @@ const HeroLocationLabel = ( { WH } : { WH : number }) => {
                             }}
                         >
                             <div className={"text-2xl text-center"}>
-                                <div className='text-orange-400 font-bold max-sm:text-xs text-center'>{item.institution}</div>
-                                &ensp; {item.emoji}
+                                <div className='text-orange-400 font-bold max-sm:text-xs text-center'>{item.institution}&ensp; </div>
+                                <div className={"max-sm:hidden"}>{item.emoji}</div>
                             </div>
                             <Image src={item.img} alt={"image"} className={`${showOrNot} my-2 mx-auto`} width={300} height={300} />
                             <p className={"indent-8 max-md:indent-4"}>{WH <= 130 ? item.smDescription : item.description}</p>

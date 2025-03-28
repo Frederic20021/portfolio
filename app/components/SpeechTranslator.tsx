@@ -24,9 +24,9 @@ const SpeechTranslator: React.FC = () => {
 
     // Limited language options: Burmese, English, and Japanese
     const languages: Language[] = [
-        { code: 'en', name: 'English' },
-        { code: 'my', name: 'Burmese' },
-        { code: 'ja', name: 'Japanese' }
+        { code: 'en', name: '🇬🇧' },
+        { code: 'my', name: '🇲🇲' },
+        { code: 'ja', name: '🇯🇵' }
     ];
 
     useEffect(() => {

@@ -49,7 +49,7 @@ export async function POST(request: Request) {
 
             // Handle TTS if requested
             if (tts) {
-                // TTS implementation would go here (same as previous)
+                // TTS implementation would go here
                 // ...
             }
 
