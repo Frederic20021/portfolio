@@ -7,11 +7,10 @@ export default async function BlogPage({ searchParams } : { searchParams : Promi
 
 
     const filteredPosts = param.tag
-        ? param.tag == "All"
+        ? param.tag == "all"
         ? posts
-            : posts.filter(post => post.meta.tags?.includes(param.tag as string))
+            :posts.filter(post => post.meta.tags?.includes(param.tag as string))
         : posts;
-
     const postCount = filteredPosts.length;
 
     return (

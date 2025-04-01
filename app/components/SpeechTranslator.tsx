@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 interface Language {
     code: string;
     name: string;
+    voice?: string; // Voice identifier for specific TTS voices
 }
 
 const SpeechTranslator: React.FC = () => {
@@ -14,6 +15,7 @@ const SpeechTranslator: React.FC = () => {
     const [translatedText, setTranslatedText] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
+    const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
 
     const [sourceLang, setSourceLang] = useState<string>('en');
     const [targetLang, setTargetLang] = useState<string>('ja');
@@ -22,19 +24,37 @@ const SpeechTranslator: React.FC = () => {
     const audioChunksRef = useRef<BlobPart[]>([]);
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
-    // Limited language options: Burmese, English, and Japanese
+    // Enhanced language options with voice hints
     const languages: Language[] = [
-        { code: 'en', name: '🇬🇧' },
-        { code: 'my', name: '🇲🇲' },
-        { code: 'ja', name: '🇯🇵' }
+        { code: 'en', name: '🇬🇧 English', voice: 'en-US' },
+        { code: 'my', name: '🇲🇲 Burmese', voice: 'my' },
+        { code: 'ja', name: '🇯🇵 Japanese', voice: 'ja-JP' }
     ];
 
+    // Load available voices when the component mounts
     useEffect(() => {
         audioRef.current = new Audio();
+
+        // Initialize voices
+        const loadVoices = () => {
+            const voices = window.speechSynthesis.getVoices();
+            setAvailableVoices(voices);
+            console.log("Available voices:", voices.map(v => `${v.name} (${v.lang})`));
+        };
+
+        // Handle both immediate and future loading of voices
+        if (window.speechSynthesis) {
+            loadVoices();
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+        }
 
         return () => {
             if (audioRef.current) {
                 audioRef.current.pause();
+            }
+            // Clean up the event listener
+            if (window.speechSynthesis) {
+                window.speechSynthesis.onvoiceschanged = null;
             }
         };
     }, []);
@@ -76,43 +96,8 @@ const SpeechTranslator: React.FC = () => {
         }
     };
 
-// Define the proper type for the speech recognition event
-    /*
-const recognizeSpeechWithWebAPI = (): Promise<string> => {
-        return new Promise((resolve, reject) => {
-            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-                reject('Speech recognition is not supported in this browser');
-                return;
-            }
-
-            // @ts-expect-error - TypeScript doesn't know about the browser's SpeechRecognition API
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            const recognition = new SpeechRecognition();
-
-            recognition.lang = sourceLang;
-            recognition.continuous = false;
-            recognition.interimResults = false;
-            recognition.maxAlternatives = 1;
-
-            // Properly type the event parameter
-            recognition.onresult = (event: SpeechRecognitionEvent) => {
-                const transcript = event.results[0][0].transcript;
-                resolve(transcript);
-            };
-
-            // Properly type the error event parameter
-            recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-                reject(`Speech recognition error: ${event.error}`);
-            };
-
-            recognition.start();
-        });
-    };
-*/
-
-// Define the translateText function if it doesn't exist
+    // Define the translateText function
     const translateText = async (text: string, sourceLang: string, targetLang: string): Promise<string> => {
-        // Implement your translation logic here, for example:
         const response = await fetch('/api/translate', {
             method: 'POST',
             headers: {
@@ -129,7 +114,7 @@ const recognizeSpeechWithWebAPI = (): Promise<string> => {
         return data.translatedText;
     };
 
-// Define the speakText function
+    // Enhanced speakText function with fallback options
     const speakText = (text: string, lang: string): Promise<void> => {
         return new Promise((resolve, reject) => {
             if (!('speechSynthesis' in window)) {
@@ -137,22 +122,57 @@ const recognizeSpeechWithWebAPI = (): Promise<string> => {
                 return;
             }
 
+            // Create utterance
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = lang;
 
+            // Find the best voice for the target language
+            const langCode = lang.split('-')[0]; // Get base language code
+            const voices = availableVoices;
+
+            // Try to find an exact match first
+            let voice = voices.find(v => v.lang.toLowerCase() === lang.toLowerCase());
+
+            // If no exact match, try to find a voice that starts with the language code
+            if (!voice) {
+                voice = voices.find(v => v.lang.toLowerCase().startsWith(langCode.toLowerCase()));
+            }
+
+            if (voice) {
+                console.log(`Using voice: ${voice.name} (${voice.lang})`);
+                utterance.voice = voice;
+            } else {
+                console.warn(`No voice found for language: ${lang}`);
+                // Still set the language even if we don't have a specific voice
+                utterance.lang = lang;
+            }
+
+            utterance.rate = 1.0; // Normal speed
+            utterance.pitch = 1.0; // Normal pitch
+
+            // Handle events
             utterance.onend = () => {
                 resolve();
             };
 
             utterance.onerror = (event) => {
+                console.error("Speech synthesis error:", event);
                 reject(`Speech synthesis error: ${event.error}`);
             };
 
+            // Speak the text
+            window.speechSynthesis.cancel(); // Cancel any ongoing speech
             window.speechSynthesis.speak(utterance);
+
+            // Workaround for Chrome bug where speech sometimes doesn't play
+            if (window.navigator.userAgent.includes('Chrome')) {
+                if (window.speechSynthesis.paused) {
+                    window.speechSynthesis.resume();
+                }
+            }
         });
     };
 
-// This is just the handleTranslate function with improved debugging
+// This is the main translation handler
     const handleTranslate = async (): Promise<void> => {
         setIsLoading(true);
         setError('');
@@ -169,13 +189,9 @@ const recognizeSpeechWithWebAPI = (): Promise<string> => {
 
             const audio_base64 = await new Promise<string>((resolve, reject) => {
                 reader.onloadend = () => {
-                    // Remove the data URL prefix (e.g., "data:audio/wav;base64,")
                     const result = reader.result?.toString() || '';
-                    console.log(`FileReader result prefix: ${result.substring(0, 50)}...`);
-
                     const base64data = result.split(',')[1];
                     if (base64data) {
-                        console.log(`Converted to base64: ${base64data.substring(0, 50)}... (${base64data.length} chars)`);
                         resolve(base64data);
                     } else {
                         reject(new Error('Failed to convert audio to base64'));
@@ -184,9 +200,8 @@ const recognizeSpeechWithWebAPI = (): Promise<string> => {
                 reader.onerror = () => reject(reader.error);
             });
 
-            console.log("Sending audio to transcription API...");
-
             // 1. Send the audio for speech recognition
+            console.log("Sending audio to transcription API...");
             const speechResponse = await fetch('/api/transcribe', {
                 method: 'POST',
                 headers: {
@@ -198,10 +213,7 @@ const recognizeSpeechWithWebAPI = (): Promise<string> => {
                 }),
             });
 
-            console.log(`API response status: ${speechResponse.status} ${speechResponse.statusText}`);
-
             const responseData = await speechResponse.json();
-            console.log('API response data:', responseData);
 
             if (!speechResponse.ok) {
                 throw new Error(`Speech recognition failed: ${responseData.message || 'Unknown error'}`);
@@ -209,18 +221,14 @@ const recognizeSpeechWithWebAPI = (): Promise<string> => {
 
             const recognizedText = responseData.text;
             setSourceText(recognizedText);
-
             console.log("Transcription successful:", recognizedText);
 
-            // 2. Text translation using LibreTranslate through our proxy API
+            // 2. Translate the text
             console.log("Translating text...");
             const translatedResult = await translateText(recognizedText, sourceLang, targetLang);
             setTranslatedText(translatedResult);
-
             console.log("Translation successful:", translatedResult);
 
-            // 3. Generate speech from translated text using Web Speech API
-            await speakText(translatedResult, targetLang);
         } catch (err) {
             const errorMessage = `Error processing audio: ${err instanceof Error ? err.message : String(err)}`;
             console.error(errorMessage);
@@ -264,6 +272,15 @@ const recognizeSpeechWithWebAPI = (): Promise<string> => {
                             </option>
                         ))}
                     </select>
+
+                    {/* Show available voices for debugging */}
+                    {targetLang && (
+                        <div className="mt-1 text-xs text-gray-500">
+                            {availableVoices.some(v => v.lang.startsWith(targetLang))
+                                ? `✓ TTS voices available for '${targetLang}'`
+                                : `⚠️ No TTS voices found for '${targetLang}'`}
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -295,12 +312,20 @@ const recognizeSpeechWithWebAPI = (): Promise<string> => {
                 <div className="mt-6 space-y-4">
                     <div className="p-4 bg-gray-50 rounded border">
                         <h3 className="font-semibold text-black mb-2">Original Text:</h3>
-                        <p className={"text-black"}>{sourceText}</p>
+                        <p className="text-black">{sourceText}</p>
                     </div>
 
                     <div className="p-4 bg-gray-50 rounded border">
                         <h3 className="font-semibold text-black mb-2">Translated Text:</h3>
-                        <p className={"text-black"}>{translatedText}</p>
+                        <p className="text-black">{translatedText}</p>
+                        {translatedText && (
+                            <button
+                                onClick={() => speakText(translatedText, targetLang)}
+                                className="mt-2 px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600"
+                            >
+                                Play Audio
+                            </button>
+                        )}
                     </div>
                 </div>
             )}
@@ -311,7 +336,6 @@ const recognizeSpeechWithWebAPI = (): Promise<string> => {
                     {error}
                 </div>
             )}
-
         </div>
     );
 };
