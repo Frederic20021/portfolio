@@ -1,4 +1,4 @@
-// app/japanese/translator/page.tsx
+// app/interpretation/translator/page.tsx
 import SpeechTranslator from '../components/SpeechTranslator';
 
 export default function TranslatorPage() {

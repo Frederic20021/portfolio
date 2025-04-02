@@ -7,7 +7,7 @@ export const navItems = [
   {
     id: "Services",
     title: "Services",
-    dropdownItems: ["Japanese", "eBooks", "Others"],
+    dropdownItems: ["Interpretation", "eBooks", "Others"],
   },
   {
     id: "General",

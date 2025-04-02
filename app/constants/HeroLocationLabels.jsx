@@ -25,6 +25,6 @@ export const labels = [
             "up an interest in JDM culture too, all of which ultimately lead me to decide to study abroad in Japan.",
         smDescription: "I am enrolled with full-scholarship program at a Japanese University",
         img: "/assets/exchange/ShizuU.jpg",
-        link: "blog/applying-to-japanese-university"
+        link: "blog/applying-to-interpretation-university"
     }
 ]

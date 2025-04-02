@@ -28,7 +28,8 @@ const SpeechTranslator: React.FC = () => {
     const languages: Language[] = [
         { code: 'en', name: '🇬🇧 English', voice: 'en-US' },
         { code: 'my', name: '🇲🇲 Burmese', voice: 'my' },
-        { code: 'ja', name: '🇯🇵 Japanese', voice: 'ja-JP' }
+        { code: 'ja', name: '🇯🇵 Japanese', voice: 'ja-JP' },
+        { code: 'zh', name: '🇨🇳 Chinese', voice: 'zh-CN' }
     ];
 
     // Load available voices when the component mounts

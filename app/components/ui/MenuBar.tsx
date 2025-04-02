@@ -46,7 +46,7 @@ const MenuBar = () => {
                                                 <a
                                                     key={dropdownItem}
                                                     href={item.id == "Blog" ? `/blog?tag=${dropdownItem.toLowerCase()}` : item.id == 'Services' ? `/${dropdownItem.toLowerCase()}` : `/soon`}
-                                                    className="block text-xs text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded px-2 py-1"
+                                                    className="block text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded px-2 py-1"
                                                 >
                                                     {dropdownItem}
                                                 </a>
