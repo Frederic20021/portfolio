@@ -28,7 +28,7 @@ const MenuBar = () => {
             </button>
             {isOpen && (
                     <div ref={navRef} className="fixed inset-0 flex top-20 justify-center z-10">
-                        <div className={"h-[200px] text-sm bg-white text-black flex gap-5 rounded-lg px-4 py-3"}>
+                        <div className={"h-[230px] text-sm bg-white text-black flex gap-5 rounded-lg px-4 py-3"}>
                             {navItems.map((item, index) => (
                                 <div
                                     key={index}
