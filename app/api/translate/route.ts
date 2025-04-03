@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { text, source, target, tts } = body;
+        const { text, source, target } = body;
 
         if (!text) {
             return NextResponse.json({ message: 'No text provided' }, { status: 400 });
@@ -46,12 +46,6 @@ export async function POST(request: Request) {
 
             // Create response object
             const responseData: ResponseData = { translatedText };
-
-            // Handle TTS if requested
-            if (tts) {
-                // TTS implementation would go here
-                // ...
-            }
 
             return NextResponse.json(responseData);
         } else {

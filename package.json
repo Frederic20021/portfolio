@@ -18,7 +18,7 @@
     "form-data": "^4.0.2",
     "formidable": "^3.5.2",
     "fs": "^0.0.1-security",
-    "google-translate-api": "^0.1.1",
+    "google-translate-api": "^2.3.0",
     "google-tts-api": "^0.0.6",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.462.0",
