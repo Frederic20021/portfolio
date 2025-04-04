@@ -490,7 +490,7 @@ export async function POST(request: NextRequest) {
 
                         // Ordered list of models to try for Burmese
                         const burmeseModels = [
-                            "YeBhoneLin10/openai-whisper-burmese", // Primary choice
+                            "chuuhtetnaing/whisper-tiny-myanmar", // Primary choice
                             "openai/whisper-medium",              // Good multilingual fallback
                             "brickman/whisper-small-my",          // Smaller but specifically for Burmese
                         ];
