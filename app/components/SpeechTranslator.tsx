@@ -1,12 +1,50 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react';
+// Use a pure JavaScript implementation instead of native modules
+import * as rabbit from 'rabbit-node';
 
 interface Language {
     code: string;
     name: string;
     voice?: string; // Voice identifier for specific TTS voices
 }
+
+// Simple JavaScript-based Zawgyi detector function
+// This is a simplified version - for production you may want a more robust implementation
+const detectZawgyi = (text: string): boolean => {
+    // Common Zawgyi-specific characters and patterns
+    const zawgyiRegex = /[\u105a\u1060-\u1097]|[\u1033\u1034]|[\u104e\u1039]|\u1031\u103b/g;
+    // Count matches of Zawgyi-specific patterns
+    const matches = (text.match(zawgyiRegex) || []).length;
+    // Calculate a rough probability based on the number of matches and text length
+    return matches > 0 && matches / text.length > 0.1;
+};
+
+// Proper conversion functions using rabbit-node library
+const zawgyiToUnicode = (text: string): string => {
+    try {
+        return rabbit.zg2uni(text);
+    } catch (error) {
+        console.error("Error converting Zawgyi to Unicode:", error);
+        return text; // Return original text on error
+    }
+};
+
+const unicodeToZawgyi = (text: string): string => {
+    try {
+        return rabbit.uni2zg(text);
+    } catch (error) {
+        console.error("Error converting Unicode to Zawgyi:", error);
+        return text; // Return original text on error
+    }
+};
+
+// Function to detect if text is likely Zawgyi
+const isZawgyi = (text: string): boolean => {
+    // Use our simple detector instead of myanmar-tools
+    return detectZawgyi(text);
+};
 
 const SpeechTranslator: React.FC = () => {
     const [recording, setRecording] = useState<boolean>(false);
@@ -20,6 +58,11 @@ const SpeechTranslator: React.FC = () => {
     const [sourceLang, setSourceLang] = useState<string>('en');
     const [targetLang, setTargetLang] = useState<string>('ja');
 
+    // Add state for Burmese encoding
+    const [burmeseEncoding, setBurmeseEncoding] = useState<'unicode' | 'zawgyi'>('unicode');
+    const [displayedText, setDisplayedText] = useState<string>('');
+    const [detectedEncoding, setDetectedEncoding] = useState<'unicode' | 'zawgyi' | null>(null);
+
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
     const audioChunksRef = useRef<BlobPart[]>([]);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -31,6 +74,71 @@ const SpeechTranslator: React.FC = () => {
         { code: 'ja', name: '🇯🇵 Japanese', voice: 'ja-JP' },
         { code: 'zh', name: '🇨🇳 Chinese', voice: 'zh-CN' }
     ];
+
+    // Update displayed text when translated text or encoding changes
+    useEffect(() => {
+        if (targetLang === 'my' && translatedText) {
+            // Auto-detect if it's the first time we're processing this text
+            if (!detectedEncoding && translatedText) {
+                const detected = isZawgyi(translatedText) ? 'zawgyi' : 'unicode';
+                setDetectedEncoding(detected);
+
+                // If we detected Zawgyi but user wants Unicode (or vice versa), convert
+                if (detected !== burmeseEncoding) {
+                    updateDisplayedText(translatedText);
+                } else {
+                    setDisplayedText(translatedText);
+                }
+            } else {
+                updateDisplayedText(translatedText);
+            }
+        } else {
+            setDisplayedText(translatedText);
+        }
+    }, [translatedText, burmeseEncoding, targetLang, detectedEncoding]);
+
+    // Function to update the displayed text based on the current encoding
+    const updateDisplayedText = (text: string): void => {
+        if (targetLang === 'my') {
+            if (burmeseEncoding === 'zawgyi') {
+                // If current text is Unicode, convert to Zawgyi
+                const isCurrentTextZawgyi = isZawgyi(text);
+                if (!isCurrentTextZawgyi) {
+                    setDisplayedText(unicodeToZawgyi(text));
+                } else {
+                    setDisplayedText(text);
+                }
+            } else {
+                // If current text is Zawgyi, convert to Unicode
+                const isCurrentTextZawgyi = isZawgyi(text);
+                if (isCurrentTextZawgyi) {
+                    setDisplayedText(zawgyiToUnicode(text));
+                } else {
+                    setDisplayedText(text);
+                }
+            }
+        } else {
+            setDisplayedText(text);
+        }
+    };
+
+    // Toggle the Burmese encoding
+    const toggleBurmeseEncoding = (): void => {
+        setBurmeseEncoding(prev => {
+            const newEncoding = prev === 'unicode' ? 'zawgyi' : 'unicode';
+
+            // Immediately update displayed text when toggling
+            if (translatedText && targetLang === 'my') {
+                if (newEncoding === 'zawgyi') {
+                    setDisplayedText(unicodeToZawgyi(translatedText));
+                } else {
+                    setDisplayedText(zawgyiToUnicode(translatedText));
+                }
+            }
+
+            return newEncoding;
+        });
+    };
 
     // Load available voices when the component mounts
     useEffect(() => {
@@ -123,8 +231,11 @@ const SpeechTranslator: React.FC = () => {
                 return;
             }
 
+            // For Burmese, ensure we use Unicode for TTS
+            const textToSpeak = lang === 'my' && isZawgyi(text) ? zawgyiToUnicode(text) : text;
+
             // Create utterance
-            const utterance = new SpeechSynthesisUtterance(text);
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
             // Find the best voice for the target language
             const langCode = lang.split('-')[0]; // Get base language code
@@ -173,7 +284,7 @@ const SpeechTranslator: React.FC = () => {
         });
     };
 
-// This is the main translation handler
+    // This is the main translation handler
     const handleTranslate = async (): Promise<void> => {
         setIsLoading(true);
         setError('');
@@ -227,6 +338,9 @@ const SpeechTranslator: React.FC = () => {
             // 2. Translate the text
             console.log("Translating text...");
             const translatedResult = await translateText(recognizedText, sourceLang, targetLang);
+
+            // Reset detected encoding when we get new translated text
+            setDetectedEncoding(null);
             setTranslatedText(translatedResult);
             console.log("Translation successful:", translatedResult);
 
@@ -318,15 +432,27 @@ const SpeechTranslator: React.FC = () => {
 
                     <div className="p-4 bg-gray-50 rounded border">
                         <h3 className="font-semibold text-black mb-2">Translated Text:</h3>
-                        <p className="text-black">{translatedText}</p>
-                        {translatedText && (
-                            <button
-                                onClick={() => speakText(translatedText, targetLang)}
-                                className="mt-2 px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600"
-                            >
-                                Play Audio
-                            </button>
-                        )}
+                        <p className="text-black">{displayedText}</p>
+                        <div className="mt-2 flex space-x-2">
+                            {translatedText && (
+                                <button
+                                    onClick={() => speakText(translatedText, targetLang)}
+                                    className="px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600"
+                                >
+                                    Play Audio
+                                </button>
+                            )}
+
+                            {/* Add Burmese encoding toggle button */}
+                            {targetLang === 'my' && translatedText && (
+                                <button
+                                    onClick={toggleBurmeseEncoding}
+                                    className="px-3 py-1 bg-purple-500 text-white text-sm rounded hover:bg-purple-600"
+                                >
+                                    {burmeseEncoding === 'unicode' ? 'Convert to Zawgyi' : 'Convert to Unicode'}
+                                </button>
+                            )}
+                        </div>
                     </div>
                 </div>
             )}
