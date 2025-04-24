@@ -358,7 +358,7 @@ const SpeechTranslator: React.FC = () => {
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Audio Translator</h2>
 
             {/* Language Selection */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-black">
                 <div>
                     <label className="block text-gray-700 mb-2">Source Language</label>
                     <select
