@@ -28,20 +28,19 @@ const MigrationGrowthPresentation = () => {
         {
             id: 'profile',
             name: 'Mi Mi Aung (ミミアウン)',
-            details: [
+            items: [
                 '両親がアメリカに移住',
                 'アメリカ生まれ',
                 'ミャンマー・マレーシアで育ち'
             ],
-            imageUrl: '/assets/presentation/profile.jpg',
-            width: 300,
-            height: 300
+            imageUrl: '/assets/presentation/profile1.jpg',
+            width: 400,
+            height: 400
         },
         {
             id: 'education',
             title: '学歴/Career',
             items: [
-                'ミャンマー・マレーシアで育ち',
                 'Illinois大学卒業（電子信号処理）',
                 '修士課程卒業（1990）',
                 'NASA DSN（宇宙ネットワーク）',
@@ -50,8 +49,8 @@ const MigrationGrowthPresentation = () => {
                 'Amazon Kuiper Systems 取締役（2021～）'
             ],
             imageUrl: '/assets/presentation/nasa.jpg',
-            width: 300,
-            height: 300
+            width: 550,
+            height: 550
         },
         {
             id: 'project',
@@ -63,8 +62,8 @@ const MigrationGrowthPresentation = () => {
                 '重さ2 kg以下'
             ],
             imageUrl: '/assets/presentation/marsHeli.jpg',
-            width: 300,
-            height: 300
+            width: 600,
+            height: 600
         },
         {
             id: 'whitehouse',
@@ -76,7 +75,7 @@ const MigrationGrowthPresentation = () => {
             ],
             imageUrl: '/assets/presentation/whiteHouse.jpg',
             width: 500,
-            height: 300
+            height: 500
         },
         {
             id: 'current',
@@ -141,26 +140,26 @@ const MigrationGrowthPresentation = () => {
                 transition={{duration: 1}}
             >
                 <motion.h1
-                    className="text-7xl font-bold mb-4"
+                    className="text-8xl font-bold mb-4"
                     initial={{y: -100, opacity: 0}}
                     animate={{y: -30, opacity: 1}}
-                    transition={{delay: 4, duration: 1}}
+                    transition={{delay: 5, duration: 1}}
                 >
                     移住に伴う成長
                 </motion.h1>
                 <motion.p
-                    className="text-2xl font-bold"
+                    className="text-4xl font-bold"
                     initial={{opacity: 0}}
-                    animate={{y:20, opacity: 1}}
-                    transition={{delay: 0.8, duration: 0.8}}
+                    animate={{y:100, opacity: 1}}
+                    transition={{delay: 1.5, duration: 0.8}}
                 >
                     SI THU LIN
                 </motion.p>
                 <motion.p
-                    className="text-xl font-bold"
+                    className="text-3xl font-bold"
                     initial={{opacity: 0}}
-                    animate={{y:20, opacity: 1}}
-                    transition={{delay: 1.5, duration: 0.8}}
+                    animate={{y:100, opacity: 1}}
+                    transition={{delay: 2, duration: 0.8}}
                 >
                     7021 0703
                 </motion.p>
@@ -190,14 +189,14 @@ const Section = ({ section, index }: { section: SectionData; index: number }) =>
                 {/* Content on the left */}
                 <div className="flex-1">
                     <motion.h2
-                        className="text-4xl font-bold mb-8"
+                        className="text-5xl font-bold mb-8"
                         whileHover={{ scale: 1.02 }}
                     >
                         {section.title || section.name}
                     </motion.h2>
 
                     {section.items ? (
-                        <ul className="space-y-4 text-2xl">
+                        <ul className="space-y-4 text-3xl">
                             {section.items.map((item, i) => (
                                 <motion.li
                                     key={i}
@@ -207,7 +206,11 @@ const Section = ({ section, index }: { section: SectionData; index: number }) =>
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 * i }}
                                 >
-                                    <span className="mr-2">•</span> {item}
+                                    <span className="mr-2 ${}">•</span>
+                                    {item.includes("2015") ?
+                                    <span className={"text-amber-900 text-4xl"}>{item}</span> :
+                                    item
+                                    }
                                 </motion.li>
                             ))}
                         </ul>
@@ -258,7 +261,6 @@ const Section = ({ section, index }: { section: SectionData; index: number }) =>
                             src={section.imageUrl}
                             alt={`${section.title || section.name || ''} image`}
                             className="object-cover object-center rounded-lg shadow-lg"
-                            sizes="(max-width: 1024px) 100vw, 40vw"
                             priority={index < 3}
                             width={section.width}
                             height={section.height}
