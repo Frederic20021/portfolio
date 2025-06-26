@@ -1,49 +1,115 @@
 "use client"
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image'
+
+interface SectionData {
+    id: string;
+    title?: string;
+    name?: string;
+    subtitle?: string;
+    items?: string[];
+    details?: string[];
+    content?: string[];
+    imageUrl?: string;
+    width?: number;
+    height?: number;
+}
 
 const MigrationGrowthPresentation = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     const sections = [
-        { id: 'intro', title: '移住に伴う成長', subtitle: 'SI THU LIN' },
-        { id: 'profile', name: 'Mi Mi Aung (ミミアウン)', details: [
+        {
+            id: 'intro',
+            title: '移住に伴う成長',
+            subtitle: 'SI THU LIN'
+        },
+        {
+            id: 'profile',
+            name: 'Mi Mi Aung (ミミアウン)',
+            details: [
                 '両親がアメリカに移住',
                 'アメリカ生まれ',
                 'ミャンマー・マレーシアで育ち'
-            ]},
-        { id: 'education', title: '学歴/Career', items: [
+            ],
+            imageUrl: '/assets/presentation/profile.jpg',
+            width: 300,
+            height: 300
+        },
+        {
+            id: 'education',
+            title: '学歴/Career',
+            items: [
+                'ミャンマー・マレーシアで育ち',
                 'Illinois大学卒業（電子信号処理）',
                 '修士課程卒業（1990）',
                 'NASA DSN（宇宙ネットワーク）',
                 'NASA ASD 次長就任（2013）',
                 '火星ヘリプロジェクトリーダー（2015～）',
                 'Amazon Kuiper Systems 取締役（2021～）'
-            ]},
-        { id: 'project', title: '火星ヘリプロジェクト', items: [
+            ],
+            imageUrl: '/assets/presentation/nasa.jpg',
+            width: 300,
+            height: 300
+        },
+        {
+            id: 'project',
+            title: '火星ヘリプロジェクト',
+            items: [
                 '火星におけるヘリ飛行試験',
                 '高難易度の取り組み',
                 '開発資金2,300万$',
                 '重さ2 kg以下'
-            ]},
-        { id: 'whitehouse', title: '2021/04 バイデン大統領に報告', content: [
+            ],
+            imageUrl: '/assets/presentation/marsHeli.jpg',
+            width: 300,
+            height: 300
+        },
+        {
+            id: 'whitehouse',
+            title: '2021/04 バイデン大統領に報告',
+            content: [
                 'NASA\'S PERSEVERANCE ROVER',
                 'AND INGENUITY HELICOPTER',
                 'THE WHITE HOUSE DESIGNATION'
-            ]},
-        { id: 'current', title: '現役', items: [
+            ],
+            imageUrl: '/assets/presentation/whiteHouse.jpg',
+            width: 500,
+            height: 300
+        },
+        {
+            id: 'current',
+            title: '現役',
+            items: [
                 'Amazon Kuiper Systems 理事長',
                 '地球低軌道（2000km以下）における衛星ネットワーク向上'
-            ]},
-        { id: 'family', title: '家族の背景', items: [
+            ],
+            imageUrl: '/assets/presentation/amazonProject.jpg',
+            width: 500,
+            height: 300
+        },
+        {
+            id: 'family',
+            title: '家族の背景',
+            items: [
                 '両親が移住者（アメリカ）',
                 'ミャンマー・マレーシアで育ち',
                 '移住 → USA'
-            ]},
-        { id: 'summary', title: 'まとめ', items: [
+            ],
+            imageUrl: '/assets/presentation/family.jpg',
+            width: 1000,
+            height: 600
+        },
+
+        {
+            id: 'summary',
+            title: 'まとめ',
+            items: [
                 '育った環境によって生活が左右する',
                 '移住する→成長の機会が増える'
-            ]}
+            ],
+        }
     ];
 
     return (
@@ -110,73 +176,99 @@ const MigrationGrowthPresentation = () => {
     );
 };
 
-const Section = ({ section, index }: { section: any; index: number }) => {
+const Section = ({ section, index }: { section: SectionData; index: number }) => {
     return (
         <motion.section
             id={section.id}
-            className="py-24 border-b border-gray-200 last:border-0"
+            className="py-24 border-b border-gray-200 last:border-0 scroll-mt-20"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20%" }}
             transition={{ duration: 0.8, delay: index * 0.1 }}
         >
-            <motion.h2
-                className="text-4xl font-bold mb-12"
-                whileHover={{ scale: 1.02 }}
-            >
-                {section.title || section.name}
-            </motion.h2>
+            <div className="flex flex-col lg:flex-row gap-12 items-start">
+                {/* Content on the left */}
+                <div className="flex-1">
+                    <motion.h2
+                        className="text-4xl font-bold mb-8"
+                        whileHover={{ scale: 1.02 }}
+                    >
+                        {section.title || section.name}
+                    </motion.h2>
 
-            {section.items ? (
-                <ul className="space-y-4 text-2xl">
-                    {section.items.map((item: string, i: number) => (
-                        <motion.li
-                            key={i}
-                            className="flex items-start"
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 * i }}
-                        >
-                            <span className="mr-2">•</span> {item}
-                        </motion.li>
-                    ))}
-                </ul>
-            ) : section.details ? (
-                <ul className="space-y-4 text-lg">
-                    {section.details.map((item: string, i: number) => (
-                        <motion.li
-                            key={i}
-                            className="flex items-start"
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 * i }}
-                        >
-                            <span className="mr-2">•</span> {item}
-                        </motion.li>
-                    ))}
-                </ul>
-            ) : null}
+                    {section.items ? (
+                        <ul className="space-y-4 text-2xl">
+                            {section.items.map((item, i) => (
+                                <motion.li
+                                    key={i}
+                                    className="flex items-start"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1 * i }}
+                                >
+                                    <span className="mr-2">•</span> {item}
+                                </motion.li>
+                            ))}
+                        </ul>
+                    ) : section.details ? (
+                        <ul className="space-y-4 text-lg">
+                            {section.details.map((item, i) => (
+                                <motion.li
+                                    key={i}
+                                    className="flex items-start"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1 * i }}
+                                >
+                                    <span className="mr-2">•</span> {item}
+                                </motion.li>
+                            ))}
+                        </ul>
+                    ) : null}
 
-            {section.content && (
-                <div className="mt-12 p-8 bg-gray-100 border-l-4 border-black">
-                    {section.content.map((line: string, i: number) => (
-                        <motion.p
-                            key={i}
-                            className="text-2xl mb-2 last:mb-0"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 * i }}
-                        >
-                            {line}
-                        </motion.p>
-                    ))}
+                    {section.content && (
+                        <div className="mt-8 p-6 bg-gray-100 border-l-4 border-black">
+                            {section.content.map((line, i) => (
+                                <motion.p
+                                    key={i}
+                                    className="text-2xl mb-2 last:mb-0"
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.2 * i }}
+                                >
+                                    {line}
+                                </motion.p>
+                            ))}
+                        </div>
+                    )}
                 </div>
-            )}
+
+                {/* Image on the right */}
+                {section.imageUrl && (
+                    <motion.div
+                        className="w-full lg:w-[40%] h-64 lg:h-96 relative mt-8 lg:mt-0"
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        <Image
+                            src={section.imageUrl}
+                            alt={`${section.title || section.name || ''} image`}
+                            className="object-cover object-center rounded-lg shadow-lg"
+                            sizes="(max-width: 1024px) 100vw, 40vw"
+                            priority={index < 3}
+                            width={section.width}
+                            height={section.height}
+                        />
+                    </motion.div>
+                )}
+            </div>
         </motion.section>
     );
 };
+
 
 export default MigrationGrowthPresentation;
