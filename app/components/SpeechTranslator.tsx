@@ -49,11 +49,13 @@ const isZawgyi = (text: string): boolean => {
 const SpeechTranslator: React.FC = () => {
     const [recording, setRecording] = useState<boolean>(false);
     const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     const [sourceText, setSourceText] = useState<string>('');
     const [translatedText, setTranslatedText] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
     const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+    const [audioSource, setAudioSource] = useState<'recording' | 'upload'>('recording');
 
     const [sourceLang, setSourceLang] = useState<string>('en');
     const [targetLang, setTargetLang] = useState<string>('ja');
@@ -66,6 +68,7 @@ const SpeechTranslator: React.FC = () => {
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
     const audioChunksRef = useRef<BlobPart[]>([]);
     const audioRef = useRef<HTMLAudioElement | null>(null);
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     // Enhanced language options with voice hints
     const languages: Language[] = [
@@ -168,6 +171,40 @@ const SpeechTranslator: React.FC = () => {
         };
     }, []);
 
+    // Handle file upload
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const file = event.target.files?.[0];
+        if (file) {
+            // Check if it's an audio file
+            if (!file.type.startsWith('audio/')) {
+                setError('Please select an audio file');
+                return;
+            }
+
+            // Check file size (limit to 10MB for example)
+            const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+            if (file.size > maxSize) {
+                setError('File size is too large. Please select a file smaller than 10MB');
+                return;
+            }
+
+            setUploadedFile(file);
+            setAudioBlob(file); // Treat uploaded file as audio blob
+            setAudioSource('upload');
+            setError('');
+            console.log(`File uploaded: ${file.name}, size: ${file.size} bytes, type: ${file.type}`);
+        }
+    };
+
+    // Clear uploaded file
+    const clearUploadedFile = (): void => {
+        setUploadedFile(null);
+        setAudioBlob(null);
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
+    };
+
     // Start recording audio
     const startRecording = async (): Promise<void> => {
         try {
@@ -183,6 +220,7 @@ const SpeechTranslator: React.FC = () => {
             mediaRecorderRef.current.onstop = () => {
                 const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
                 setAudioBlob(audioBlob);
+                setAudioSource('recording');
 
                 // Stop all tracks from the stream to release the microphone
                 stream.getTracks().forEach(track => track.stop());
@@ -191,6 +229,11 @@ const SpeechTranslator: React.FC = () => {
             mediaRecorderRef.current.start();
             setRecording(true);
             setError('');
+
+            // Clear any uploaded file when starting to record
+            if (uploadedFile) {
+                clearUploadedFile();
+            }
         } catch (err) {
             setError(`Error accessing microphone: ${err instanceof Error ? err.message : String(err)}`);
             console.error('Error accessing microphone:', err);
@@ -284,33 +327,39 @@ const SpeechTranslator: React.FC = () => {
         });
     };
 
+    // Convert blob/file to base64
+    const blobToBase64 = (blob: Blob): Promise<string> => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const result = reader.result?.toString() || '';
+                const base64data = result.split(',')[1];
+                if (base64data) {
+                    resolve(base64data);
+                } else {
+                    reject(new Error('Failed to convert audio to base64'));
+                }
+            };
+            reader.onerror = () => reject(reader.error);
+            reader.readAsDataURL(blob);
+        });
+    };
+
     // This is the main translation handler
     const handleTranslate = async (): Promise<void> => {
         setIsLoading(true);
         setError('');
         try {
-            if (!audioBlob) {
-                throw new Error('No recorded audio to translate');
+            const currentAudio = audioBlob || uploadedFile;
+            if (!currentAudio) {
+                throw new Error('No audio to translate. Please record audio or upload an audio file.');
             }
 
-            console.log(`Audio blob size: ${audioBlob.size} bytes, type: ${audioBlob.type}`);
+            console.log(`Audio size: ${currentAudio.size} bytes, type: ${currentAudio.type || 'unknown'}`);
+            console.log(`Audio source: ${audioSource}`);
 
-            // Convert blob to base64
-            const reader = new FileReader();
-            reader.readAsDataURL(audioBlob);
-
-            const audio_base64 = await new Promise<string>((resolve, reject) => {
-                reader.onloadend = () => {
-                    const result = reader.result?.toString() || '';
-                    const base64data = result.split(',')[1];
-                    if (base64data) {
-                        resolve(base64data);
-                    } else {
-                        reject(new Error('Failed to convert audio to base64'));
-                    }
-                };
-                reader.onerror = () => reject(reader.error);
-            });
+            // Convert blob/file to base64
+            const audio_base64 = await blobToBase64(currentAudio);
 
             // 1. Send the audio for speech recognition
             console.log("Sending audio to transcription API...");
@@ -354,7 +403,7 @@ const SpeechTranslator: React.FC = () => {
     };
 
     return (
-        <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
+        <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Audio Translator</h2>
 
             {/* Language Selection */}
@@ -399,26 +448,93 @@ const SpeechTranslator: React.FC = () => {
                 </div>
             </div>
 
-            {/* Recording Controls */}
-            <div className="flex justify-center space-x-4 mb-6">
-                <button
-                    onClick={recording ? stopRecording : startRecording}
-                    className={`px-4 py-2 rounded font-medium ${
-                        recording
-                            ? 'bg-red-600 hover:bg-red-700 text-white'
-                            : 'bg-blue-600 hover:bg-blue-700 text-white'
-                    }`}
-                    disabled={isLoading}
-                >
-                    {recording ? 'Stop Recording' : 'Start Recording'}
-                </button>
+            {/* Audio Input Options */}
+            <div className="mb-6">
+                <div className="flex justify-center space-x-4 mb-4">
+                    <button
+                        onClick={() => setAudioSource('recording')}
+                        className={`px-4 py-2 rounded font-medium ${
+                            audioSource === 'recording'
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }`}
+                    >
+                        Record Audio
+                    </button>
+                    <button
+                        onClick={() => setAudioSource('upload')}
+                        className={`px-4 py-2 rounded font-medium ${
+                            audioSource === 'upload'
+                                ? 'bg-blue-600 text-white'
+                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }`}
+                    >
+                        Upload File
+                    </button>
+                </div>
 
+                {/* Recording Controls */}
+                {audioSource === 'recording' && (
+                    <div className="flex justify-center space-x-4">
+                        <button
+                            onClick={recording ? stopRecording : startRecording}
+                            className={`px-4 py-2 rounded font-medium ${
+                                recording
+                                    ? 'bg-red-600 hover:bg-red-700 text-white'
+                                    : 'bg-blue-600 hover:bg-blue-700 text-white'
+                            }`}
+                            disabled={isLoading}
+                        >
+                            {recording ? '🛑 Stop Recording' : '🎤 Start Recording'}
+                        </button>
+                        {audioBlob && audioSource === 'recording' && (
+                            <span className="px-3 py-2 bg-green-100 text-green-800 rounded text-sm">
+                                ✓ Audio Recorded
+                            </span>
+                        )}
+                    </div>
+                )}
+
+                {/* File Upload */}
+                {audioSource === 'upload' && (
+                    <div className="flex flex-col items-center space-y-4">
+                        <div className="w-full max-w-md">
+                            <input
+                                ref={fileInputRef}
+                                type="file"
+                                accept="audio/*"
+                                onChange={handleFileUpload}
+                                className="w-full p-2 border rounded focus:ring focus:ring-blue-300 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                            />
+                            <div className="mt-1 text-xs text-gray-500">
+                                Supported formats: MP3, WAV, M4A, OGG, etc. (Max 10MB)
+                            </div>
+                        </div>
+                        {uploadedFile && (
+                            <div className="flex items-center space-x-2">
+                                <span className="px-3 py-2 bg-green-100 text-green-800 rounded text-sm">
+                                    ✓ {uploadedFile.name} ({(uploadedFile.size / 1024 / 1024).toFixed(2)} MB)
+                                </span>
+                                <button
+                                    onClick={clearUploadedFile}
+                                    className="px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+
+            {/* Translate Button */}
+            <div className="flex justify-center mb-6">
                 <button
                     onClick={handleTranslate}
-                    className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded font-medium"
-                    disabled={!audioBlob || isLoading}
+                    className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium text-lg"
+                    disabled={(!audioBlob && !uploadedFile) || isLoading}
                 >
-                    {isLoading ? 'Translating...' : 'Translate'}
+                    {isLoading ? '🔄 Processing...' : '🌐 Transcribe & Translate'}
                 </button>
             </div>
 
@@ -433,13 +549,13 @@ const SpeechTranslator: React.FC = () => {
                     <div className="p-4 bg-gray-50 rounded border">
                         <h3 className="font-semibold text-black mb-2">Translated Text:</h3>
                         <p className="text-black">{displayedText}</p>
-                        <div className="mt-2 flex space-x-2">
+                        <div className="mt-2 flex flex-wrap gap-2">
                             {translatedText && (
                                 <button
                                     onClick={() => speakText(translatedText, targetLang)}
                                     className="px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600"
                                 >
-                                    Play Audio
+                                    🔊 Play Audio
                                 </button>
                             )}
 
@@ -449,7 +565,17 @@ const SpeechTranslator: React.FC = () => {
                                     onClick={toggleBurmeseEncoding}
                                     className="px-3 py-1 bg-purple-500 text-white text-sm rounded hover:bg-purple-600"
                                 >
-                                    {burmeseEncoding === 'unicode' ? 'Convert to Zawgyi' : 'Convert to Unicode'}
+                                    {burmeseEncoding === 'unicode' ? '📝 Convert to Zawgyi' : '📝 Convert to Unicode'}
+                                </button>
+                            )}
+
+                            {/* Copy to clipboard button */}
+                            {displayedText && (
+                                <button
+                                    onClick={() => navigator.clipboard.writeText(displayedText)}
+                                    className="px-3 py-1 bg-gray-500 text-white text-sm rounded hover:bg-gray-600"
+                                >
+                                    📋 Copy Text
                                 </button>
                             )}
                         </div>
@@ -459,8 +585,8 @@ const SpeechTranslator: React.FC = () => {
 
             {/* Error message */}
             {error && (
-                <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
-                    {error}
+                <div className="mt-4 p-3 bg-red-100 text-red-700 rounded border border-red-300">
+                    <strong>Error:</strong> {error}
                 </div>
             )}
         </div>

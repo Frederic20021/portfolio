@@ -17,6 +17,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "form-data": "^4.0.2",
     "formidable": "^3.5.2",
+    "framer-motion": "^12.18.1",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.462.0",
