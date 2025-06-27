@@ -31,7 +31,8 @@ const MigrationGrowthPresentation = () => {
             items: [
                 '両親がアメリカに移住',
                 'アメリカ生まれ',
-                'ミャンマー・マレーシアで育ち'
+                'ミャンマー・マレーシアで育ち(2歳〜）',
+                'アメリカの大学へ進学(16歳〜)'
             ],
             imageUrl: '/assets/presentation/profile1.jpg',
             width: 400,
@@ -93,7 +94,8 @@ const MigrationGrowthPresentation = () => {
             title: '家族の背景',
             items: [
                 '両親が移住者（アメリカ）',
-                'ミャンマー・マレーシアで育ち',
+                '父（化学の博士）',
+                '母（数学の博士、ミャンマー初の女性）',
                 '移住 → USA'
             ],
             imageUrl: '/assets/presentation/family.jpg',
@@ -116,13 +118,12 @@ const MigrationGrowthPresentation = () => {
             {/* Navigation */}
             <nav className="fixed top-0 left-0 w-full h-[100px] bg-white flex items-center z-50 shadow-sm py-4">
                 <div className="container mx-auto px-6 flex justify-between">
-                    <div className="font-bold text-xl">移住に伴う成長</div>
-                    <div className="flex justify-between gap-6">
+                    <div className="flex justify-between gap-8 text-lg text-center">
                         {sections.map((section) => (
                             <motion.a
                                 key={section.id}
                                 href={`#${section.id}`}
-                                className="font-bold hover:text-gray-600 hover:text-xl transition-colors"
+                                className="font-bold text-orange-800 hover:text-xl transition-colors"
                             >
                                 {section.title || section.name}
                             </motion.a>
@@ -151,7 +152,7 @@ const MigrationGrowthPresentation = () => {
                     className="text-4xl font-bold"
                     initial={{opacity: 0}}
                     animate={{y:100, opacity: 1}}
-                    transition={{delay: 1.5, duration: 0.8}}
+                    transition={{delay: 1.5, duration: 1.2}}
                 >
                     SI THU LIN
                 </motion.p>
@@ -159,7 +160,7 @@ const MigrationGrowthPresentation = () => {
                     className="text-3xl font-bold"
                     initial={{opacity: 0}}
                     animate={{y:100, opacity: 1}}
-                    transition={{delay: 2, duration: 0.8}}
+                    transition={{delay: 2, duration: 1.2}}
                 >
                     7021 0703
                 </motion.p>
@@ -208,7 +209,7 @@ const Section = ({ section, index }: { section: SectionData; index: number }) =>
                                 >
                                     <span className="mr-2 ${}">•</span>
                                     {item.includes("2015") ?
-                                    <span className={"text-amber-900 text-4xl"}>{item}</span> :
+                                    <span className={"text-orange-500 text-4xl"}>{item}</span> :
                                     item
                                     }
                                 </motion.li>
