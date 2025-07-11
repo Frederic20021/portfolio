@@ -81,6 +81,11 @@ custom css
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  transition-duration: 3s;
+}
+
 body {
   /* 3. Add accessible line-height */
   line-height: 1.5;
@@ -89,7 +94,6 @@ body {
   color: var(--foreground);
   background: var(--background) !important;
   font-family: Arial, Helvetica, sans-serif;
-  scroll-behavior: smooth;
 }
 
 /* 5. Improve media defaults */

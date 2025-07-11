@@ -6,8 +6,8 @@ export const Header: React.FC = () => {
     return (
         <header className="bg-white shadow-sm py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50">
             <div className="logo">
-                <h1 className="text-2xl font-bold text-blue-600">LINGLISH</h1>
-                <p className="text-xs text-gray-500">日本人のためのパーソナライズド英語コーチング</p>
+                <h1 className="text-3xl font-bold text-blue-600 text-center">LINGLISH</h1>
+                <p className="text-xs text-gray-900">日本人のためのパーソナライズド英語コーチング</p>
             </div>
 
             <nav className="hidden md:block">

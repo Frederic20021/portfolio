@@ -11,12 +11,12 @@ export const Hero: React.FC = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="md:w-1/2 mb-8 md:mb-0"
+                    className="md:w-1/2 mb-8 md:mb-0 text-white"
                 >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
                         「使える英語」を<br className="hidden md:block" />効率的に学ぶ
                     </h2>
-                    <p className="text-lg md:text-xl text-gray-600 mb-8">
+                    <p className="text-lg md:text-xl text-gray-200 mb-8">
                         教科書ではなく、実践的な英語力を身につける<br className="hidden md:block" />パーソナライズド英語コーチングサービス
                     </p>
                     <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -46,9 +46,11 @@ export const Hero: React.FC = () => {
                     className="md:w-1/2"
                 >
                     <Image
-                        src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                        src="/assets/language/flyer.png"
                         alt="楽しく英語を学ぶイメージ"
                         className="rounded-lg shadow-xl w-full h-auto"
+                        width={300}
+                        height={300}
                     />
                 </motion.div>
             </div>
