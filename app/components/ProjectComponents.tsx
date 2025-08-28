@@ -32,7 +32,7 @@ const Scholarship = () => {
         <div className={`cusAlign w-[350px]`}>
             <Title title={"Receiving Private Scholarships"}></Title>
             <p>
-                I was fortunate to not only be able to study in Japan free of tuition cost, but also be a member of Mabuchi
+                I was fortunate to not only be able to study in Japan free of tuition cost, but also be a scholar of Mabuchi
                 International Scholarship Foundation, providing me with additional stipends as financial support.
             </p>
             <Image src={"/assets/scholarship/scholarship.jpg"} alt={"Prefectural Karate Championship"} width={400} height={400} className={"rounded-xl my-2"}/>

@@ -1,9 +1,14 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { FormData } from '../interfaces/types';
+import emailjs from "@emailjs/browser";
 
 export const Contact: React.FC = () => {
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<string | null>(null);
+    const [email, setEmail] = useState<string>('');
+
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
@@ -13,26 +18,37 @@ export const Contact: React.FC = () => {
 
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Here you would typically send the form data to your backend
+        setLoading(true);
+        setError(null); // Reset error message
 
-        console.log('Form submitted:', formData);
-        setIsSubmitted(true);
-        setFormData({
-            name: '',
-            email: '',
-            level: 'beginner',
-            message: ''
-        });
-
-        // Reset submission status after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000);
+        try {
+            const result = await emailjs.send(
+                "service_mvj6kjl", // Replace with your EmailJS service ID
+                "template_8l3j228", // Replace with your EmailJS template ID
+                {
+                    from_name: email.substring(0, email.indexOf("@")),
+                    from_email: email,
+                    to_name: email.substring(email.indexOf("@")),
+                    to_email: "frederic123.bf@gmail.com",
+                },
+                "6QoeQf_j3aOl01Tut" // Replace with your EmailJS public key
+            );
+            console.log('Success:', result);
+            setEmail(''); // Clear the input after successful submission
+            setIsSubmitted(false);
+        } catch (error) {
+            console.error('Error sending email:', error);
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -118,13 +134,14 @@ export const Contact: React.FC = () => {
                             ></textarea>
                         </div>
 
+                        {error && <p className="text-red-500 text-sm">{error}</p>}
                         <motion.button
                             type="submit"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             className="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-medium hover:bg-blue-700 transition-colors"
                         >
-                            送信する
+                            {loading ? '送信中' : '送信'}
                         </motion.button>
                     </motion.form>
                 )}
