@@ -1,15 +1,15 @@
 'use client';
 
 import { useState } from "react";
-import Header from "@/app/temp/components/Header";
-import BalanceCard from "@/app/temp/components/BalanceCard";
-import ChartCard from "@/app/temp/components/ChartCard";
-import DonationCard from "@/app/temp/components/DonationCard";
-import TransparencyCard from "@/app/temp/components/TransparencyCard";
-import ActionPanel from "@/app/temp/components/ActionPanel";
-import Hero from "@/app/temp/components/Hero";
-import DailyRateCard from "@/app/temp/components/DailyRateCard";
-import MissionCard from "@/app/temp/components/MissionCard";
+import Header from "@/app/components/temp/components/Header";
+import BalanceCard from "@/app/components/temp/components/BalanceCard";
+import ChartCard from "@/app/components/temp/components/ChartCard";
+import DonationCard from "@/app/components/temp/components/DonationCard";
+import TransparencyCard from "@/app/components/temp/components/TransparencyCard";
+import ActionPanel from "@/app/components/temp/components/ActionPanel";
+import Hero from "@/app/components/temp/components/Hero";
+import DailyRateCard from "@/app/components/temp/components/DailyRateCard";
+import MissionCard from "@/app/components/temp/components/MissionCard";
 
 
 export default function Home() {
