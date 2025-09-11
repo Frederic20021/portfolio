@@ -11,6 +11,7 @@ import Hero from "@/app/components/temp/components/Hero";
 import DailyRateCard from "@/app/components/temp/components/DailyRateCard";
 import MissionCard from "@/app/components/temp/components/MissionCard";
 
+console.log({ChartCard})
 
 export default function Home() {
   const [balance] = useState<number>(1234.56);
