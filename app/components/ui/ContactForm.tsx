@@ -21,7 +21,7 @@ export default function ContactForm() {
           form.current?.reset();
           alert('メッセージが送信されました！');
         },
-        (error: any) => {
+        (error) => {
           console.log('FAILED...', error.text);
           alert('送信に失敗しました。もう一度お試しください。');
         },

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ceoMessage, companyData } from "@/app/constants/heroText";
+import { ceoMessage } from "@/app/constants/heroText";
 
 export default function CEOMessage() {
     return (
