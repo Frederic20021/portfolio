@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { getAssetPath } from '../../utils/paths'
 
 export default function BusinessEnglishSection() {
   return (
@@ -9,7 +10,7 @@ export default function BusinessEnglishSection() {
                 </div>
                 <Image
                     alt='Business English'
-                    src={`/hero/english-Hero1.jpg`}
+                    src={getAssetPath('/hero/english-hero1.jpg')}
                     fill
                     className='object-cover object-[top_right]'
                     priority

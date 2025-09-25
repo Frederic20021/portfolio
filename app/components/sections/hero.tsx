@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { getAssetPath } from '../../utils/paths'
 
 type heroText = {
     title?: string;
@@ -12,7 +13,7 @@ export default function HeroSection({ heroText }: { heroText: heroText }) {
       <div className="absolute inset-0 opacity-80">
         <Image
             alt='HeroImage'
-            src={`/hero/hero2.jpg`}
+            src={getAssetPath('/hero/hero2.jpg')}
             fill
             sizes='100vw'
             className='object-cover object-[top_center]'

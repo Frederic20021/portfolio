@@ -2,7 +2,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { services } from "@/app/constants/services";
 
-
 export default function ServicesSection() {
   return (
     <section className="py-20 bg-white">

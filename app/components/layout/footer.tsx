@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { services, footerLinks } from "@/app/constants/services";
+import { getAssetPath } from '../../utils/paths'
 
 export default function Temp() {
   return (
@@ -10,7 +11,7 @@ export default function Temp() {
           <div className="flex flex-col justify-center items-center gap-4 space-x-3">
             <Link href="/">
               <Image
-                src="/logo.jpg"
+                src={getAssetPath('/logo.jpg')}
                 alt="Empower & Link Logo"
                 width={210}
                 height={70}

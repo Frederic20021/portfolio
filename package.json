@@ -4,8 +4,8 @@
   "homepage": "https://frederic20021.github.io/empowerandlink/",
   "private": true,
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build && touch out/.nojekyll",
+    "deploy": "gh-pages -d out -t",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
