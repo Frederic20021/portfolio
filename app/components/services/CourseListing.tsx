@@ -6,6 +6,7 @@ import Calendar from 'react-calendar';
 import emailjs from '@emailjs/browser';
 import { getAssetPath } from "../../utils/paths";
 import { courses } from "@/app/constants/english";
+import { serviceID, templateID, publicKey } from "@/app/constants/emailjs";
 // Add calendar CSS import
 import 'react-calendar/dist/Calendar.css';
 
@@ -31,6 +32,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
   ];
 
   // Step 1: Handle date selection
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleDateChange = (value: any) => {
     if (value instanceof Date) {
       setSelectedDate(value);
@@ -65,9 +67,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
       
       try {
         // EmailJS configuration - Replace with your actual values
-        const serviceID = 'service_mvj6kjl';
-        const templateID = 'template_8l3j228'; 
-        const publicKey = '6QoeQf_j3aOl01Tut';
+        
 
         const templateParams = {
           to_email: 'frederic123.bf@gmail.com',

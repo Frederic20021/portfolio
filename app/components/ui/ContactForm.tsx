@@ -1,6 +1,7 @@
 'use client';
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { serviceID, contactTemplateID, publicKey } from '@/app/constants/emailjs';
 
 export default function ContactForm() {
   const form = useRef<HTMLFormElement>(null);
@@ -11,8 +12,8 @@ export default function ContactForm() {
     if (!form.current) return;
 
     emailjs
-      .sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, {
-        publicKey: 'YOUR_PUBLIC_KEY',
+      .sendForm(serviceID, contactTemplateID, form.current, {
+        publicKey: publicKey,
       })
       .then(
         () => {
