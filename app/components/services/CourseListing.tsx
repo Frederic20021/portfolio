@@ -3,24 +3,144 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import Calendar from 'react-calendar';
+import emailjs from '@emailjs/browser';
 import { getAssetPath } from "../../utils/paths";
 import { courses } from "@/app/constants/english";
 // Add calendar CSS import
 import 'react-calendar/dist/Calendar.css';
 
-
 // Individual course card component
 const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
+  // Booking flow states
   const [showCalendar, setShowCalendar] = useState(false);
+  const [showTimeSlots, setShowTimeSlots] = useState(false);
+  const [showUserForm, setShowUserForm] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
 
+  // Available time slots
+  const timeSlots = [
+    '09:00', '10:00', '11:00', '13:00', '14:00', '15:00', 
+    '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'
+  ];
+
+  // Step 1: Handle date selection
   const handleDateChange = (value: any) => {
     if (value instanceof Date) {
       setSelectedDate(value);
       setShowCalendar(false);
-      // Here you can add logic to handle the selected date
-      alert(`選択された日程: ${value.toLocaleDateString('ja-JP')}`);
+      setShowTimeSlots(true); // Move to time selection
+    }
+  };
 
+  // Step 2: Handle time selection  
+  const handleTimeSelection = (time: string) => {
+    setSelectedTime(time);
+    setShowTimeSlots(false);
+    setShowUserForm(true); // Move to user info form
+  };
+
+  // Step 3: Handle booking submission
+  const handleBookingSubmit = async () => {
+    if (!userInfo.name || !userInfo.email) {
+      alert('お名前とメールアドレスは必須項目です。');
+      return;
+    }
+
+    if (selectedDate && selectedTime) {
+      const formattedDate = selectedDate.toLocaleDateString('ja-JP', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long'
+      });
+      
+      const appointmentDateTime = `${formattedDate} ${selectedTime}`;
+      
+      try {
+        // EmailJS configuration - Replace with your actual values
+        const serviceID = 'service_mvj6kjl';
+        const templateID = 'template_8l3j228'; 
+        const publicKey = '6QoeQf_j3aOl01Tut';
+
+        const templateParams = {
+          to_email: 'frederic123.bf@gmail.com',
+          from_name: userInfo.name,
+          from_email: userInfo.email,
+          customer_phone: userInfo.phone || '未記入',
+          course_name: course.title,
+          course_price: course.pricing.price,
+          course_duration: course.pricing.duration,
+          appointment_datetime: appointmentDateTime,
+          customer_message: userInfo.message || '特になし',
+          subject: `【新規予約】${course.title} - ${userInfo.name}様`
+        };
+
+        await emailjs.send(serviceID, templateID, templateParams, publicKey);
+        
+        alert(
+          `✅ 予約リクエストを送信いたしました！\n\n` +
+          `━━━━━━━━━━━━━━━━━━━━━━━\n` +
+          `📋 ご予約内容の確認\n` +
+          `━━━━━━━━━━━━━━━━━━━━━━━\n` +
+          `📚 コース名: ${course.title}\n` +
+          `📅 ご希望日時: ${appointmentDateTime}\n` +
+          `👤 お名前: ${userInfo.name}様\n` +
+          `📧 メールアドレス: ${userInfo.email}\n` +
+          `📱 電話番号: ${userInfo.phone || '未記入'}\n` +
+          `💬 ご要望: ${userInfo.message || '特になし'}\n\n` +
+          `📩 24時間以内に確認メールをお送りいたします。\n` +
+          `ご不明な点がございましたら、お気軽にお問い合わせください。\n\n` +
+          `ありがとうございました！`
+        );
+        
+        resetBooking();
+      } catch (error) {
+        console.error('EmailJS error:', error);
+        alert(
+          `申し訳ございません。送信中にエラーが発生いたしました。\n\n` +
+          `📧 EmailJS の設定が必要です。\n` +
+          `🔧 開発者にお問い合わせいただくか、\n` +
+          `📞 お急ぎの場合は直接お電話にてご連絡ください。\n\n` +
+          `ご不便をおかけして申し訳ございません。`
+        );
+      }
+    }
+  };
+
+  // Reset all booking states
+  const resetBooking = () => {
+    setShowCalendar(false);
+    setShowTimeSlots(false);
+    setShowUserForm(false);
+    setSelectedDate(null);
+    setSelectedTime(null);
+    setUserInfo({ name: '', email: '', phone: '', message: '' });
+  };
+
+  // Handle main booking button click
+  const handleBookingButtonClick = () => {
+    if (selectedDate && selectedTime && userInfo.name) {
+      // Reset if booking is complete
+      resetBooking();
+    } else {
+      // Start booking process
+      setShowCalendar(true);
+    }
+  };
+
+  // Get button text based on current state
+  const getButtonText = () => {
+    if (selectedDate && selectedTime && userInfo.name) {
+      return '予約をリセット';
+    } else {
+      return '日程調整する';
     }
   };
 
@@ -40,21 +160,21 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
                   key={index}
                   className={`px-3 py-1 ${
                     tag === "月額" ? "bg-gray-400" : "bg-blue-400"
-                  } text-white font-bold text-sm `}
+                  } text-white font-bold text-sm`}
                 >
                   <span>{tag}</span>
                 </div>
               ))}
             </div>
             {/* Pricing */}
-            <div className="md:flex justify-center items-center grid gap-4 md:text-lg text-sm font-bold text-blue-600 ">
+            <div className="md:flex justify-center items-center grid gap-4 md:text-lg text-sm font-bold text-blue-600">
               <span>🕐{course.pricing.duration}</span>
               <span>{course.pricing.price}</span>
             </div>
           </div>
 
           {/* Course title */}
-          <h3 className=" font-bold text-black">{course.title}</h3>
+          <h3 className="font-bold text-black">{course.title}</h3>
 
           <div className="flex gap-8 items-center">
             <Image
@@ -92,45 +212,178 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
             <span>お試し無料体験を<br />申し込む</span>
           </button>
           <button 
-            className="w-full cursor-pointer hover:shadow-lg bg-white bg-gradient-to-b from-white via-blue-300 to-blue-500 text-blue-900 border border-blue-500 py-3 px-4 rounded-lg transition-colors flex items-center gap-10"
-            onClick={() => {
-              console.log('Button clicked, showCalendar will be:', !showCalendar);
-              setShowCalendar(!showCalendar);
-            }}
+            className="w-full cursor-pointer hover:shadow-lg bg-white bg-gradient-to-b from-white via-blue-300 to-blue-500 text-blue-900 border border-blue-500 py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-4"
+            onClick={handleBookingButtonClick}
           >
             <span>+</span>
-            <span>日程調整する {showCalendar ? '(開)' : '(閉)'}</span>
+            <span className="">{getButtonText()}</span>
           </button>
         </div>
 
-        {/* Calendar Modal */}
+        {/* Step 1: Calendar Modal */}
         {showCalendar && (
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-red-500 rounded-lg shadow-2xl z-[9999] p-4 w-96 max-w-[90vw]">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="font-bold text-gray-800">日程を選択してください</h3>
-              <button
-                onClick={() => {
-                  console.log('Closing calendar');
-                  setShowCalendar(false);
-                }}
-                className="text-gray-500 hover:text-gray-700 text-xl font-bold"
-              >
-                ×
-              </button>
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]">
+            <div className="bg-white rounded-lg shadow-2xl p-6 w-96 max-w-[90vw]">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="font-bold text-gray-800">📅 STEP 1: 日程を選択</h3>
+                <button
+                  onClick={() => setShowCalendar(false)}
+                  className="text-gray-500 hover:text-gray-700 text-xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              <Calendar
+                onChange={handleDateChange}
+                value={selectedDate}
+                minDate={new Date()}
+                className="w-full text-black"
+                locale="ja-JP"
+              />
+              <p className="mt-3 text-sm text-gray-600">
+                ご希望の日付をクリックしてください
+              </p>
             </div>
-            <Calendar
-              onChange={handleDateChange}
-              value={selectedDate}
-              minDate={new Date()}
-              className="w-full text-black"
-              locale="ja-JP"
-            />
-            <div className="mt-2 text-sm text-gray-600">
-              Calendar state: {showCalendar ? 'Open' : 'Closed'}
+          </div>
+        )}
+
+        {/* Step 2: Time Slots Modal */}
+        {showTimeSlots && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]">
+            <div className="bg-white rounded-lg shadow-2xl p-6 w-96 max-w-[90vw] max-h-[80vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="font-bold text-gray-800">
+                  ⏰ STEP 2: 時間を選択
+                </h3>
+                <button
+                  onClick={() => {
+                    setShowTimeSlots(false);
+                    setShowCalendar(true);
+                  }}
+                  className="text-gray-500 hover:text-gray-700 text-xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              <p className="text-sm text-gray-600 mb-4">
+                選択日: {selectedDate?.toLocaleDateString('ja-JP', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                  weekday: 'long'
+                })}
+              </p>
+              <div className="grid grid-cols-3 gap-2">
+                {timeSlots.map((time) => (
+                  <button
+                    key={time}
+                    onClick={() => handleTimeSelection(time)}
+                    className="p-2 text-sm text-black border rounded hover:bg-blue-50 hover:border-blue-500"
+                  >
+                    {time}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Step 3: User Information Form Modal */}
+        {showUserForm && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]">
+            <div className="bg-white rounded-lg shadow-2xl p-6 w-96 max-w-[90vw] max-h-[80vh] overflow-y-auto">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="font-bold text-gray-800">👤 STEP 3: お客様情報</h3>
+                <button
+                  onClick={() => {
+                    setShowUserForm(false);
+                    setShowTimeSlots(true);
+                  }}
+                  className="text-gray-500 hover:text-gray-700 text-xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="mb-4 p-3 bg-blue-50 rounded">
+                <p className="text-sm font-semibold text-blue-800">予約内容</p>
+                <p className="text-xs text-blue-600">
+                  {course.title}<br/>
+                  {selectedDate?.toLocaleDateString('ja-JP', {
+                    year: 'numeric',
+                    month: 'long', 
+                    day: 'numeric',
+                    weekday: 'long'
+                  })} {selectedTime}
+                </p>
+              </div>
+
+              <form className="space-y-4 text-black">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    お名前 <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={userInfo.name}
+                    onChange={(e) => setUserInfo({...userInfo, name: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+                    placeholder="田中太郎"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    メールアドレス <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    value={userInfo.email}
+                    onChange={(e) => setUserInfo({...userInfo, email: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+                    placeholder="example@email.com"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    電話番号
+                  </label>
+                  <input
+                    type="tel"
+                    value={userInfo.phone}
+                    onChange={(e) => setUserInfo({...userInfo, phone: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+                    placeholder="090-1234-5678"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    メッセージ・ご要望
+                  </label>
+                  <textarea
+                    value={userInfo.message}
+                    onChange={(e) => setUserInfo({...userInfo, message: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none"
+                    rows={3}
+                    placeholder="ご質問やご要望があればお書きください"
+                  />
+                </div>
+                
+                <button
+                  type="button"
+                  onClick={handleBookingSubmit}
+                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+                >
+                  予約リクエストを送信
+                </button>
+              </form>
             </div>
           </div>
         )}
       </div>
+            
     </div>
   );
 };
