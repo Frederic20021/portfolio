@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { serviceTypes } from '../../constants/services';
+import { serviceTypes } from "../../constants/services";
 import ForeignFlow from "./ForeignFlow";
 
 export default function Foreign() {
-  
+
   return (
     <div>
       {/* Detailed Service 1 Section */}
@@ -15,9 +15,14 @@ export default function Foreign() {
 
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             {serviceTypes.map((serviceType) => (
-              <div key={serviceType.id} className="bg-white p-8 rounded-2xl shadow-lg">
+              <div
+                key={serviceType.id}
+                className="bg-white p-8 rounded-2xl shadow-lg"
+              >
                 <div className="text-center mb-6">
-                  <h3 className={`text-2xl font-bold mb-2 ${serviceType.titleColor}`}>
+                  <h3
+                    className={`text-2xl font-bold mb-2 ${serviceType.titleColor}`}
+                  >
                     {serviceType.title}
                   </h3>
                   <Image
@@ -34,13 +39,15 @@ export default function Foreign() {
                 </p>
 
                 <div className="space-y-4">
-                  <h4 className={`font-bold text-lg ${serviceType.headerColor}`}>
+                  <h4
+                    className={`font-bold text-lg ${serviceType.headerColor}`}
+                  >
                     {serviceType.fieldsTitle}
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
                     {serviceType.fields.map((field, index) => (
-                      <span 
-                        key={index} 
+                      <span
+                        key={index}
                         className={`${serviceType.bgColor} ${serviceType.textColor} px-2 sm:px-3 py-1 rounded text-center break-words`}
                       >
                         {field}
@@ -50,7 +57,9 @@ export default function Foreign() {
                 </div>
 
                 <div className="mt-6 space-y-3">
-                  <h4 className={`font-bold text-lg ${serviceType.headerColor}`}>
+                  <h4
+                    className={`font-bold text-lg ${serviceType.headerColor}`}
+                  >
                     {serviceType.servicesTitle}
                   </h4>
                   <ul className="space-y-2 text-sm text-gray-700">
@@ -66,30 +75,87 @@ export default function Foreign() {
             ))}
           </div>
 
-            <ForeignFlow />
-          
-        </div>
-        {/* Support Section */}
-        <div className="py-20 px-6 text-black bg-white text-center">
-          <h2 className="text-3xl font-semibold mb-12">サポート体制</h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="p-6 bg-gray-50 rounded-xl shadow">
-              <div className="text-4xl mb-2">📝</div>
-              <p>書類翻訳 & 在留資格サポート</p>
+          {/* Support Section */}
+          <div className="py-20 px-6 text-black bg-white">
+            <h2 className="text-3xl font-semibold mb-12 text-center">サポート体制</h2>
+            
+            <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto mb-12">
+              {/* Support 1: Document Translation & Visa Support */}
+              <div className="bg-gray-50 rounded-xl shadow-lg p-8">
+                <div className="flex items-center mb-6">
+                  <div className="bg-blue-100 rounded-full p-4 mr-4">
+                    <div className="text-4xl">📝</div>
+                  </div>
+                  <h3 className="text-xl font-bold text-blue-600">書類翻訳 & 在留資格サポート</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  外国人材の在留資格申請に必要な各種書類の翻訳から申請手続きまで、専門スタッフがトータルサポートいたします。
+                </p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• 在留資格認定証明書交付申請</li>
+                  <li>• 在留資格変更・更新申請</li>
+                  <li>• 各種証明書類の翻訳（日本語⇔外国語）</li>
+                  <li>• 入管局との連絡・調整業務</li>
+                  <li>• 申請状況の進捗管理・報告</li>
+                </ul>
+              </div>
+
+              {/* Support 2: Business Manners & Training */}
+              <div className="bg-gray-50 rounded-xl shadow-lg p-8">
+                <div className="flex items-center mb-6">
+                  <div className="bg-green-100 rounded-full p-4 mr-4">
+                    <div className="text-4xl">🎓</div>
+                  </div>
+                  <h3 className="text-xl font-bold text-green-600">ビジネスマナー & 研修</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  日本の職場環境に円滑に適応できるよう、ビジネスマナーから実践的な業務スキルまで包括的な研修を提供します。
+                </p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• 日本のビジネスマナー・慣習指導</li>
+                  <li>• 職場でのコミュニケーション研修</li>
+                  <li>• 業務別専門スキル向上トレーニング</li>
+                  <li>• 安全衛生教育・法令遵守指導</li>
+                  <li>• 定期的なフォローアップ研修</li>
+                </ul>
+              </div>
+
+              {/* Support 3: Interpretation & Continuous Follow-up */}
+              <div className="bg-gray-50 rounded-xl shadow-lg p-8">
+                <div className="flex items-center mb-6">
+                  <div className="bg-orange-100 rounded-full p-4 mr-4">
+                    <div className="text-4xl">🗣️</div>
+                  </div>
+                  <h3 className="text-xl font-bold text-orange-600">通訳・継続フォロー</h3>
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  言語の壁を解消し、外国人材が安心して働ける環境を整備。入社後の定着まで継続的にサポートいたします。
+                </p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• 職場での通訳・翻訳サービス</li>
+                  <li>• 企業・外国人材間の橋渡し役</li>
+                  <li>• 生活面での相談・アドバイス</li>
+                  <li>• トラブル発生時の迅速な対応</li>
+                  <li>• 定期的な面談・状況確認</li>
+                </ul>
+              </div>
             </div>
-            <div className="p-6 bg-gray-50 rounded-xl shadow">
-              <div className="text-4xl mb-2">🎓</div>
-              <p>ビジネスマナー & 研修</p>
-            </div>
-            <div className="p-6 bg-gray-50 rounded-xl shadow">
-              <div className="text-4xl mb-2">🗣️</div>
-              <p>通訳・継続フォロー</p>
+
+            <div className="text-center max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold mb-6 text-gray-800">総合的なサポートシステム</h3>
+              <p className="text-lg leading-relaxed text-gray-700 mb-6">
+                単なる「人材紹介」にとどまらず、企業様の人材育成課題にも寄り添いながら、外国人材の定着と長期的な雇用を実現します。
+                経験豊富な専門スタッフが、採用前の準備段階から入社後の定着支援まで、一貫してサポートいたします。
+              </p>
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <p className="text-xl font-semibold text-blue-800">
+                  「採用から定着まで」— 信頼されるパートナーとして、全力でサポートいたします。
+                </p>
+              </div>
             </div>
           </div>
-          <p className="mt-8 text-lg">
-            「採用から定着まで」—
-            信頼されるパートナーとして、全力でサポートいたします。
-          </p>
+
+          <ForeignFlow />
         </div>
       </section>
     </div>
