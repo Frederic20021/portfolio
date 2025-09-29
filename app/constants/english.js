@@ -101,7 +101,7 @@ export const courses = [
     title: "【TOEIC対策】目指せ700点オーバー!",
     image: "/english/course6.jpg",
     description:
-      "700点あれば英語が武器とも言えるレベルで、海外駐在も狙えます！",
+      "すでに受験したが点数が伸び悩んでいる方、ぜひこの講座を受講して700点オーバーを目指しましょう！700点あれば英語が武器とも言えるレベルで、海外駐在も狙えます！",
     features: {
       interview: "あり",
       freeTrial: "あり",

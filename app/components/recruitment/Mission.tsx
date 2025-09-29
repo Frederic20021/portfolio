@@ -51,7 +51,7 @@ export default function Mission() {
           人材不足の<span className="text-blue-500">解決</span>と国際競争力の<span className="text-blue-500">向上</span>
         </h2>
         <div className={`relative z-10 text-lg sm:text-xl lg:text-2xl font-bold mb-6 px-4 text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: isVisible ? '1.5s' : '0s' }}>
-          これが私たちの使命です。
+          これが私たちのミッションです。
         </div>
         <p className={`relative z-10 max-w-3xl font-semibold mx-auto indent-4 text-justify leading-relaxed px-4 text-sm sm:text-base break-words ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: isVisible ? '3.5s' : '0s' }}>
           日本が直面する深刻な労働力不足という社会課題に立ち向かい、優秀な外国人材と日本企業を結びつけることで、
