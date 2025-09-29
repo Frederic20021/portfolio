@@ -18,7 +18,7 @@ const philosophyItems = [
 
 export default function PhilosophySection() {
   return (
-    <section className="py-8 bg-gray-50">
+    <section className="py-8 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="md:text-[40px] text-2xl font-bold text-center text-blue-900 my-6">
           企業理念

@@ -1,6 +1,6 @@
 import HeroSection from './components/sections/hero'
 import PhilosophySection from './components/sections/philosophy'
-import ServicesSection from './components/sections/services'
+import Services from './components/sections/services'
 import { heroText }from './constants/heroText'
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <div className="min-h-screen">
       <HeroSection heroText={heroText} />
       <PhilosophySection />
-      <ServicesSection />
+      <Services />
     </div>
   );
 }

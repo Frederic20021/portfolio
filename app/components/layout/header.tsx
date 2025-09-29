@@ -43,9 +43,9 @@ useEffect(() => {
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-4 sm:p-6">
         <div className="flex items-center justify-between h-full">
-          <Link className="md:text-2xl text-sm font-bold" href="/">
+          <Link className="text-xs sm:text-sm md:text-2xl font-bold break-words max-w-[60%] sm:max-w-none" href="/">
             エンパワー&リンク株式会社
           </Link>
           
