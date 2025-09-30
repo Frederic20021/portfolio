@@ -55,7 +55,7 @@ export default function Mission() {
         </div>
         <p className={`relative z-10 max-w-3xl font-semibold mx-auto indent-4 text-justify leading-relaxed px-4 text-sm sm:text-base break-words ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: isVisible ? '3.5s' : '0s' }}>
           日本が直面する深刻な労働力不足という社会課題に立ち向かい、優秀な外国人材と日本企業を結びつけることで、
-          持続可能な経済成長を支援します。同時に、グローバルな視野を持つ日本人材には海外での活躍機会を提供し、
+          持続可能な経済成長に寄与します。同時に、グローバルな視野を持つ日本人材には海外での活躍機会を提供し、
           双方向の人材交流を通じて、より豊かで多様性に満ちた日本社会の実現を目指しています。
         </p>
       </section>

@@ -18,7 +18,7 @@ export default function MainService() {
               }`}
               style={{ animationDelay: `${index * 0.3}s` }}
             >
-              <h3 className="text-2xl flex items-center font-semibold mb-4">
+              <h3 className="text-2xl flex whitespace-pre items-center font-semibold mb-4">
                 {service.title}
                 <span className="text-4xl ml-2">{service.emoji}</span>
               </h3>

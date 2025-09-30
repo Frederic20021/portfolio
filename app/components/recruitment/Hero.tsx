@@ -16,10 +16,10 @@ export default function Hero() {
         <div className="relative font-bold z-10 max-w-4xl mx-auto px-4">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl mb-4 drop-shadow-lg break-words">
             世界と日本を繋ぐ、
-            <span className="font-bold text-blue-800">人材ブリッジ</span>
+            <span className="font-bold text-blue-800">人材の架け橋</span>
           </h1>
           <p className="text-lg sm:text-xl max-w-2xl mx-auto drop-shadow-md break-words">
-            多様な人材と企業を結びつけ、国際社会での活躍を支援します。
+            多様な人材と企業を結びつけ、日本社会の活性化に寄与します。
           </p>
         </div>
       </section>

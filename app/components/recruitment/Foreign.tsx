@@ -10,7 +10,7 @@ export default function Foreign() {
       <section className="py-16 px-6 bg-gray-50" id="service1">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 text-blue-600">
-            外国人材と日本企業のマッチング詳細
+            外国人材採用・雇用支援サービス詳細
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 mb-16">
@@ -89,14 +89,14 @@ export default function Foreign() {
                   <h3 className="text-xl font-bold text-blue-600">書類翻訳 & 在留資格サポート</h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  外国人材の在留資格申請に必要な各種書類の翻訳から申請手続きまで、専門スタッフがトータルサポートいたします。
+                  外国人材採用に必要な各種書類の翻訳から申請手続きまで、専門の行政書士と連携し、企業様の負担を軽減いたします。
                 </p>
                 <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• 在留資格認定証明書交付申請</li>
-                  <li>• 在留資格変更・更新申請</li>
-                  <li>• 各種証明書類の翻訳（日本語⇔外国語）</li>
-                  <li>• 入管局との連絡・調整業務</li>
-                  <li>• 申請状況の進捗管理・報告</li>
+                  <li>• 在留資格認定証明書交付申請代行</li>
+                  <li>• 在留資格変更・更新申請代行</li>
+                  <li>• 各種証明書類の翻訳サービス（日本語⇔外国語）</li>
+                  <li>• 入管局との連絡・調整業務代行</li>
+                  <li>• 申請状況の進捗管理・企業様への報告</li>
                 </ul>
               </div>
 
@@ -106,17 +106,21 @@ export default function Foreign() {
                   <div className="bg-green-100 rounded-full p-4 mr-4">
                     <div className="text-4xl">🎓</div>
                   </div>
-                  <h3 className="text-xl font-bold text-green-600">ビジネスマナー & 研修</h3>
+                  <h3 className="text-xl font-bold text-green-600">ビジネスマナー＆研修</h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  日本の職場環境に円滑に適応できるよう、ビジネスマナーから実践的な業務スキルまで包括的な研修を提供します。
+                  特定技能の人材向けに、各国人材・職種に合った登録支援機関と連携して、法定の義務的支援のサービスを提供します。
                 </p>
                 <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• 日本のビジネスマナー・慣習指導</li>
-                  <li>• 職場でのコミュニケーション研修</li>
-                  <li>• 業務別専門スキル向上トレーニング</li>
-                  <li>• 安全衛生教育・法令遵守指導</li>
-                  <li>• 定期的なフォローアップ研修</li>
+                  <li>• 事前ガイダンス（労働条件・生活ルール等の説明）</li>
+                  <li>• 出入国する際の送迎</li>
+                  <li>• 住居確保・生活に必要な契約支援</li>
+                  <li>• 生活オリエンテーション（日本での生活一般に関する案内）</li>
+                  <li>• 公的手続き等への同行</li>
+                  <li>• 日本語学習の機会の提供</li>
+                  <li>• 相談・苦情への対応</li>
+                  <li>• 転職支援（人員整理等の場合）</li>
+                  <li>• 定期的な面談・在留状況の確認</li>
                 </ul>
               </div>
 
@@ -129,27 +133,27 @@ export default function Foreign() {
                   <h3 className="text-xl font-bold text-orange-600">通訳・継続フォロー</h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  言語の壁を解消し、外国人材が安心して働ける環境を整備。入社後の定着まで継続的にサポートいたします。
+                  言語の壁を解消し、企業様と外国人材の円滑なコミュニケーションをサポート。採用後の定着率向上に貢献いたします。
                 </p>
                 <ul className="text-sm text-gray-600 space-y-2">
                   <li>• 職場での通訳・翻訳サービス</li>
-                  <li>• 企業・外国人材間の橋渡し役</li>
-                  <li>• 生活面での相談・アドバイス</li>
-                  <li>• トラブル発生時の迅速な対応</li>
-                  <li>• 定期的な面談・状況確認</li>
+                  <li>• 企業様・外国人材間のコミュニケーション支援</li>
+                  <li>• 生活面での相談・アドバイス提供</li>
+                  <li>• トラブル発生時の迅速な対応・仲裁</li>
+                  <li>• 定期的な面談・状況確認レポート</li>
                 </ul>
               </div>
             </div>
 
             <div className="text-center max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold mb-6 text-gray-800">総合的なサポートシステム</h3>
+              <h3 className="text-2xl font-bold mb-6 text-gray-800">企業様向け総合サポートシステム</h3>
               <p className="text-lg leading-relaxed text-gray-700 mb-6">
-                単なる「人材紹介」にとどまらず、企業様の人材育成課題にも寄り添いながら、外国人材の定着と長期的な雇用を実現します。
-                経験豊富な専門スタッフが、採用前の準備段階から入社後の定着支援まで、一貫してサポートいたします。
+                単なる「人材紹介」にとどまらず、企業様の人材採用・育成課題に寄り添いながら、外国人材の定着と長期雇用を実現します。
+                経験豊富な専門スタッフが、採用検討段階から入社後の定着支援まで、企業様を一貫してサポートいたします。
               </p>
               <div className="bg-blue-50 p-6 rounded-lg">
                 <p className="text-xl font-semibold text-blue-800">
-                  「採用から定着まで」— 信頼されるパートナーとして、全力でサポートいたします。
+                  「採用から定着まで」— 企業様の信頼されるパートナーとして、全力でサポートいたします。
                 </p>
               </div>
             </div>
