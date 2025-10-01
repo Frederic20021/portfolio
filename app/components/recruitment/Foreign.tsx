@@ -89,7 +89,7 @@ export default function Foreign() {
                   <h3 className="text-xl font-bold text-blue-600">書類翻訳 & 在留資格サポート</h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  外国人材採用に必要な各種書類の翻訳から申請手続きまで、専門の行政書士と連携し、企業様の負担を軽減いたします。
+                  外国人材採用に必要な各種書類の翻訳から申請手続きまで、専門の行政書士と連携し、トータルサポートします。
                 </p>
                 <ul className="text-sm text-gray-600 space-y-2">
                   <li>• 在留資格認定証明書交付申請代行</li>
@@ -106,7 +106,7 @@ export default function Foreign() {
                   <div className="bg-green-100 rounded-full p-4 mr-4">
                     <div className="text-4xl">🎓</div>
                   </div>
-                  <h3 className="text-xl font-bold text-green-600">ビジネスマナー＆研修</h3>
+                  <h3 className="text-xl font-bold text-green-600">ビジネス研修＆生活サポート</h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   特定技能の人材向けに、各国人材・職種に合った登録支援機関と連携して、法定の義務的支援のサービスを提供します。
@@ -115,11 +115,8 @@ export default function Foreign() {
                   <li>• 事前ガイダンス（労働条件・生活ルール等の説明）</li>
                   <li>• 出入国する際の送迎</li>
                   <li>• 住居確保・生活に必要な契約支援</li>
-                  <li>• 生活オリエンテーション（日本での生活一般に関する案内）</li>
                   <li>• 公的手続き等への同行</li>
                   <li>• 日本語学習の機会の提供</li>
-                  <li>• 相談・苦情への対応</li>
-                  <li>• 転職支援（人員整理等の場合）</li>
                   <li>• 定期的な面談・在留状況の確認</li>
                 </ul>
               </div>
@@ -148,8 +145,8 @@ export default function Foreign() {
             <div className="text-center max-w-4xl mx-auto">
               <h3 className="text-2xl font-bold mb-6 text-gray-800">企業様向け総合サポートシステム</h3>
               <p className="text-lg leading-relaxed text-gray-700 mb-6">
-                単なる「人材紹介」にとどまらず、企業様の人材採用・育成課題に寄り添いながら、外国人材の定着と長期雇用を実現します。
-                経験豊富な専門スタッフが、採用検討段階から入社後の定着支援まで、企業様を一貫してサポートいたします。
+                単なる「人材紹介」にとどまらず、企業様の採用課題に寄り添いながら、外国人材の定着と長期雇用を実現します。
+                経験豊富な専門スタッフが、採用検討段階から入社後の定着支援まで、一貫してサポートいたします。
               </p>
               <div className="bg-blue-50 p-6 rounded-lg">
                 <p className="text-xl font-semibold text-blue-800">

@@ -43,7 +43,7 @@ export default function ForeignFlow() {
         {/* Success Process Flow */}
           <div className="bg-white text-black rounded-2xl shadow-lg p-8">
             <h3 className="text-2xl font-bold text-center mb-8 text-gray-800">
-              職業定着までの流れ
+              人材定着までの流れ
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
               {flowSteps.map((step) => (
