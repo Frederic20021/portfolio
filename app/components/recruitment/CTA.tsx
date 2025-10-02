@@ -11,7 +11,7 @@ export default function CTA() {
         <p className="mb-8 max-w-2xl mx-auto">
           あなたの未来を共に創り上げましょう。
         </p>
-        <Link href="/contact" className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold shadow hover:bg-gray-100">
+        <Link href="https://empowerandlink.com/contact/" className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold shadow hover:bg-gray-100">
           お問い合わせはこちら
         </Link>
       </section>
