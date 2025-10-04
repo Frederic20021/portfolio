@@ -10,7 +10,7 @@ export default function Pitch() {
   return (
     <>
       <div className="">
-        <div className="bg-[#589EEE] h-[90px]"></div>
+        <div className="bg-[#589EEE] h-[120px]"></div>
 
         {image.map((img, index) => (
           <Image
