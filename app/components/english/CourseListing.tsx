@@ -145,7 +145,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
   };
 
   return (
-    <div className="grid md:flex bg-white justify-between mx-auto shadow-lg overflow-hidden mb-6">
+    <div className="grid md:flex justify-center bg-white md:justify-between md:mx-auto md:max-w-[1000px] shadow-lg overflow-hidden mb-6">
       <div className="flex">
         {/* Blue accent bar */}
         <div className="w-16 max-md:hidden bg-blue-600"></div>
@@ -184,7 +184,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
               height={150}
               className="object-cover"
             />
-            <div className="grid md:max-w-[500px] max-w-[150px]">
+            <div className="grid md:max-w-[500px] max-w-[250px]">
               {/* Description */}
               <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                 {course.description}
@@ -202,7 +202,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
       </div>
 
       {/* Right side - Pricing and actions */}
-      <div className="w-80 p-6 flex flex-col bg-[#EDF6FF] justify-center relative">
+      <div className="mx-auto w-80 p-6 flex flex-col bg-[#EDF6FF] justify-center relative">
         {/* Action buttons */}
         <div className="space-y-3 font-bold">
           <button 
