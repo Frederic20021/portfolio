@@ -2,11 +2,8 @@ import Image from "next/image";
 import { getAssetPath } from "../../utils/paths";
 
 const image = [
-  "/english/english.jpg",
   "/english/english1.jpg",
   "/english/english2.jpg",
-  "/english/english3.jpg",
-  "/english/english4.jpg",
 ];
 
 export default function Pitch() {
