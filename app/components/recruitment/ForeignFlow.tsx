@@ -41,17 +41,17 @@ export default function ForeignFlow() {
     return (
         <>
         {/* Success Process Flow */}
-          <div className="bg-white text-black rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-center mb-8 text-gray-800">
+          <div className="bg-white text-black rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mb-6 sm:mb-8 text-gray-800">
               人材定着までの流れ
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
               {flowSteps.map((step) => (
                 <div key={step.id} className="text-center">
-                  <div className={`${step.bgColor} rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-3`}>
-                  <h4 className="font-bold text-sm mb-2">STEP {step.id}</h4>
+                  <div className={`${step.bgColor} rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-3`}>
+                  <h4 className="font-bold text-xs sm:text-sm">STEP {step.id}</h4>
                   </div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-xs sm:text-sm break-words leading-tight">
                     {step.description.includes('・') ? (
                       <>
                         {step.description.split('・')[0]}・

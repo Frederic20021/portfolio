@@ -8,23 +8,22 @@ export default function Hero() {
         style={{
           backgroundImage: `url(${getAssetPath("/recruitment/Hero.jpg")})`,
         }}
-        className="relative max-sm:pt-[100px] text-white py-10 px-6 h-[400px] grid items-center bg-cover bg-center"
+        className="relative text-white py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] flex items-center bg-cover bg-center"
       >
         {/* Background overlay for opacity */}
         <div className="absolute inset-0 bg-black opacity-40"></div>
 
-        <div className="relative font-bold z-10 max-w-4xl mx-auto px-4">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl mb-4 drop-shadow-lg break-words">
+        <div className="relative font-bold z-10 w-full max-w-4xl mx-auto text-center sm:text-left">
+          <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-3 sm:mb-4 md:mb-6 drop-shadow-lg break-words leading-tight">
             世界と日本を繋ぐ、
-            <span className="font-bold text-blue-800">人材の架け橋</span>
+            <br className="block sm:hidden" />
+            <span className="font-bold text-blue-400 sm:text-blue-800">人材の架け橋</span>
           </h1>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto drop-shadow-md break-words">
+          <p className="text-sm sm:text-lg md:text-xl lg:text-2xl max-w-full sm:max-w-2xl mx-auto sm:mx-0 drop-shadow-md break-words leading-relaxed">
             多様な人材と企業を結びつけ、日本社会の活性化に寄与します。
           </p>
         </div>
       </section>
-
-      
     </div>
   );
 }
