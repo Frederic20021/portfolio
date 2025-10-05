@@ -13,7 +13,7 @@ export default function Hero() {
         {/* Background overlay for opacity */}
         <div className="absolute inset-0 bg-black opacity-40"></div>
 
-        <div className="relative font-bold z-10 w-full max-w-4xl mx-auto text-center">
+        <div className="relative font-bold z-10 w-full max-w-4xl mt-[100px] mx-auto text-center">
           <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl mb-3 sm:mb-4 md:mb-6 drop-shadow-lg break-words leading-tight">
             世界と日本を繋ぐ、
             <br className="block sm:hidden" />
