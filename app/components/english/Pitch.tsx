@@ -9,7 +9,6 @@ const image = [
 export default function Pitch() {
   return (
     <>
-      <div className="">
         <div className="bg-[#589EEE] h-[120px]"></div>
 
         {image.map((img, index) => (
@@ -22,7 +21,6 @@ export default function Pitch() {
             className="object-cover w-full h-auto"
           />
         ))}
-      </div>
     </>
   );
 }
