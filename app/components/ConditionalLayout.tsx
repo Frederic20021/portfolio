@@ -14,8 +14,12 @@ export default function ConditionalLayout({
   const hideHeaderFooter = pathname.startsWith('/recruitment') || pathname.startsWith('/contact') || pathname.startsWith('/english');
 
   if (hideHeaderFooter) {
-    // Return only children without header/footer for recruitment page
-    return <>{children}</>;
+    // Return only children without header/footer with iframe-optimized wrapper
+    return (
+      <div className="w-full min-h-screen overflow-x-hidden">
+        {children}
+      </div>
+    );
   }
   
   // Return normal layout with header/footer for other pages

@@ -2,7 +2,7 @@ import { getAssetPath } from "@/app/utils/paths";
 
 export default function Hero() {
   return (
-    <div className="font-sans text-gray-800">
+    <div className="font-sans mt-[100px] text-gray-800">
       {/* Hero Section */}
       <section
         style={{
