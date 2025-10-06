@@ -8,7 +8,7 @@ export default function Hero() {
         style={{
           backgroundImage: `url(${getAssetPath("/recruitment/Hero.jpg")})`,
         }}
-        className="relative text-white pt-[600px] sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] flex items-center bg-cover bg-center"
+        className="relative text-white pt-[300px] sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] flex items-center bg-cover bg-center"
       >
         {/* Background overlay for opacity */}
         <div className="absolute inset-0 bg-black opacity-40"></div>
