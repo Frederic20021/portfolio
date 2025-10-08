@@ -13,10 +13,6 @@ export default function ConditionalLayout({
   // Hide header and footer for recruitment and contact pages
   const hideHeaderFooter = pathname.startsWith('/recruitment') || pathname.startsWith('/contact') || pathname.startsWith('/english');
 
-  // Debug logging
-  console.log('Current pathname:', pathname);
-  console.log('Hide header/footer:', hideHeaderFooter);
-
   if (hideHeaderFooter) {
     // Return only children without header/footer with iframe-optimized wrapper
     return (

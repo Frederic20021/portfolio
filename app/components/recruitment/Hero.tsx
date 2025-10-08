@@ -2,7 +2,7 @@ import { getAssetPath } from "@/app/utils/paths";
 
 export default function Hero() {
   return (
-    <div className="font-sans mt-[100px] text-gray-800">
+      <div>
       {/* Hero Section */}
       <section
         style={{
@@ -24,6 +24,7 @@ export default function Hero() {
           </p>
         </div>
       </section>
-    </div>
+
+      </div>
   );
 }
