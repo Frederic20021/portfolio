@@ -9,7 +9,7 @@ const image = [
 export default function Pitch() {
   return (
     <>
-        <div className="bg-[#589EEE] h-[120px]"></div>
+        <div className="bg-[#589EEE] h-[300px]"></div>
 
         {image.map((img, index) => (
           <Image
