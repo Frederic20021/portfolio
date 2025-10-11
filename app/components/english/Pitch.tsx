@@ -9,6 +9,8 @@ const image = [
 export default function Pitch() {
   return (
     <>
+        <div className="bg-[#589EEE] h-[50px]"></div>
+
         {image.map((img, index) => (
           <Image
             key={index}
