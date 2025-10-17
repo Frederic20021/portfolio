@@ -145,7 +145,9 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
   };
 
   return (
-    <div className="grid md:flex justify-center bg-white md:justify-between md:mx-auto md:max-w-[1000px] shadow-lg overflow-hidden mb-6">
+    <div 
+    id="courses"
+    className="grid md:flex justify-center bg-white md:justify-between md:mx-auto md:max-w-[1000px] shadow-lg overflow-hidden mb-6">
       <div className="flex">
         {/* Blue accent bar */}
         <div className="w-16 max-md:hidden bg-blue-600"></div>
@@ -205,12 +207,11 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
       <div className="mx-auto w-80 p-6 flex flex-col bg-[#EDF6FF] justify-center relative">
         {/* Action buttons */}
         <div className="space-y-3 font-bold">
-          <button 
-            className="w-full cursor-pointer bg-gradient-to-br from-blue-500 to-blue-300 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-colors"
-            onClick={() => window.open(course.link, '_blank')}
+          <div 
+            className="w-full text-center bg-gradient-to-br from-blue-500 to-blue-300 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-colors"
           >
             <span>お試し無料体験を<br />申し込む</span>
-          </button>
+          </div>
           <button 
             className="w-full cursor-pointer hover:shadow-lg bg-white bg-gradient-to-b from-white via-blue-300 to-blue-500 text-blue-900 border border-blue-500 py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-4"
             onClick={handleBookingButtonClick}

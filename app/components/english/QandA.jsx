@@ -32,7 +32,7 @@ export default function QandA() {
           {qaData.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200"
+              className="bg-white rounded-lg cursor-pointer shadow-md overflow-hidden border border-gray-200"
             >
               {/* Question header */}
               <button
