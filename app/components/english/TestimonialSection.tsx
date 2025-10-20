@@ -2,50 +2,7 @@
 
 import Image from 'next/image';
 import { getAssetPath } from '../../utils/paths';
-
-// Sample testimonial data based on the image
-const testimonials = [
-  {
-    id: 1,
-    name: '本橋IP法律事務所',
-    title: '教育指導',
-    rating: 5,
-    headline: '自分の苦手な部分を克服することができました',
-    content: 'いつも丁寧な指導をして頂き、有難うございます。先生との授業を通じて自分の苦手な部分を克服することができ、問題演習で間違えた点が、この様に...',
-    course: '【GMARCH対策】高校受験対策コース',
-    avatar: '/hero/avatar1.jpg' // Using existing image as placeholder
-  },
-  {
-    id: 2,
-    name: '高橋社長事務員',
-    title: '教育指導',
-    rating: 5,
-    headline: '実務レベルの英語力が身につきました！',
-    content: 'いつも丁寧な指導をして頂き、有難うございます。先生との授業を通じて自分の苦手な部分を克服することができ、問題演習で間違えた点が、この様に...',
-    course: '【GMARCH対策】高校受験対策コース',
-    avatar: '/hero/avatar2.jpg'
-  },
-  {
-    id: 3,
-    name: '国立大学生',
-    title: '教育指導',
-    rating: 5,
-    headline: '表現方法などもきめて分かりやすかった！',
-    content: 'いつも丁寧な指導をして頂き、有難うございます。先生との授業を通じて自分の苦手な部分を克服することができ、問題演習で間違えた点が、この様に...',
-    course: '【GMARCH対策】高校受験対策コース',
-    avatar: '/hero/avatar3.jpg'
-  },
-  {
-    id: 4,
-    name: '外国IT法務事務員',
-    title: '教育指導',
-    rating: 5,
-    headline: '英語の理解をより深めることができました',
-    content: 'いつも丁寧な指導をして頂き、有難うございます。先生との授業を通じて自分の苦手な部分を克服することができ、問題演習で間違えた点が、この様に...',
-    course: '【GMARCH対策】高校受験対策コース',
-    avatar: '/hero/avatar1.jpg'
-  }
-];
+import { testimonials } from '@/app/constants/english';
 
 // Star rating component
 const StarRating = ({ rating }: { rating: number }) => {
@@ -70,7 +27,7 @@ const StarRating = ({ rating }: { rating: number }) => {
 const TestimonialCard = ({
   testimonial,
 }: {
-  testimonial: (typeof testimonials)[0];
+  testimonial: (typeof testimonials)[number];
 }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 h-full">
@@ -86,9 +43,9 @@ const TestimonialCard = ({
       </div>
 
       {/* Avatar and content */}
-      <div className="flex gap-4 mb-4">
-        <div className="flex-shrink-0 w-[100px]">
-          <div className="grid mx-auto w-16 h-16 rounded-full overflow-hidden bg-blue-100">
+      <div className="md:flex grid gap-4 mb-4">
+        <div className="flex-shrink-0 md:grid md:w-[100px] justify-between">
+          <div className="md:grid flex gap-2 mx-auto max-md:w-16 max-md:h-16 overflow-hidden">
             <Image
               src={getAssetPath(testimonial.avatar)}
               alt={testimonial.name}
@@ -97,21 +54,25 @@ const TestimonialCard = ({
               className="w-full h-full object-cover"
             />
           </div>
-          {/* Name */}
-          <div className="text-center font-bold">
-            <span className="text-xs text-gray-500">{testimonial.name}</span>
-          </div>
+            <span className="text-center font-bold text-xs text-gray-500">
+              {testimonial.name}
+            </span>
+          <div className='grid gap-2'>
+              <span className="bg-gradient-to-r from-blue-400 to-blue-800 text-center p-2 font-bold mt-8 rounded-lg">
+                担当講師
+              </span>
+              <span className="bg-gradient-to-r from-gray-600 to-black text-center p-2 font-bold">
+                {testimonial.responsibleProf}
+              </span>
+            </div>
         </div>
         <div className="flex-1">
-          <h3 className="font-bold text-sm lg:text-xl mb-2 text-gray-800">
+          <h3 className="font-bold text-lg mb-2 text-gray-800">
             {testimonial.headline}
             <span className="ml-2 text-blue-500">›</span>
           </h3>
-          <p className="text-gray-600 text-xs lg:text-lg leading-relaxed mb-3">
+          <p className="text-gray-600 text-sm leading-relaxed mb-3">
             {testimonial.content}
-          </p>
-          <p className="text-blue-500 text-xs lg:text-md font-medium">
-            受けたコース：<span className='text-black font-bold'>{testimonial.course}</span>
           </p>
         </div>
       </div>
@@ -131,7 +92,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Testimonials grid - 1 column on mobile, 2 columns on tablet and above */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 whitespace-pre-line">
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}

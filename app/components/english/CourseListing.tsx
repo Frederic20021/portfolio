@@ -55,6 +55,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
       return;
     }
 
+  
     if (selectedDate && selectedTime) {
       const formattedDate = selectedDate.toLocaleDateString('ja-JP', {
         year: 'numeric',
@@ -68,7 +69,10 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
       try {
         // EmailJS configuration - Replace with your actual values
         
-
+        // Redirect to Stripe payment link
+        const stripePaymentLink = course.stripeLink;
+        window.open(stripePaymentLink, '_blank');
+        
         const templateParams = {
           to_email: 'frederic123.bf@gmail.com',
           from_name: userInfo.name,
@@ -97,8 +101,10 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
           `💬 ご要望: ${userInfo.message || '特になし'}\n\n` +
           `📩 24時間以内に確認メールをお送りいたします。\n` +
           `ご不明な点がございましたら、お気軽にお問い合わせください。\n\n` +
+          `次のページでお支払い手続きにお進みください。\n` +
           `ありがとうございました！`
         );
+        
         
         resetBooking();
       } catch (error) {
@@ -145,9 +151,10 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
   };
 
   return (
-    <div 
-    id="courses"
-    className="grid md:flex justify-center bg-white md:justify-between md:mx-auto md:max-w-[1000px] shadow-lg overflow-hidden mb-6">
+    <div
+      id="courses"
+      className="grid md:flex justify-center bg-white md:justify-between md:mx-auto md:max-w-[1000px] shadow-lg overflow-hidden mb-6"
+    >
       <div className="flex">
         {/* Blue accent bar */}
         <div className="w-16 max-md:hidden bg-blue-600"></div>
@@ -188,15 +195,31 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
             />
             <div className="grid md:max-w-[500px] max-w-[250px]">
               {/* Description */}
-              <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+              <p className="text-gray-600 text-sm leading-relaxed">
                 {course.description}
               </p>
 
-              {/* Features */}
-              <div className="space-y-1 text-sm text-gray-700">
-                <div><span className="text-blue-500">三者面談</span>: {course.features.interview}</div>
-                <div><span className="text-blue-500">無料体験</span>: {course.features.freeTrial}</div>
-                <div><span className="text-blue-500">学年</span>: {course.features.grade}</div>
+              <div className="grid md:flex items-center justify-around">
+                {/* Features */}
+                  <div className="grid text-black gap-2">
+                  <div>
+                    <span className="text-blue-500">三者面談</span>:&nbsp;
+                    {course.features.interview}
+                  </div>
+                  <div>
+                    <span className="text-blue-500">無料体験</span>:&nbsp;
+                    {course.features.freeTrial}
+                  </div>
+
+                  </div>
+                  <div className="gap-2 text-white grid">
+                    <span className="bg-gradient-to-r from-blue-400 to-blue-800 text-center p-2 font-bold mt-8 rounded-lg">
+                      担当講師
+                    </span>
+                    <span className="bg-gradient-to-r from-gray-600 to-black text-center p-2 font-bold">
+                      {course.prof}
+                    </span>
+                  </div>
               </div>
             </div>
           </div>
@@ -207,12 +230,14 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
       <div className="mx-auto w-80 p-6 flex flex-col bg-[#EDF6FF] justify-center relative">
         {/* Action buttons */}
         <div className="space-y-3 font-bold">
-          <div 
-            className="w-full text-center bg-gradient-to-br from-blue-500 to-blue-300 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-colors"
-          >
-            <span>お試し無料体験を<br />申し込む</span>
+          <div className="w-full text-center bg-gradient-to-br from-blue-500 to-blue-300 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-colors">
+            <span>
+              お試し無料体験を
+              <br />
+              申し込む
+            </span>
           </div>
-          <button 
+          <button
             className="w-full cursor-pointer hover:shadow-lg bg-white bg-gradient-to-b from-white via-blue-300 to-blue-500 text-blue-900 border border-blue-500 py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-4"
             onClick={handleBookingButtonClick}
           >
@@ -226,7 +251,9 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]">
             <div className="bg-white rounded-lg shadow-2xl p-6 w-96 max-w-[90vw]">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="font-bold text-gray-800">📅 STEP 1: 日程を選択</h3>
+                <h3 className="font-bold text-gray-800">
+                  📅 STEP 1: 日程を選択
+                </h3>
                 <button
                   onClick={() => setShowCalendar(false)}
                   className="text-gray-500 hover:text-gray-700 text-xl font-bold"
@@ -267,11 +294,12 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
                 </button>
               </div>
               <p className="text-sm text-gray-600 mb-4">
-                選択日: {selectedDate?.toLocaleDateString('ja-JP', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                  weekday: 'long'
+                選択日:{" "}
+                {selectedDate?.toLocaleDateString("ja-JP", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  weekday: "long",
                 })}
               </p>
               <div className="grid grid-cols-3 gap-2">
@@ -294,7 +322,9 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]">
             <div className="bg-white rounded-lg shadow-2xl p-6 w-96 max-w-[90vw] max-h-[80vh] overflow-y-auto">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="font-bold text-gray-800">👤 STEP 3: お客様情報</h3>
+                <h3 className="font-bold text-gray-800">
+                  👤 STEP 3: お客様情報
+                </h3>
                 <button
                   onClick={() => {
                     setShowUserForm(false);
@@ -305,17 +335,19 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
                   ×
                 </button>
               </div>
-              
+
               <div className="mb-4 p-3 bg-blue-50 rounded">
                 <p className="text-sm font-semibold text-blue-800">予約内容</p>
                 <p className="text-xs text-blue-600">
-                  {course.title}<br/>
-                  {selectedDate?.toLocaleDateString('ja-JP', {
-                    year: 'numeric',
-                    month: 'long', 
-                    day: 'numeric',
-                    weekday: 'long'
-                  })} {selectedTime}
+                  {course.title}
+                  <br />
+                  {selectedDate?.toLocaleDateString("ja-JP", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    weekday: "long",
+                  })}{" "}
+                  {selectedTime}
                 </p>
               </div>
 
@@ -327,12 +359,14 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
                   <input
                     type="text"
                     value={userInfo.name}
-                    onChange={(e) => setUserInfo({...userInfo, name: e.target.value})}
+                    onChange={(e) =>
+                      setUserInfo({ ...userInfo, name: e.target.value })
+                    }
                     className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none"
                     placeholder="田中太郎"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     メールアドレス <span className="text-red-500">*</span>
@@ -340,12 +374,14 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
                   <input
                     type="email"
                     value={userInfo.email}
-                    onChange={(e) => setUserInfo({...userInfo, email: e.target.value})}
+                    onChange={(e) =>
+                      setUserInfo({ ...userInfo, email: e.target.value })
+                    }
                     className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none"
                     placeholder="example@email.com"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     電話番号
@@ -353,25 +389,29 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
                   <input
                     type="tel"
                     value={userInfo.phone}
-                    onChange={(e) => setUserInfo({...userInfo, phone: e.target.value})}
+                    onChange={(e) =>
+                      setUserInfo({ ...userInfo, phone: e.target.value })
+                    }
                     className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none"
                     placeholder="090-1234-5678"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     メッセージ・ご要望
                   </label>
                   <textarea
                     value={userInfo.message}
-                    onChange={(e) => setUserInfo({...userInfo, message: e.target.value})}
+                    onChange={(e) =>
+                      setUserInfo({ ...userInfo, message: e.target.value })
+                    }
                     className="w-full p-2 border border-gray-300 rounded focus:border-blue-500 focus:outline-none"
                     rows={3}
                     placeholder="ご質問やご要望があればお書きください"
                   />
                 </div>
-                
+
                 <button
                   type="button"
                   onClick={handleBookingSubmit}
@@ -384,7 +424,6 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
           </div>
         )}
       </div>
-            
     </div>
   );
 };
