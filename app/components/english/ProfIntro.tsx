@@ -1,4 +1,5 @@
 import { ProfInfo } from "@/app/constants/english";
+import { getAssetPath } from "../../utils/paths";
 import Image from "next/image";
 
 export default function ProfIntro() {
@@ -15,7 +16,7 @@ export default function ProfIntro() {
                 {ProfInfo.map((prof) => (
                     <div key={prof.id} className="grid bg-white items-center p-2 md:p-4">
                         <Image 
-                            src={prof.image} 
+                            src={getAssetPath(prof.image)} 
                             alt={prof.name} 
                             width={300}
                             height={300}
