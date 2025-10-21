@@ -67,13 +67,26 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
       const appointmentDateTime = `${formattedDate} ${selectedTime}`;
       
       try {
-        // EmailJS configuration - Replace with your actual values
+        // Show confirmation before redirecting to payment
+        const confirmPayment = confirm(
+          `予約内容をご確認ください\n\n` +
+          `📚 コース名: ${course.title}\n` +
+          `📅 ご希望日時: ${appointmentDateTime}\n` +
+          `👤 お名前: ${userInfo.name}様\n` +
+          `📧 メールアドレス: ${userInfo.email}\n` +
+          `💰 お支払い金額: ${course.pricing.price}\n\n` +
+          `この内容でお支払いページに進みますか？`
+        );
         
-        // Redirect to Stripe payment link
+        if (!confirmPayment) {
+          return;
+        }
+        
+        // First, redirect to Stripe payment
         const stripePaymentLink = course.stripeLink;
-        window.open(stripePaymentLink, '_blank');
         
-        const templateParams = {
+        // Store booking info in sessionStorage to send email after payment
+        const bookingInfo = {
           to_email: 'frederic123.bf@gmail.com',
           from_name: userInfo.name,
           from_email: userInfo.email,
@@ -83,28 +96,28 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
           course_duration: course.pricing.duration,
           appointment_datetime: appointmentDateTime,
           customer_message: userInfo.message || '特になし',
-          subject: `【新規予約】${course.title} - ${userInfo.name}様`
+          subject: `【新規予約・決済完了待ち】${course.title} - ${userInfo.name}様`,
+          timestamp: new Date().toISOString()
+        };
+        
+        sessionStorage.setItem('pendingBooking', JSON.stringify(bookingInfo));
+        
+        // Send initial booking notification (payment pending)
+        const templateParams = {
+          ...bookingInfo,
+          subject: `【新規予約申込】${course.title} - ${userInfo.name}様（決済手続き中）`
         };
 
         await emailjs.send(serviceID, templateID, templateParams, publicKey);
         
+        // Redirect to Stripe payment
         alert(
-          `✅ 予約リクエストを送信いたしました！\n\n` +
-          `━━━━━━━━━━━━━━━━━━━━━━━\n` +
-          `📋 ご予約内容の確認\n` +
-          `━━━━━━━━━━━━━━━━━━━━━━━\n` +
-          `📚 コース名: ${course.title}\n` +
-          `📅 ご希望日時: ${appointmentDateTime}\n` +
-          `👤 お名前: ${userInfo.name}様\n` +
-          `📧 メールアドレス: ${userInfo.email}\n` +
-          `📱 電話番号: ${userInfo.phone || '未記入'}\n` +
-          `💬 ご要望: ${userInfo.message || '特になし'}\n\n` +
-          `📩 24時間以内に確認メールをお送りいたします。\n` +
-          `ご不明な点がございましたら、お気軽にお問い合わせください。\n\n` +
-          `次のページでお支払い手続きにお進みください。\n` +
-          `ありがとうございました！`
+          `✅ 予約情報を受け付けました！\n\n` +
+          `次のページでお支払い手続きを完了してください。\n` +
+          `決済完了後に確認メールをお送りいたします。`
         );
         
+        window.location.href = stripePaymentLink; // Use location.href instead of window.open for better tracking
         
         resetBooking();
       } catch (error) {

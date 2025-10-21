@@ -119,7 +119,7 @@ export const courses = [
     prof: "島田悠次",
     tags: ["教科指導", "短期集中"],
     title: "【海外出張前の短期集中レッスン】3回コース",
-    image: "/english/icourse/business-trip.jpg",
+    image: "/english/course/business-trip.jpg",
     description:
       "海外出張を控えた方向けの短期集中コースです。入国審査・両替からホテルチェックイン、挨拶、ミーティングまで、実際の場面を想定した実践的な練習を行います。",
     features: {
