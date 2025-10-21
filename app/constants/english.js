@@ -90,31 +90,50 @@ export const courses = [
       freeTrial: "あり",
     },
     pricing: {
-      duration: "1回 90分",
-      price: "¥22,000",
+      duration: "1回 60分",
+      price: "¥25,000",// 20,000 x 1.25
     },
-    stripeLink : "https://buy.stripe.com/test_14k14g4fE7yY5Fe6oo",
+    stripeLink : "https://buy.stripe.com/14A00ldpqgCleml1Ra4Ja08",
   },
   {
     id: 6,
     prof: "島田悠次",
-    tags: ["教科指導", "短期集中"],
-    title: "【海外出張前の短期集中レッスン】3回コース",
-    image: "/english/course/business-trip.jpg",
+    tags: ["教科指導", "月額"],
+    title: "【カタカナ英語でOK】3分で話せます！体験レッスン",
+    image: "/english/course/easy.jpg",
     description:
-      "海外出張を控えた方向けの短期集中コースです。入国審査・両替からホテルチェックイン、挨拶、ミーティングまで、実際の場面を想定した実践的な練習を行います。",
+      "カタカナ英語でも大丈夫！短時間で実践的な英会話を体験できるお得な体験レッスンです。海外旅行・出張、インバウンド対応、ビジネス対応の3つのシーンに対応した実践的な英会話を学べます。",
     features: {
       interview: "あり",
       freeTrial: "なし",
     },
     pricing: {
-      duration: "3回コース",
-      price: "¥30,000",
+      duration: "1回 60分",
+      price: "¥1,875",// 1,500 x 1.25
+      originalPrice: "¥10,000",
     },
-    stripeLink : "https://buy.stripe.com/test_14k14g4fE7yY5Fe6oo",
+    stripeLink : "https://buy.stripe.com/14A5kFade3Pz0vv1Ra4Ja09",
   },
   {
     id: 7,
+    prof: "島田悠次",
+    tags: ["教科指導", "短期集中"],
+    title: "【海外出張前の短期集中レッスン】3回コース",
+    image: "/english/icourse/business-trip.jpg",
+    description:
+      "海外出張を控えた方向けの短期集中コースです。入国審査・両替からホテルチェックイン、挨拶、ミーティングまで、実際の場面を想定した実践的な練習を行います。",
+    features: {
+      interview: "なし",
+      freeTrial: "なし",
+    },
+    pricing: {
+      duration: "3回コース",
+      price: "¥37,500",// 30,000 x 1.25   
+    },
+    stripeLink : "https://buy.stripe.com/4gM8wR4SUfyh0vvdzS4Ja0a",
+  },
+  {
+    id: 8,
     prof: "島田悠次",
     tags: ["教科指導", "英会話"],
     title: "【基本英会話習得レッスン】12回コース（3か月）",
@@ -127,12 +146,12 @@ export const courses = [
     },
     pricing: {
       duration: "12回コース（3ヶ月）",
-      price: "¥96,000",
+      price: "¥120,000",// 96000 x 1.25
     },
-    stripeLink : "https://buy.stripe.com/test_14k14g4fE7yY5Fe6oo",
+    stripeLink : "https://buy.stripe.com/00w9AV3OQ0Dn1zz1Ra4Ja0b",
   },
   {
-    id: 8,
+    id: 9,
     prof: "島田悠次",
     tags: ["教科指導", "企業向け"],
     title: "【企業向け英会話レッスン】",
@@ -145,9 +164,9 @@ export const courses = [
     },
     pricing: {
       duration: "1回 60分",
-      price: "¥30,000",
+      price: "¥37,500",//30000 x 1.25
     },
-    stripeLink : "https://buy.stripe.com/test_14k14g4fE7yY5Fe6oo",
+    stripeLink : "https://buy.stripe.com/aFa14p5WY99T5PP53m4Ja0c",
   }
 ];
 
