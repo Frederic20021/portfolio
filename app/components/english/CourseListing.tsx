@@ -243,7 +243,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
                     <span className="bg-gradient-to-r from-blue-400 to-blue-800 text-center p-2 font-bold mt-8 rounded-lg">
                       担当講師
                     </span>
-                    <span className="bg-gradient-to-r from-gray-600 to-black text-center p-2 font-bold">
+                    <span className="bg-gradient-to-r from-gray-600 to-black text-center p-2 font-bold rounded-lg">
                       {course.prof}
                     </span>
                   </div>
