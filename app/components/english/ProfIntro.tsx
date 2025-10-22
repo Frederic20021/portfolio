@@ -12,19 +12,21 @@ export default function ProfIntro() {
                 }}>
                 講師紹介
             </h2>
-            <div className="md:p-4 gap-12 md:gap-24 grid md:grid-cols-2 mx-auto">
+            <div className="md:p-4 gap-12 md:gap-24 grid md:grid-cols-2 mx-auto items-stretch">
                 {ProfInfo.map((prof) => (
-                    <div key={prof.id} className="grid bg-white items-center p-2 md:p-4">
-                        <Image 
-                            src={getAssetPath(prof.image)} 
-                            alt={prof.name} 
-                            width={300}
-                            height={300}
-                            className="mx-auto object-contain rounded-4xl" />
+                    <div key={prof.id} className="flex flex-col bg-white p-2 md:p-4 h-full">
+                        <div className="w-[250px] h-[250px] md:w-[300px] md:h-[300px] mx-auto">
+                            <Image 
+                                src={getAssetPath(prof.image)} 
+                                alt={prof.name} 
+                                width={300}
+                                height={300}
+                                className="w-full h-full object-cover rounded-3xl" />
+                        </div>
                         <div className="bg-amber-400 w-[100px] md:w-[150px] ml-[-15px] text-white">
                             <span className="text-sm md:text-xl text-center" style={{fontFamily: "Yu Gothic"}}>Profile</span>
                         </div>
-                        <div className="grid bg-white gap-2 md:gap-4">
+                        <div className="grid bg-white gap-2 md:gap-4 flex-1">
                             <div style={{fontFamily: "Yu Gothic"}} className="text-base md:text-lg lg:text-xl bg-gradient-to-r from-black to-gray-600 py-1 md:py-2">
                                 <h3 className="font-bold text-2xl text-center text-white">{prof.name}&nbsp;&nbsp;&nbsp;&nbsp;講師</h3>
                                 <p className="font-semibold pl-16 text-white">({prof.kana})</p>
