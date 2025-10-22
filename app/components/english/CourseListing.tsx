@@ -24,6 +24,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Available time slots
   const timeSlots = [
@@ -55,6 +56,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
       return;
     }
 
+    setIsSubmitting(true);
   
     if (selectedDate && selectedTime) {
       const formattedDate = selectedDate.toLocaleDateString('ja-JP', {
@@ -102,22 +104,24 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
         
         sessionStorage.setItem('pendingBooking', JSON.stringify(bookingInfo));
         
-        // Send initial booking notification (payment pending)
-        const templateParams = {
-          ...bookingInfo,
-          subject: `【新規予約申込】${course.title} - ${userInfo.name}様（決済手続き中）`
-        };
-
-        await emailjs.send(serviceID, templateID, templateParams, publicKey);
-        
-        // Redirect to Stripe payment
+        // Redirect to Stripe payment IMMEDIATELY for better UX
         alert(
           `✅ 予約情報を受け付けました！\n\n` +
           `次のページでお支払い手続きを完了してください。\n` +
           `決済完了後に確認メールをお送りいたします。`
         );
         
-        window.location.href = stripePaymentLink; // Use location.href instead of window.open for better tracking
+        window.open(stripePaymentLink, '_blank'); // Opens in new tab
+        
+        // Send initial booking notification (payment pending) - ASYNC after redirect
+        const templateParams = {
+          ...bookingInfo,
+          subject: `【新規予約申込】${course.title} - ${userInfo.name}様（決済手続き中）`
+        };
+
+        // Send email in background without blocking redirect
+        emailjs.send(serviceID, templateID, templateParams, publicKey)
+          .catch(error => console.error('Background email error:', error));
         
         resetBooking();
       } catch (error) {
@@ -129,6 +133,8 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
           `📞 お急ぎの場合は直接お電話にてご連絡ください。\n\n` +
           `ご不便をおかけして申し訳ございません。`
         );
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -141,6 +147,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
     setSelectedDate(null);
     setSelectedTime(null);
     setUserInfo({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(false);
   };
 
   // Handle main booking button click
@@ -435,9 +442,17 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
                 <button
                   type="button"
                   onClick={handleBookingSubmit}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  予約リクエストを送信
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      処理中...
+                    </>
+                  ) : (
+                    '予約リクエストを送信'
+                  )}
                 </button>
               </form>
             </div>
