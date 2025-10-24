@@ -89,7 +89,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
         
         // Store booking info in sessionStorage to send email after payment
         const bookingInfo = {
-          to_email: 'frederic123.bf@gmail.com',
+          to_email: 'h.kadoya@empowerandlink.com',
           from_name: userInfo.name,
           from_email: userInfo.email,
           customer_phone: userInfo.phone || '未記入',
