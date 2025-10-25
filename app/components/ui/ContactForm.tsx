@@ -82,7 +82,7 @@ export default function ContactForm() {
           
           <button 
             type="submit" 
-            className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded mt-4 transition-colors"
+            className="bg-blue-500 hover:bg-blue-600 cursor-pointer text-white p-3 rounded mt-4 transition-colors"
           >
             送信
           </button>
