@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 export default function ProfIntro() {
   const [selectedProf, setSelectedProf] = useState<string | null>(null);
-  const [courseSelected, setCourseSelected] = useState<any[]>([]);
+  const [courseSelected, setCourseSelected] = useState<typeof courses>([]);
 
   // Fix: Calculate courseSelected after selectedProf changes
  useEffect(() => {
@@ -125,13 +125,13 @@ export default function ProfIntro() {
                       {course.title}
                     </h3>
                     <p className="text-gray-600 mb-1">
-                      <span className="font-bold">レベル:</span> {course.level}
+                      <span className="font-bold">種類:</span> {course.payType}
                     </p>
                     <p className="text-gray-600 mb-1">
-                      <span className="font-bold">時間:</span> {course.duration} 分
+                      <span className="font-bold">時間:</span> {course.pricing.duration} 分
                     </p>
                     <p className="text-gray-600">
-                      <span className="font-bold">価格:</span> ¥{course.price}
+                      <span className="font-bold">価格:</span> ¥{course.pricing.price}
                     </p>
                   </a>
                 ))

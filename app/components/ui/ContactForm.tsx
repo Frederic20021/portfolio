@@ -34,8 +34,8 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
         subject: '',
         message: ''
       });
-    } catch (error: any) {
-      console.log('FAILED...', error.text || error);
+    } catch (error) {
+      console.log('FAILED...', error);
       alert('送信に失敗しました。もう一度お試しください。');
     } finally {
       setIsSubmitting(false);
