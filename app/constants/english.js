@@ -5,13 +5,13 @@ export const courses = [
   // You can add more courses here
     id: 1,
     prof: "角谷寛人",
-    tags: ["教科指導", "月額"],
+    tags: ["教科指導"],
+    payType: "月額",
     title: "【英文法】大人の英文法学び直し!コース",
     image: "/english/course/grammar.jpg",
     description:
       "学生時代に学んだ英文法を基礎から学び直したい社会人の方向けのコースです。忘れてしまった文法知識を体系的に復習し、ビジネスや日常会話で使える実践的な英語力を身につけます。",
     features: {
-      interview: "あり",
       freeTrial: "あり",
     },
     pricing: {
@@ -24,13 +24,13 @@ export const courses = [
   {
     id: 2,
     prof: "角谷寛人",
-    tags: ["教科指導", "英検", "月額"],
+    tags: ["教科指導", "英検"],
+    payType: "月額",
     title: "【英検対策】英検２級以上の合格を目指す!",
     image: "/english/course/eiken.jpg",
     description:
       "英検２級、準１級、１級の合格を目指す方向けの対策コースです。近年の英検改定に対応し、CBT型のスピーキングテストや要旨要約問題など、新形式にもしっかり対応した指導を行います。",
     features: {
-      interview: "あり",
       freeTrial: "あり",
     },
     pricing: {
@@ -43,13 +43,13 @@ export const courses = [
   {
     id: 3,
     prof: "角谷寛人",
-    tags: ["教科指導", "英会話", "月額"],
+    tags: ["教科指導", "英会話"],
+    payType: "月額",
     title: "【英会話】ビジネス・日常英会話力を向上!",
     image: "/english/course/speaking.jpg",
     description:
       "実践的な英会話力を身につけたい方向けのコースです。ビジネスシーンや日常生活で使える会話表現を学び、自信を持って英語でコミュニケーションが取れるようになることを目指します。",
     features: {
-      interview: "あり",
       freeTrial: "あり",
     },
     pricing: {
@@ -62,13 +62,13 @@ export const courses = [
   {
     id: 4,
     prof: "角谷寛人",
-    tags: ["教科指導", "TOEIC", "月額"],
+    tags: ["教科指導", "TOEIC"],
+    payType: "月額",
     title: "【TOEIC対策】目指せ700点オーバー!",
     image: "/english/course/toeic.jpg",
     description:
       "TOEIC700点以上を目指す方向けの対策コースです。スコアアップに必要な語彙力、リスニング力、リーディング力を効率的に強化し、キャリアアップや海外駐在のチャンスを掴みましょう！",
     features: {
-      interview: "あり",
       freeTrial: "あり",
     },
     pricing: {
@@ -80,13 +80,13 @@ export const courses = [
 {
     id: 5,
     prof: "SI THU LIN",
-    tags: ["教科指導", "月額"],
+    tags: ["教科指導"],
+    payType: "月額",
     title: "【ビジネス文書の添削】ビジネス文書力向上!",
     image: "/english/course/writing.jpg",
     description:
       "ビジネス文書の添削を通じて、実践的なライティングスキルを向上させるコースです。正確な文法、適切な表現、効果的な構成を学び、ビジネスシーンで通用する文書作成能力を身につけます。",
     features: {
-      interview: "あり",
       freeTrial: "あり",
     },
     pricing: {
@@ -98,13 +98,13 @@ export const courses = [
   {
     id: 6,
     prof: "島田悠次",
-    tags: ["教科指導", "月額"],
+    tags: ["教科指導"],
+    payType: "単発",
     title: "【カタカナ英語でOK】3分で話せます！体験レッスン",
     image: "/english/course/easy.jpg",
     description:
       "カタカナ英語でも大丈夫！短時間で実践的な英会話を体験できるお得な体験レッスンです。海外旅行・出張、インバウンド対応、ビジネス対応の3つのシーンに対応した実践的な英会話を学べます。",
     features: {
-      interview: "あり",
       freeTrial: "なし",
     },
     pricing: {
@@ -118,12 +118,12 @@ export const courses = [
     id: 7,
     prof: "島田悠次",
     tags: ["教科指導", "短期集中"],
+    payType: "単発",
     title: "【海外出張前の短期集中レッスン】3回コース",
     image: "/english/course/business-trip.jpg",
     description:
       "海外出張を控えた方向けの短期集中コースです。入国審査・両替からホテルチェックイン、挨拶、ミーティングまで、実際の場面を想定した実践的な練習を行います。",
     features: {
-      interview: "なし",
       freeTrial: "なし",
     },
     pricing: {
@@ -135,13 +135,13 @@ export const courses = [
   {
     id: 8,
     prof: "島田悠次",
-    tags: ["教科指導", "英会話"],
+    tags: ["英会話"],
+    payType: "単発",
     title: "【基本英会話習得レッスン】12回コース（3か月）",
     image: "/english/course/basic-conversation.jpg",
     description:
       "3ヶ月で基本的な英会話力を身につけるコースです。海外旅行・出張対応、インバウンド対応、ビジネス対応の3つのシーンに対応できる実践的な英会話スキルを習得します。",
     features: {
-      interview: "あり",
       freeTrial: "あり",
     },
     pricing: {
@@ -154,12 +154,12 @@ export const courses = [
     id: 9,
     prof: "島田悠次",
     tags: ["教科指導", "企業向け"],
+    payType: "単発",
     title: "【企業向け英会話レッスン】",
     image: "/english/course/corporate.jpg",
     description:
       "企業様向けのカスタマイズレッスンです。ビジネス対応やインバウンド対応など、企業のニーズに合わせた実践的な英会話指導を行います。",
     features: {
-      interview: "あり",
       freeTrial: "要相談",
     },
     pricing: {

@@ -16,6 +16,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [showTimeSlots, setShowTimeSlots] = useState(false);
   const [showUserForm, setShowUserForm] = useState(false);
+  const [paymentApplication, setPaymentApplication] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [userInfo, setUserInfo] = useState({
@@ -76,8 +77,8 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
           `📅 ご希望日時: ${appointmentDateTime}\n` +
           `👤 お名前: ${userInfo.name}様\n` +
           `📧 メールアドレス: ${userInfo.email}\n` +
-          `💰 お支払い金額: ${course.pricing.price}\n\n` +
-          `この内容でお支払いページに進みますか？`
+          (paymentApplication ? `💰 お支払い金額: ${course.pricing.price}\n\n` +
+          `上記の内容でよろしければ「OK」を押して決済手続きへ進んでください。` : '')
         );
         
         if (!confirmPayment) {
@@ -110,9 +111,11 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
           `次のページでお支払い手続きを完了してください。\n` +
           `決済完了後に確認メールをお送りいたします。`
         );
-        
-        window.open(stripePaymentLink, '_blank'); // Opens in new tab
-        
+
+        if (paymentApplication) {
+          window.open(stripePaymentLink, '_blank'); // Opens in new tab
+        }
+
         // Send initial booking notification (payment pending) - ASYNC after redirect
         const templateParams = {
           ...bookingInfo,
@@ -132,9 +135,11 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
           `🔧 開発者にお問い合わせいただくか、\n` +
           `📞 お急ぎの場合は直接お電話にてご連絡ください。\n\n` +
           `ご不便をおかけして申し訳ございません。`
+
         );
       } finally {
         setIsSubmitting(false);
+        setPaymentApplication(false);
       }
     }
   };
@@ -166,7 +171,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
     if (selectedDate && selectedTime && userInfo.name) {
       return '予約をリセット';
     } else {
-      return '日程調整する';
+      return 'お試し体験を\n日程調整する';
     }
   };
 
@@ -180,25 +185,24 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
         <div className="w-16 max-md:hidden bg-blue-600"></div>
 
         {/* Main content */}
-        <div className="grid py-2 px-6 justify-around gap-2">
+        <div className="grid py-2 px-6 justify-around gap-4">
           {/* Tags */}
           <div className="flex justify-between p-2 my-2 md:gap-4 gap-2 items-center">
-            <div className="flex gap-2 items-center">
+            <div className="grid md:flex gap-2 items-center">
               {course.tags.map((tag, index) => (
                 <div
+                  id={course.id.toString()}
                   key={index}
-                  className={`px-3 py-1 ${
-                    tag === "月額" ? "bg-gray-400" : "bg-blue-400"
-                  } text-white font-bold text-sm`}
+                  className={`px-3 py-1 text-center bg-blue-400 text-white font-bold text-sm`}
                 >
                   <span>{tag}</span>
                 </div>
               ))}
             </div>
             {/* Pricing */}
-            <div className="md:flex justify-center items-center grid gap-4 md:text-lg text-sm font-bold text-blue-600">
+            <div className="md:flex justify-center text-center items-center grid md:gap-4 gap-2 md:text-lg text-sm font-bold text-blue-600">
               <span>🕐{course.pricing.duration}</span>
-              { course.id === 6 ? (
+              {course.id === 6 ? (
                 <>
                   <del>{course.pricing.originalPrice}</del>
                   <span>{course.pricing.price}</span>
@@ -206,13 +210,16 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
               ) : (
                 <span>{course.pricing.price}</span>
               )}
+              <div className="payType">
+                <span>{course.payType}</span>
+              </div>
             </div>
           </div>
 
           {/* Course title */}
           <h3 className="font-bold text-black">{course.title}</h3>
 
-          <div className="flex gap-8 items-center">
+          <div className="grid justify-items-center md:flex gap-8 items-center">
             <Image
               src={getAssetPath(course.image)}
               alt={course.title}
@@ -220,7 +227,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
               height={150}
               className="object-cover"
             />
-            <div className="grid md:max-w-[500px] max-w-[250px]">
+            <div className="grid md:max-w-[500px] gap-4 max-w-[250px]">
               {/* Description */}
               <p className="text-gray-600 text-sm leading-relaxed">
                 {course.description}
@@ -228,25 +235,18 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
 
               <div className="grid md:flex items-center justify-around">
                 {/* Features */}
-                  <div className="grid text-black gap-2">
-                  <div>
-                    <span className="text-blue-500">三者面談</span>:&nbsp;
-                    {course.features.interview}
-                  </div>
-                  <div>
-                    <span className="text-blue-500">無料体験</span>:&nbsp;
-                    {course.features.freeTrial}
-                  </div>
-
-                  </div>
-                  <div className="gap-2 text-white grid">
-                    <span className="bg-gradient-to-r from-blue-400 to-blue-800 text-center p-2 font-bold mt-8 rounded-lg">
-                      担当講師
-                    </span>
-                    <span className="bg-gradient-to-r from-gray-600 to-black text-center p-2 font-bold rounded-lg">
-                      {course.prof}
-                    </span>
-                  </div>
+                <div className="text-black gap-2">
+                  <span className="text-blue-500">無料体験</span>:&nbsp;
+                  {course.features.freeTrial}
+                </div>
+                <div className="gap-2 text-white grid">
+                  <span className="bg-gradient-to-r from-blue-400 to-blue-800 text-center p-2 font-bold rounded-lg">
+                    担当講師
+                  </span>
+                  <span className="bg-gradient-to-r from-gray-600 to-black text-center p-2 font-bold rounded-lg">
+                    {course.prof}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -254,22 +254,25 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
       </div>
 
       {/* Right side - Pricing and actions */}
-      <div className="mx-auto w-80 p-6 flex flex-col bg-[#EDF6FF] justify-center relative">
+      <div className="mx-auto w-80 p-6 flex flex-col gap-4 justify-center bg-[#EDF6FF] relative">
         {/* Action buttons */}
         <div className="space-y-3 font-bold">
-          <div className="w-full text-center bg-gradient-to-br from-blue-500 to-blue-300 hover:bg-blue-600 text-white py-3 px-4 rounded-lg transition-colors">
-            <span>
-              お試し無料体験を
-              <br />
-              申し込む
-            </span>
-          </div>
           <button
-            className="w-full cursor-pointer hover:shadow-lg bg-white bg-gradient-to-b from-white via-blue-300 to-blue-500 text-blue-900 border border-blue-500 py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-4"
+            className="w-full cursor-pointer hover:shadow-lg bg-gradient-to-b from-blue-300 via-blue-500 to-blue-800 text-white border border-blue-500 py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-4"
             onClick={handleBookingButtonClick}
           >
             <span>+</span>
-            <span className="">{getButtonText()}</span>
+            <span className="whitespace-pre-line">{getButtonText()}</span>
+          </button>
+        </div>
+
+        {/*Real Application*/}
+        <div className="text-black font-bold" onClick={() => setPaymentApplication(true)}>
+          <button
+            className="w-full cursor-pointer hover:shadow-lg bg-gradient-to-b from-white via-blue-300 to-blue-500 text-blue-900 border border-blue-500 py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-4"
+            onClick={handleBookingButtonClick}
+          >
+            <span className="">コースを申し込む</span>
           </button>
         </div>
 
@@ -279,10 +282,10 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
             <div className="bg-white rounded-lg shadow-2xl p-6 w-96 max-w-[90vw]">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-bold text-gray-800">
-                  📅 STEP 1: 日程を選択
+                  📅 STEP 1: {paymentApplication ? "面談希望日程を選択して下さい" : "日程を選択して下さい"}
                 </h3>
                 <button
-                  onClick={() => setShowCalendar(false)}
+                  onClick={() => { setShowCalendar(false); setPaymentApplication(false); }}
                   className="text-gray-500 hover:text-gray-700 text-xl font-bold"
                 >
                   ×
@@ -451,7 +454,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
                       処理中...
                     </>
                   ) : (
-                    '予約リクエストを送信'
+                    "予約リクエストを送信"
                   )}
                 </button>
               </form>
