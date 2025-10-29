@@ -31,7 +31,10 @@ export default function ProfIntro() {
     setSelectedProf(profName);
   };
   return (
-    <div id="profIntro" className="grid items-center gap-2 md:gap-4 px-4 md:px-8 lg:p-12 bg-blue-50 mx-auto">
+    <div
+      id="profIntro"
+      className="grid items-center gap-2 md:gap-4 px-4 md:px-8 lg:p-12 bg-blue-50 mx-auto"
+    >
       <h2
         className="text-3xl md:text-5xl font-extrabold text-left bg-gradient-to-r from-[#3375C0] via-[#1A3C63] text-transparent bg-clip-text mb-4 md:mb-6"
         style={{
@@ -112,31 +115,49 @@ export default function ProfIntro() {
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
               {selectedProf} 講師のコース一覧
             </h2>
-            <div className="space-y-4 max-h-[70vh] overflow-y-auto">
+            <div className="space-y-8 max-h-[70vh] overflow-y-auto">
               {courseSelected.length > 0 ? (
                 courseSelected.map((course) => (
-                  <a 
-                    href={`#${course.id}`} 
-                    key={course.id} 
-                    className="p-4 border border-gray-200 rounded-lg"
-                    onClick={() => setSelectedProf(null)}
-                    >
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                      {course.title}
-                    </h3>
-                    <p className="text-gray-600 mb-1">
-                      <span className="font-bold">種類:</span> {course.payType}
-                    </p>
-                    <p className="text-gray-600 mb-1">
-                      <span className="font-bold">時間:</span> {course.pricing.duration} 分
-                    </p>
-                    <p className="text-gray-600">
-                      <span className="font-bold">価格:</span> ¥{course.pricing.price}
-                    </p>
-                  </a>
+                  <div
+                    key={course.id}
+                    className=" p-4 border border-gray-200 rounded-lg hover:cursor-pointer"
+                    onClick={() => {
+                      setSelectedProf(null);
+                      window.location.href = `#${course.id}`;
+                    }}
+                  >
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                        {course.title}
+                      </h3>
+                    <div className="flex justify-around">
+                      <div className="flex flex-col">
+                      <p className="text-gray-600 mb-1">
+                        <span className="font-bold">種類:</span>{" "}
+                        {course.payType}
+                      </p>
+                      <p className="text-gray-600 mb-1">
+                        <span className="font-bold">時間:</span>{" "}
+                        {course.pricing.duration}
+                      </p>
+                      <p className="text-gray-600">
+                        <span className="font-bold">価格:</span>{" "}
+                        {course.pricing.price}
+                      </p>
+                      </div>
+                    <Image
+                      src={getAssetPath(course.image)}
+                      alt={course.title}
+                      width={100}
+                      height={100}
+                      className="object-cover"
+                    />
+                    </div>
+                  </div>
                 ))
               ) : (
-                <p className="text-gray-600">この講師のコースは現在ありません。</p>
+                <p className="text-gray-600">
+                  この講師のコースは現在ありません。
+                </p>
               )}
             </div>
           </div>

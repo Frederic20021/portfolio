@@ -256,7 +256,7 @@ export const ProfInfo = [
   },
   {
     id: 2,
-    name: "島田 悠次",
+    name: "島田悠次",
     kana: "シマダ ユウジ",
     sections: [
       {
