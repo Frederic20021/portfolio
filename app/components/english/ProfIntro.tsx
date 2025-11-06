@@ -120,16 +120,12 @@ export default function ProfIntro() {
                 courseSelected.map((course) => (
                   <div
                     key={course.id}
-                    className=" p-4 border border-gray-200 rounded-lg hover:cursor-pointer"
-                    onClick={() => {
-                      setSelectedProf(null);
-                      window.location.href = `#${course.id}`;
-                    }}
+                    className=" p-4 border border-gray-200 rounded-lg"
                   >
                       <h3 className="text-xl font-semibold text-gray-800 mb-2">
                         {course.title}
                       </h3>
-                    <div className="flex justify-around">
+                    <div className="flex justify-around items-center">
                       <div className="flex flex-col">
                       <p className="text-gray-600 mb-1">
                         <span className="font-bold">種類:</span>{" "}
@@ -151,6 +147,16 @@ export default function ProfIntro() {
                       height={100}
                       className="object-cover"
                     />
+                    <span 
+                    style={{fontFamily: 'Yu Gothic'}} 
+                    className="hover:cursor-pointer bg-gradient-to-b from-black to-gray-600 text-white p-2 font-bold rounded-lg text-sm hover:shadow-lg hover:scale-110 duration-300"
+                    onClick={() => {
+                      setSelectedProf(null);
+                      window.location.href = `#${course.id}`;
+                    }}
+                  >
+                      詳細を見る
+                    </span>
                     </div>
                   </div>
                 ))
