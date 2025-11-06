@@ -1,5 +1,36 @@
+export const pitch = [
+  {
+    id: '01',
+    titleHighlight: "最短一週間で",
+    titleRest: "すぐに\n無料体験がスタート可能！",
+    image: "",
+    description: "気になる教師と相性をしっかり確認してから始められるので、初心者の方でも安心。面倒な手続きがなく、あなたの目的に合った講師とスムーズに学習をスタートできます。",
 
-// Sample course data based on the image
+  },
+  {
+    id: '02',
+    titleHighlight: "マンツーマン",
+    titleRest: "だから弱点をすぐに克服！",
+    image: "",
+    description: "1対1レッスンで、発音・会話のクセを的確にフィードバック。個別希望する講師が目的やレベルに合わせて進めるため、無駄のない最短ルートで実力アップが可能です。",
+  },
+  {
+    id: '03',
+    titleHighlight: "実力派講師がサポート",
+    titleRest: "するから安心＆継続しやすい",
+    image: "",
+    description: "講師がビジネス経験者・留学経験者だから、会議やメールの職場設定だけではなく、留学など本当に使える“リアルな英語”をマンツーマンで効率よく習得できます。",
+  },
+  {
+    id: '04',
+    titleHighlight: "日本語での質問",
+    titleRest: "OKだから、実践英語が身につく！",
+    image: "",
+    description: "分からないことは日本語で質問OK。英語初心者でも“なんとなく”にせず、納得しながら学べます。講師とのやりとりもスムーズで、継続しやすく、途中で挫折しにくいのが強みです。",
+
+  },
+]
+
 export const courses = [
   {
   // You can add more courses here
@@ -205,7 +236,7 @@ export const testimonials = [
     headline: '自分の苦手な部分を克服することができました',
     content: 'いつも丁寧な指導をして頂き、有難うございます。\n先生との授業を通じて自分の苦手な部分を見直すことができ、問題演習で間違えた点が、どの様にアプローチすると正しい回答になるのかをしっかり理解することができています。また、問題演習の中で、単語の発音、語順や似たような表現方法なども含めて指導していただいているため、英単語が覚えやすくなったり、英語の理解をより深めたりすることができており、感謝しております。今後とも先生のご指導ご鞭撻のほど、よろしくお願いいたします。',
     responsibleProf: '角谷寛人',
-    avatar: '/hero/avatar1.jpg' // Using existing image as placeholder
+    avatar: '/hero/avatar3.jpg' // Using existing image as placeholder
   },
   {
     id: 2,
@@ -225,7 +256,17 @@ export const testimonials = [
     headline: '長文読解を簡単に読めるようになりました！',
     content: 'この度は、英検２級合格までのご指導を頂きありがとうございました。\nかどや先生に約１ヶ月間の集中特訓（週２回）を依頼しました。英検対策のオリジナル頻出問題は容易ではない問題もあり、夏休み中は基礎から鍛えて頂きました。英検対策は学校のテストにも通じるものもあり、長文読解などが簡単に読めるようになりました。次回は、中学卒業までに目標の２級合格を目指します。',
     responsibleProf: '角谷寛人',
-    avatar: '/hero/avatar3.jpg'
+    avatar: '/hero/avatar1.jpg'
+  },
+  {
+    id: 4,
+    name: '学生',
+    title: '英文指導',
+    rating: 5,
+    headline: '英語を前より好きになりました!',
+    content: 'レッスンがとてもインタラクティブで、毎回英語をたくさん使うことができました。\n話す機会が多いので、自分の英語に自信がついてきたと感じます。先生の説明も分かりやすくて、もっと勉強したいと思えるレッスンでした。',
+    responsibleProf: 'SI THU LIN',
+    avatar: '/hero/avatar1.jpg'
   },
 ];
 
