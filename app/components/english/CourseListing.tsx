@@ -202,7 +202,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
             {/* Pricing */}
             <div className="md:flex justify-center text-center items-center grid md:gap-4 gap-2 md:text-lg text-sm font-bold text-blue-600">
               <span>🕐{course.pricing.duration}</span>
-              {course.id === 6 ? (
+              {course.id === 5 ? (
                 <>
                   <del>{course.pricing.originalPrice}</del>
                   <span>{course.pricing.price}</span>

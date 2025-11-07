@@ -90,7 +90,7 @@ export default function ProfIntro() {
                     {section.items.map((item, itemIndex) => (
                       <li
                         key={itemIndex}
-                        className="text-xs md:text-sm text-gray-700 whitespace-pre-line"
+                        className="text-xs md:text-sm text-gray-700 whitespace-pre"
                       >
                         {item}
                       </li>

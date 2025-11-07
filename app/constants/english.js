@@ -46,10 +46,10 @@ export const courses = [
       freeTrial: "あり",
     },
     pricing: {
-      duration: "1回 90分",
-      price: "¥24,000",
+      duration: "60分 x4回",
+      price: "¥25,000",
     },
-    stripeLink : "https://buy.stripe.com/bJe28tfxy99Ta65fI04Ja05",
+    stripeLink : "https://buy.stripe.com/eVq9AV71271LdihfI04Ja0d",
   },
   
   {
@@ -65,33 +65,13 @@ export const courses = [
       freeTrial: "あり",
     },
     pricing: {
-      duration: "1回 90分",
-      price: "¥24,000",
+      duration: "60分 x4回",
+      price: "¥25,000",
     },
-    stripeLink : "https://buy.stripe.com/cNi28t1GI5XH7XXgM44Ja04",
+    stripeLink : "https://buy.stripe.com/6oU3cx3OQ85P5PP3Zi4Ja0e",
   },
-  
   {
     id: 3,
-    prof: "角谷寛人",
-    tags: ["教科指導", "英会話"],
-    payType: "月額",
-    title: "【英会話】ビジネス・日常英会話力を向上!",
-    image: "/english/course/speaking.jpg",
-    description:
-      "実践的な英会話力を身につけたい方向けのコースです。ビジネスシーンや日常生活で使える会話表現を学び、自信を持って英語でコミュニケーションが取れるようになることを目指します。",
-    features: {
-      freeTrial: "あり",
-    },
-    pricing: {
-      duration: "1回 90分",
-      price: "¥20,000",
-    },
-    stripeLink : "https://buy.stripe.com/8x214pdpqdq9ba97bu4Ja06",
-  },
-  
-  {
-    id: 4,
     prof: "角谷寛人",
     tags: ["教科指導", "TOEIC"],
     payType: "月額",
@@ -103,13 +83,13 @@ export const courses = [
       freeTrial: "あり",
     },
     pricing: {
-      duration: "1回 90分",
-      price: "¥20,000",
+      duration: "60分 x4回",
+      price: "¥25,000",
     },
-    stripeLink : "https://buy.stripe.com/00wcN7gBC99T0vv0N64Ja02",
+    stripeLink : "https://buy.stripe.com/dRm9AV8565XHced9jC4Ja0f",
   },
 {
-    id: 5,
+    id: 4,
     prof: "SI THU LIN",
     tags: ["教科指導"],
     payType: "月額",
@@ -121,13 +101,13 @@ export const courses = [
       freeTrial: "あり",
     },
     pricing: {
-      duration: "1回 60分",
+      duration: "60分 x4回",
       price: "¥25,000",// 20,000 x 1.25
     },
     stripeLink : "https://buy.stripe.com/14A00ldpqgCleml1Ra4Ja08",
   },
   {
-    id: 6,
+    id: 5,
     prof: "島田悠次",
     tags: ["教科指導"],
     payType: "単発",
@@ -139,18 +119,18 @@ export const courses = [
       freeTrial: "なし",
     },
     pricing: {
-      duration: "1回 60分",
+      duration: "60分 毎に",
       price: "¥1,875",// 1,500 x 1.25
       originalPrice: "¥10,000",
     },
     stripeLink : "https://buy.stripe.com/14A5kFade3Pz0vv1Ra4Ja09",
   },
   {
-    id: 7,
+    id: 6,
     prof: "島田悠次",
     tags: ["教科指導", "短期集中"],
     payType: "単発",
-    title: "【海外出張前の短期集中レッスン】3回コース",
+    title: "【海外出張前の短期集中レッスン】",
     image: "/english/course/business-trip.jpg",
     description:
       "海外出張を控えた方向けの短期集中コースです。入国審査・両替からホテルチェックイン、挨拶、ミーティングまで、実際の場面を想定した実践的な練習を行います。",
@@ -164,11 +144,11 @@ export const courses = [
     stripeLink : "https://buy.stripe.com/4gM8wR4SUfyh0vvdzS4Ja0a",
   },
   {
-    id: 8,
+    id: 7,
     prof: "島田悠次",
     tags: ["英会話"],
     payType: "単発",
-    title: "【基本英会話習得レッスン】12回コース（3か月）",
+    title: "【基本英会話習得レッスン】",
     image: "/english/course/basic-conversation.jpg",
     description:
       "3ヶ月で基本的な英会話力を身につけるコースです。海外旅行・出張対応、インバウンド対応、ビジネス対応の3つのシーンに対応できる実践的な英会話スキルを習得します。",
@@ -182,7 +162,7 @@ export const courses = [
     stripeLink : "https://buy.stripe.com/00w9AV3OQ0Dn1zz1Ra4Ja0b",
   },
   {
-    id: 9,
+    id: 8,
     prof: "島田悠次",
     tags: ["教科指導", "企業向け"],
     payType: "単発",
@@ -194,7 +174,7 @@ export const courses = [
       freeTrial: "要相談",
     },
     pricing: {
-      duration: "1回 60分",
+      duration: "60分 毎に",
       price: "¥37,500",//30000 x 1.25
     },
     stripeLink : "https://buy.stripe.com/aFa14p5WY99T5PP53m4Ja0c",
@@ -207,7 +187,7 @@ export const qaData = [
   {
     id: 1,
     question: "無料体験は、どこまでできますか？",
-    answer: "無料体験では、実際の授業と同じ内容を受講していただき、お客様の現在のレベルチェックします。目標設定、学習プランの計画を立てた上で、体験後に詳細なフィードバックもお渡しします。"
+    answer: "無料体験では、実際の授業に加えてお客様の現在のレベルチェックします。目標設定、学習プランの計画を立てた上で、体験後に詳細なフィードバックもお渡しします。"
   },
   {
     id: 2,
@@ -288,8 +268,8 @@ export const ProfInfo = [
       {
         title: "【経歴】",
         items: [
-          "私立高校の英語科専任教諭\n(進路指導部国際教育委員会)",
-          "大手日本メーカーにて海外営業\n 経営・事業企画を担当"
+          "私立高校の英語科専任教諭\n\t(進路指導部・国際教育委員会)",
+          "大手日本メーカーにて海外営業\n\t経営・事業企画を担当"
         ]
       }
     ],
@@ -310,7 +290,7 @@ export const ProfInfo = [
         title: "【経歴】",
         items: [
           "メーカーにて同時通訳38年",
-          "海外事業 24年\n（貿易・部品調達・海外関連会社支援・取引契約）",
+          "海外事業 24年（貿易・部品調達・\n\t海外関連会社支援・取引契約）",
           "人事・総務・広報 11年",
           "海外駐在(USA) 3年"
         ]
