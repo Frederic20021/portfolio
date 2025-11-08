@@ -1,0 +1,34 @@
+'use client'
+
+import Image from "next/image";
+import { getAssetPath } from "../../utils/paths";
+import BTN from "../ui/BTN";
+
+const image = [
+  "/offshore/offshore1.jpg",
+  "/offshore/offshore2.jpg",
+  "/offshore/offshore3.jpg",
+  "/offshore/offshore4.jpg",
+  "/offshore/offshore5.jpg",
+];
+
+export default function Pitch() {
+  return (
+    <>
+        {image.map((img, index) => (
+          <div key={index}>
+          {index === 2 ? (
+            <BTN text="エンパワー＆リンク" href="/offshore" />
+          ) : null}
+          <Image
+            alt={`Offshore Service + ${index}`}
+            src={getAssetPath(`${img}`)}
+            width={1920}
+            height={1080}
+            className="object-cover w-full h-auto"
+          />
+          </div>
+        ))}
+    </>
+  );
+}

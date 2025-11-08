@@ -24,7 +24,7 @@ export const services = [
       title: "ICT事業",
       description: "IT人材の紹介と企業向けICT導入支援を展開、クラウドと基盤構築技術に対応した人材と企業機能のソリューションを提供します。",
       image: getAssetPath("/services/service4.jpg"),
-      link: "/services/ict"
+      link: "/offshore"
     }
   ]
 
