@@ -15,11 +15,11 @@ export default function PricePlan() {
                 <span className="text-[#111A24] font-black text-lg">プロジェクト規模・スキルに合わせて柔軟に選択可能！</span>
             </div>
 
-            <div className='grid md:flex md:flex-wrap justify-center gap-4 mx-auto '>
+            <div className='grid md:flex md:flex-wrap justify-center gap-4 mx-auto max-w-4xl'>
                 {pricePlan.map((plan, index) => (
                     <div 
                     key={index}
-                    className='rounded-lg grid gap-2 h-[350px] font-semibold w-[250px] text-black justify-center bg-white border-[#2778FA] border-2 px-4 py-6'>
+                    className='rounded-lg grid gap-2 h-[350px] font-semibold w-[250px] md:w-[300px] lg:w-[280px] text-black justify-center bg-white border-[#2778FA] border-2 px-4 py-6'>
                         <div className='h-[80px] mb-2'>
                         <div className='flex items-center whitespace-pre-line text-left'>
                                 <FaGear className='text-3xl text-[#2778FA]'/>
@@ -38,7 +38,7 @@ export default function PricePlan() {
                         {plan.features.map((feature, fIndex) => (
                             <div 
                             key={fIndex}
-                            className='flex text-sm bg-red-200'>
+                            className='flex text-sm'>
                                 <FaCheck className='text-[#2778FA]'/>
                                 <span className='ml-2 text-xs tracking-tight'>{feature}</span>
                             </div>
