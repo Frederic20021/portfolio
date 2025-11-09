@@ -10,7 +10,6 @@ const image = [
   "/offshore/offshore3.jpg",
   "/offshore/offshore4.jpg",
   "/offshore/offshore5.jpg",
-  "/offshore/offshore6.jpg",
 ];
 
 export default function Pitch() {
@@ -21,7 +20,7 @@ export default function Pitch() {
           {index === 1 ? (
             <BTN text="エンパワー＆リンクについて" href="/offshore" />
           ) : index === 2 ? (
-            <BTN text="料料料金プランを見る" href={`#5`} />
+            <BTN text="料料料金プランを見る" href={`#price-plan`} />
           ) : null}
           <Image
             id={`${index}`}
