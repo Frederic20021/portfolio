@@ -10,6 +10,7 @@ const image = [
   "/offshore/offshore3.jpg",
   "/offshore/offshore4.jpg",
   "/offshore/offshore5.jpg",
+  "/offshore/offshore6.jpg",
 ];
 
 export default function Pitch() {
