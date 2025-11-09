@@ -20,7 +20,7 @@ export default function Pitch() {
           {index === 1 ? (
             <BTN text="エンパワー＆リンクについて" href="https://empowerandlink.com/" />
           ) : index === 2 ? (
-            <BTN text="料料料金プランを見る" href={`#price-plan`} />
+            <BTN text="料金プランを見る" href={`#price-plan`} />
           ) : null}
           <Image
             id={`${index}`}
