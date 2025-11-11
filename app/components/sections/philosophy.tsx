@@ -4,7 +4,7 @@ import { getAssetPath } from '../../utils/paths'
 const philosophyItems = [
   {
     title: "働く人の夢を実現",
-    description: "外国人の方々・グローバル人材まわりは働く人々の夢の実現の共明をしまさす。一人ひとりの希望に寄り添い、適適なキャリアを育づけるお手伝いをいたします"
+    description: "外国人の方・グローバル人材をはじめ働く人々の\n夢の実現の後押しをします。一人ひとりの希望に寄り添い、最適なキャリアを見つけるお手伝いをいたします。"
   },
   {
     title: "日本企業の活性化", 
@@ -24,15 +24,15 @@ export default function PhilosophySection() {
           企業理念
         </h2>
         
-        <div className="grid md:grid-cols-5 gap-8 items-center">
+        <div className="grid md:grid-cols-5 items-center">
           {/* Text Content - Slide in from left */}
-          <div className="space-y-12 animate-fade-in-left p-4 col-span-2">
+          <div className="space-y-2 animate-fade-in-left py-4 mb-4 justify-self-center col-span-2">
             {philosophyItems.map((item, index) => (
-              <div key={index} className="animate-fade-in-up text-center" style={{animationDelay: `${index * 1}s`}}>
-                <h3 className="text-2xl font-bold text-blue-800 mb-4">
+              <div key={index} className="whitespace-pre-line animate-fade-in-up max-w-[300px] text-center" style={{animationDelay: `${index * 1}s`}}>
+                <h3 className="font-extrabold text-blue-800 mb-4">
                   {item.title}
                 </h3>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 text-xs leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -41,7 +41,7 @@ export default function PhilosophySection() {
           
           {/* Image Section - Slide in from right */}
           <div className="max-md:hidden relative animate-fade-in-right col-span-3">
-            <div className="w-full h-96 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg overflow-hidden">
+            <div className="max-w-[600px] h-96 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg overflow-hidden">
               {/* Placeholder for business meeting image */}
               <div className="w-full h-full">
                 <Image

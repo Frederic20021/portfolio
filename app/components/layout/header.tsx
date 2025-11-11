@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { usePathname }from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { navLinks } from '@/app/constants/header';
 
@@ -34,18 +35,21 @@ useEffect(() => {
   return () => document.removeEventListener('mousedown', handleClickOutside);
 }, []);
 
+  const pathname = usePathname();
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-[#40637D]/30 backdrop-blur-lg shadow-lg' 
+        usePathname().startsWith("/english") ?
+        "bg-indigo-800/30 backdrop-blur-lg"
+        : isScrolled ?
+         'bg-[#40637D]/30 backdrop-blur-lg shadow-lg' 
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto p-4 sm:p-6">
-        <div className="flex items-center justify-between h-full">
-          <Link className="text-xs sm:text-sm md:text-2xl font-bold break-words max-w-[60%] sm:max-w-none" href="/">
+      <div className="container mx-auto px-4 py-6 sm:p-8">
+        <div className="flex items-center justify-between px-10 h-full">
+          <Link className=" sm:text-2xl font-bold break-words max-w-[60%] sm:max-w-none" href="/">
             エンパワー&リンク株式会社
           </Link>
           
