@@ -10,7 +10,7 @@ const image = [
 
 export default function Pitch() {
   return (
-    <>
+    <div className="mt-22">
         {image.map((img, index) => (
           <div key={index}>
           {index % 2 === 1 ? (
@@ -18,7 +18,7 @@ export default function Pitch() {
               <h2 className="font-extrabold text-xl md:text-3xl">まずは無料相談・体験から</h2>
               <button 
                 onClick={() => window.location.href = '#profIntro'}
-                className="bg-blue-700 mx-auto p-4 cursor-pointer rounded-2xl mt-4 hover:bg-blue-800 transition-colors duration-300">
+                className="bg-blue-700 mx-auto p-4 cursor-pointer rounded-2xl hover:bg-blue-800 transition-colors duration-300">
                 <span className="text-white font-bold">今すぐ予約!</span>
               </button>
             </div>
@@ -32,6 +32,6 @@ export default function Pitch() {
           />
           </div>
         ))}
-    </>
+    </div>
   );
 }

@@ -40,16 +40,16 @@ useEffect(() => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ${
-        usePathname().startsWith("/english") ?
-        "bg-indigo-800/30 backdrop-blur-lg"
+        pathname.startsWith("/english") && isScrolled?
+        "bg-gray-700/30 backdrop-blur-2xl"
         : isScrolled ?
          'bg-[#40637D]/30 backdrop-blur-lg shadow-lg' 
-          : 'bg-transparent'
+         : null
       }`}
     >
-      <div className="container mx-auto px-4 py-6 sm:p-8">
-        <div className="flex items-center justify-between px-10 h-full">
-          <Link className=" sm:text-2xl font-bold break-words max-w-[60%] sm:max-w-none" href="/">
+      <div className="container mx-auto px-8 py-6 sm:p-8">
+        <div className="flex items-center justify-between h-full">
+          <Link className=" md:text-2xl font-bold break-words max-w-[60%] sm:max-w-none" href="/">
             エンパワー&リンク株式会社
           </Link>
           
