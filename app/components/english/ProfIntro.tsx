@@ -1,7 +1,6 @@
 'use client';
 
 import { ProfInfo, courses } from "@/app/constants/english";
-import { getAssetPath } from "../../utils/paths";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
@@ -53,7 +52,7 @@ export default function ProfIntro() {
           >
             <div className="w-[200px] h-[200px] mx-auto">
               <Image
-                src={getAssetPath(prof.image)}
+                src={prof.image}
                 alt={prof.name}
                 width={200}
                 height={200}
@@ -141,7 +140,7 @@ export default function ProfIntro() {
                       </p>
                       </div>
                     <Image
-                      src={getAssetPath(course.image)}
+                      src={course.image}
                       alt={course.title}
                       width={100}
                       height={100}

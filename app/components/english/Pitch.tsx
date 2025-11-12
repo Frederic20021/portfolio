@@ -1,7 +1,6 @@
 'use client'
 
 import Image from "next/image";
-import { getAssetPath } from "../../utils/paths";
 
 const image = [
   "/english/english1.jpg",
@@ -25,7 +24,7 @@ export default function Pitch() {
           ) : null}
           <Image
             alt={`English Service + ${index}`}
-            src={getAssetPath(`${img}`)}
+            src={img}
             width={1920}
             height={1080}
             className="object-cover w-full h-auto"

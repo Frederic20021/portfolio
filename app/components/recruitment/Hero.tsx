@@ -1,4 +1,3 @@
-import { getAssetPath } from "@/app/utils/paths";
 
 export default function Hero() {
   return (
@@ -6,7 +5,7 @@ export default function Hero() {
       {/* Hero Section */}
       <section
         style={{
-          backgroundImage: `url(${getAssetPath("/recruitment/Hero.jpg")})`,
+          backgroundImage: `url('/recruitment/Hero.jpg')`,
         }}
         className="relative text-white sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 h-[300px] md:h-[500px] flex items-center bg-cover bg-center"
       >

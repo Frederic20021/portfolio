@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { getAssetPath } from '../../utils/paths';
 import { testimonials } from '@/app/constants/english';
 
 // Star rating component
@@ -47,7 +46,7 @@ const TestimonialCard = ({
         <div className="flex-shrink-0 md:grid md:w-[100px] justify-between">
           <div className="md:grid flex gap-2 mx-auto max-md:w-16 max-md:h-16 overflow-hidden">
             <Image
-              src={getAssetPath(testimonial.avatar)}
+              src={testimonial.avatar}
               alt={testimonial.name}
               width={64}
               height={64}

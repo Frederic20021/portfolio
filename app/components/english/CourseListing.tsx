@@ -4,7 +4,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Calendar from 'react-calendar';
 import emailjs from '@emailjs/browser';
-import { getAssetPath } from "../../utils/paths";
 import { courses } from "@/app/constants/english";
 import { serviceID, templateID, publicKey } from "@/app/constants/emailjs";
 // Add calendar CSS import
@@ -221,7 +220,7 @@ const CourseCard = ({ course }: { course: (typeof courses)[0] }) => {
 
           <div className="grid justify-items-center md:flex gap-8 items-center">
             <Image
-              src={getAssetPath(course.image)}
+              src={course.image}
               alt={course.title}
               width={150}
               height={150}

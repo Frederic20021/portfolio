@@ -19,7 +19,7 @@ export default function Pitch() {
         {image.map((img, index) => (
           <div key={index} className="flex bg-white flex-col items-center">
           {index === 1 ? (
-            <BTN text="エンパワー＆リンクについて" href="https://empowerandlink.com/" />
+            <BTN text="エンパワー＆リンクについて" href="/" />
           ) : index === 2 ? (
             <BTN text="料金プランを見る" href={`#price-plan`} />
           ) : null}

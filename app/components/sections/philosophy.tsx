@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { getAssetPath } from '../../utils/paths'
 
 const philosophyItems = [
   {
@@ -45,7 +44,7 @@ export default function PhilosophySection() {
               {/* Placeholder for business meeting image */}
               <div className="w-full h-full">
                 <Image
-                  src={getAssetPath('/hero/philosophy.jpeg')}
+                  src={'/hero/philosophy.jpeg'}
                   alt="Business Meeting"
                   width={600}
                   height={400}

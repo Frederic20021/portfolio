@@ -5,12 +5,11 @@ import { services } from "@/app/constants/services";
 export default function Services() {
   return (
     <section className="py-10 bg-gray-100">
-      <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center text-blue-900 mb-16" id="services">
           サービス内容
         </h2>
-        
-        <div className="flex gap-4 justify-center">
+
+        <div className="md:flex gap-4 grid sm-max-md:grid-cols-2 mx-auto justify-center items-center">
           {services.map((service, index) => (
             <Link key={index} href={service.link} className="group cursor-pointer hover:translate-y-[-10px] transition-all bg-white max-w-[250px] rounded-lg">
               <div className="h-42 mb-4 overflow-hidden group-hover:shadow-lg transition-shadow rounded-t-lg">
@@ -31,7 +30,6 @@ export default function Services() {
             </Link>
           ))}
         </div>
-      </div>
     </section>
   )
 }

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { ceoMessage } from "@/app/constants/heroText";
-import { getAssetPath } from '../../utils/paths'
 
 export default function CEOMessage() {
     return (
@@ -14,7 +13,7 @@ export default function CEOMessage() {
             <div className="grid md:grid-cols-5 gap-8 justify-between items-center">
               <div className="md:col-span-2 text-center text-gray-700">
                 <Image
-                  src={getAssetPath("/hero/CEO.jpg")}
+                  src={"/hero/CEO.jpg"}
                   alt="CEO"
                   width={250}
                   height={250}

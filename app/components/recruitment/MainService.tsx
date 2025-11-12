@@ -22,7 +22,7 @@ export default function MainService() {
                 {service.title}
                 <span className="sm:text-4xl ml-2">{service.emoji}</span>
               </h3>
-              <p className="mb-4 text-sm sm:text-2xl indent-4 leading-relaxed">
+              <p className="mb-4 text-sm md:text-lg indent-4 leading-relaxed">
                 {service.description}
               </p>
               <ul className="list-disc list-inside space-y-2 text-left">

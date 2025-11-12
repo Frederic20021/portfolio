@@ -1,5 +1,5 @@
 'use client';
-import { getAssetPath } from '../../utils/paths'    
+import { url } from 'inspector';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Mission() {
@@ -34,7 +34,7 @@ export default function Mission() {
       <section
         ref={sectionRef}
         style={{
-          backgroundImage: `url(${getAssetPath("/recruitment/mission.jpg")})`,
+          backgroundImage: `url('/recruitment/mission.jpg')`,
         }}
         className="relative py-12 px-6 text-white bg-cover text-center"
       >
