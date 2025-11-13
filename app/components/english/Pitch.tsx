@@ -9,7 +9,9 @@ const image = [
 
 export default function Pitch() {
   return (
-    <div className="mt-22">
+  <>
+        <div className="h-24 bg-[#589EEE]">
+        </div>
         {image.map((img, index) => (
           <div key={index}>
           {index % 2 === 1 ? (
@@ -31,6 +33,7 @@ export default function Pitch() {
           />
           </div>
         ))}
-    </div>
+  </>
   );
 }
+

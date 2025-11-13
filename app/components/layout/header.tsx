@@ -48,8 +48,8 @@ useEffect(() => {
       }`}
     >
       <div className="container mx-auto px-8 py-6 sm:p-8">
-        <div className="flex items-center justify-between h-full">
-          <Link className="text-sm md:text-2xl font-bold break-words max-w-[60%] sm:max-w-none" href="/">
+        <div className="flex items-center justify-between md:px-16 h-full">
+          <Link className="text-sm md:text-xl font-bold break-words max-w-[60%] sm:max-w-none" href="/">
             エンパワー&リンク株式会社
           </Link>
           
