@@ -8,7 +8,7 @@ export default function MainService() {
         <h2 className="sm:text-3xl text-lg font-bold text-center mb-12">
          人材・職業紹介サービス
         </h2>
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-10 md:mx-8">
           {mainServices.map((service, index) => (
             <Link 
               key={service.id}

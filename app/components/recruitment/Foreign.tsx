@@ -13,7 +13,7 @@ export default function Foreign() {
             外国人材採用・雇用支援サービス詳細
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
+          <div className="grid md:grid-cols-2 gap-12 mb-16 md:mx-12">
             {serviceTypes.map((serviceType) => (
               <div
                 key={serviceType.id}

@@ -36,7 +36,6 @@ useEffect(() => {
 }, []);
 
   const pathname = usePathname();
-
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 text-white transition-all duration-300 ${
@@ -49,15 +48,15 @@ useEffect(() => {
     >
       <div className="container mx-auto px-8 py-6 sm:p-8">
         <div className="flex items-center justify-between md:px-16 h-full">
-          <Link className="text-sm md:text-xl font-bold break-words max-w-[60%] sm:max-w-none" href="/">
-            エンパワー&リンク株式会社
+          <Link className="smallScreenCompanyName white text-sm md:text-xl cursor-pointer font-bold hover:font-extrabold break-words max-w-[60%] sm:max-w-none" href='/'>
+            {`エンパワー&リンク\n株式会社`}
           </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             {/*uses Object.entries to convert navLinks to mappable arrays*/} 
             {Object.entries(navLinks).map(([key, { label, href }]) => (
-              <Link key={key} href={href} className="hover:text-blue-900 hover:font-bold hover:underline transition-colors">
+              <Link key={key} href={href} className={`${pathname === href ? "font-bold border-b-1" : null } hover:scale-110 hover:border-b-1 duration-500`}>
                 {label}
               </Link>
             ))}

@@ -2,7 +2,7 @@ export default function CTA() {
   return (
     <>
     {/* CTA Section */}
-      <section className="py-20 px-6 text-center text-white">
+      <section className="py-20 px-6 text-center bg-gray-200 text-black">
         <h2 className="text-3xl font-bold mb-6">
           世界と日本をつなぐ新しいキャリアの第一歩を
         </h2>

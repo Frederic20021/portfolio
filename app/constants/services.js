@@ -2,25 +2,25 @@
 export const services = [
     {
       title: "人材・職業紹介",
-      description: "企業のニーズに合った人材をご提案します。製造・開発ソフトの各分野にわたり、幅広い専門に対応しております。",
+      description: "企業のニーズに沿った人材をご提案します。東南・南アジアの各国人材、幅広い業種に対応しております。",
       image: "/services/service1.jpg",
       link: "/recruitment"
     },
     {
       title: "日本語教育",
-      description: "外国人材向けの実践的な日本語指導を実施、ビジネス会話から生活に密着した、現場で役立つ日本語力を身に付けます。",
+      description: "外国人材向けの実践的な日本語指導を実施。ビジネス会話・JLPT対策など、現場で役立つ日本語力を身に付けます。",
       image: "/services/service2.jpg",
       link: "/services/japanese"
     },
     {
       title: "英語教育",
-      description: "グローバル人材を育成する法人・個人、ITを活用した効果的な英語学習を提供する、現実的な英語力を習得します。",
+      description: "　グローバル人材を目指す社会人・学生向けに、TOEIC対策やビジネス会話を指導。実践的な英語力を身に付け、海外での活躍を支援します。",
       image: "/services/service3.jpg",
       link: "/english"
     },
     {
       title: "ICT事業",
-      description: "IT人材の紹介と企業向けICT導入支援を展開、クラウドと基盤構築技術に対応した人材と企業機能のソリューションを提供します。",
+      description: "IT人材の紹介と企業向けICT導入支援を展開。クラウドなど最先端技術に対応した人材とAI面接等のソリューションを提供します。",
       image: "/services/service4.jpg",
       link: "/offshore"
     }

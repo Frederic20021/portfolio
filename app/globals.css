@@ -88,3 +88,9 @@ overflow-x: hidden;
   justify-content: center;
   color: #ffffff;
 }
+
+@media (max-width: 640px) {
+.smallScreenCompanyName  {
+  white-space: pre-line;
+  }
+}
