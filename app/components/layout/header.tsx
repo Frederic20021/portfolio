@@ -48,7 +48,7 @@ useEffect(() => {
     >
       <div className="container mx-auto px-8 py-6 sm:p-8">
         <div className="flex items-center justify-between md:px-16 h-full">
-          <Link className="smallScreenCompanyName white text-sm md:text-xl cursor-pointer font-bold hover:font-extrabold break-words max-w-[60%] sm:max-w-none" href='/'>
+          <Link className="smallScreenCompanyName white text-sm md:text-xl cursor-pointer font-bold hover:font-extrabold scaler break-words max-w-[60%] sm:max-w-none" href='/'>
             {`エンパワー&リンク\n株式会社`}
           </Link>
           
@@ -56,7 +56,7 @@ useEffect(() => {
           <nav className="hidden md:flex space-x-8">
             {/*uses Object.entries to convert navLinks to mappable arrays*/} 
             {Object.entries(navLinks).map(([key, { label, href }]) => (
-              <Link key={key} href={href} className={`${pathname === href ? "font-bold border-b-1" : null } hover:scale-110 hover:border-b-1 duration-500`}>
+              <Link key={key} href={href} className={`${pathname === href ? "font-bold border-b-1" : "naviLinkUnderline" } `}>
                 {label}
               </Link>
             ))}

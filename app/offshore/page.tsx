@@ -4,6 +4,7 @@ import PricePlan from "../components/offshore/PricePlan";
 
 export default function page() {
     return <>
+        <div className="h-24 bg-gray-600"></div>
         <Pitch />
         <PricePlan />
         <Contact />
