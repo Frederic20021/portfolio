@@ -1,5 +1,4 @@
 'use client';
-import { url } from 'inspector';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Mission() {
