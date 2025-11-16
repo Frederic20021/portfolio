@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* Ensure Tailwind scans all files in the App Router during build (helpful on CI/Vercel) */
+@source "./**/*.{js,ts,jsx,tsx}";
 
 :root {
   --background: #ffffff;
